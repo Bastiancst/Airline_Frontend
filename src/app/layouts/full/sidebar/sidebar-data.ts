@@ -18,6 +18,11 @@ export const navItems: NavItem[] = [
     route: '/ui-components/badge',
   },
   {
+    displayName: 'User Panel',
+    iconName: 'user-circle',
+    route: '/ui-components/user-panel',
+  },
+  {
     displayName: 'Employee',
     iconName: 'rosette',
     route: '/ui-components/employee',

@@ -18,6 +18,7 @@ import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { EmployeeComponent } from './employee/employee.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { EmployeeComponent } from './employee/employee.component';
     AppMenuComponent,
     AppTooltipsComponent,
     EmployeeComponent,
+    UserPanelComponent,
   ],
 })
 export class UicomponentsModule {}
