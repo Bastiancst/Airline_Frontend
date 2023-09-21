@@ -1,31 +1,34 @@
-import { Component } from '@angular/core';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+// employee.components.ts
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss'],
+  styleUrls: ['./employee.component.scss']
 })
-export class EmployeeComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+export class EmployeeComponent implements OnInit {
+  employees: any[] = [
+    { rut: '123456789', name: 'John Doe', country: 'USA', workPosition: 'Manager' },
+    { rut: '987654321', name: 'Jane Smith', country: 'Brazil', workPosition: 'Copilot' },
+    { rut: '123172461', name: 'Mary Jackson', country: 'Mexico', workPosition: 'Stewardess' },
+    { rut: '85768273K', name: 'Marcos Tompson', country: 'Argentina', workPosition: 'Pilot' },
+    { rut: '423615397', name: 'Juan Lopez', country: 'Chile', workPosition: 'Pilot' },
+    // Add more employees as needed
+  ];
+
+  displayedColumns: string[] = ['rut', 'name', 'country', 'workPosition', 'actions'];
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  editEmployee(employee: any) {
+    // Implement edit functionality here
+  }
+
+  deleteEmployee(employee: any) {
+    // Implement delete functionality here
+  }
 }
+
