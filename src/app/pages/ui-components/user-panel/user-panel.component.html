@@ -6,7 +6,7 @@
           <ng-template mat-tab-label>
             <div class="d-flex align-items-center">
               <mat-icon>
-                <i-tabler name="user-edit" class="icon-20 m-r-8"></i-tabler>
+                <i-tabler name="user" class="icon-20 m-r-8"></i-tabler>
               </mat-icon>
             </div>
             Editar Perfil
@@ -16,9 +16,9 @@
               <div class="col-sm-5">
                 <mat-card class="cardWithShadow">
                   <mat-card-content class="p-y-24">
-                    <mat-card-title>Change Profile</mat-card-title>
+                    <mat-card-title>Editar Perfil</mat-card-title>
                     <mat-card-subtitle class="mat-body-1"
-                      >Change your profile picture from here</mat-card-subtitle
+                      >Foto de Perfil</mat-card-subtitle
                     >
                     <div class="text-center m-t-24">
                       <img
@@ -28,12 +28,12 @@
                       />
                       <div class="m-t-24">
                         <button mat-flat-button color="primary" class="m-r-8">
-                          Upload
+                          Subir
                         </button>
-                        <button mat-stroked-button color="warn">Reset</button>
+                        <button mat-stroked-button color="warn">Reiniciar</button>
                       </div>
                       <span class="f-s-14 m-t-24 d-block"
-                        >Allowed JPG, GIF or PNG. Max size of 800K</span
+                        >Formatos permitidos JPG, GIF o PNG. Peso máximo 800K</span
                       >
                     </div>
                   </mat-card-content>
@@ -42,17 +42,16 @@
               <div class="col-sm-7">
                 <mat-card class="cardWithShadow">
                   <mat-card-content>
-                    <mat-card-title>Personal Details</mat-card-title>
+                    <mat-card-title>Datos Personales</mat-card-title>
                     <mat-card-subtitle class="mat-body-1"
-                      >To change your personal detail , edit and save from
-                      here</mat-card-subtitle
+                      >Cambia tus datos personales aquí</mat-card-subtitle
                     >
   
                     <div class="row m-t-24">
-                      <div class="col-sm-6">
+                      <div class="col-sm-8">
                         <!-- input -->
                         <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                          >Your Name</mat-label
+                          >Nombre</mat-label
                         >
                         <mat-form-field
                           appearance="outline"
@@ -61,18 +60,7 @@
                         >
                           <input matInput type="text" value="Mathew Anderson" />
                         </mat-form-field>
-                        <!-- input -->
-                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                          >Location</mat-label
-                        >
-                        <mat-form-field appearance="outline" class="w-100">
-                          <mat-select value="in">
-                            <mat-option value="in">India</mat-option>
-                            <mat-option value="us">United States</mat-option>
-                            <mat-option value="uk">United Kingdom</mat-option>
-                            <mat-option value="ru">Russia</mat-option>
-                          </mat-select>
-                        </mat-form-field>
+
                         <!-- input -->
                         <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
                           >Email</mat-label
@@ -89,39 +77,10 @@
                           />
                         </mat-form-field>
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-8">
                         <!-- input -->
                         <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                          >Store Name</mat-label
-                        >
-                        <mat-form-field
-                          appearance="outline"
-                          class="w-100"
-                          color="primary"
-                        >
-                          <input matInput type="text" value="Maxima Studio" />
-                        </mat-form-field>
-                        <!-- input -->
-                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                          >Currency</mat-label
-                        >
-                        <mat-form-field
-                          appearance="outline"
-                          class="w-100"
-                          color="primary"
-                        >
-                          <mat-select value="in">
-                            <mat-option value="in">India (INR)</mat-option>
-                            <mat-option value="us">Us Dollar ($)</mat-option>
-                            <mat-option value="uk"
-                              >United Kingdom(Pound)</mat-option
-                            >
-                            <mat-option value="ru">Russia (Ruble)</mat-option>
-                          </mat-select>
-                        </mat-form-field>
-                        <!-- input -->
-                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                          >Phone</mat-label
+                          >Numero de telefono</mat-label
                         >
                         <mat-form-field
                           appearance="outline"
@@ -131,10 +90,10 @@
                           <input matInput type="text" value="+91 12345 65478" />
                         </mat-form-field>
                       </div>
-                      <div class="col-12">
+                      <div class="col-sm-12">
                         <!-- input -->
                         <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                          >Address</mat-label
+                          >Direccion</mat-label
                         >
                         <mat-form-field
                           appearance="outline"
@@ -159,155 +118,22 @@
           <ng-template mat-tab-label>
             <div class="d-flex align-items-center">
               <mat-icon>
-                <i-tabler name="bell" class="icon-20 m-r-8"></i-tabler>
+                <i-tabler name="wallet" class="icon-20 m-r-8"></i-tabler>
               </mat-icon>
             </div>
-            Bills
+            Método de Pago
           </ng-template>
           <mat-card-content class="p-y-24 b-t-1">
             <div class="row justify-content-center">
               <div class="col-lg-9">
+                
+                <!-- Payment Method (Esta sección se mantiene) -->
                 <mat-card class="cardWithShadow">
                   <mat-card-content class="p-y-24">
-                    <mat-card-title class="m-b-24"
-                      >Billing Information</mat-card-title
-                    >
-  
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <!-- input -->
-                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                          >Business Name*</mat-label
-                        >
-                        <mat-form-field
-                          appearance="outline"
-                          class="w-100"
-                          color="primary"
-                        >
-                          <input matInput type="text" value="Visitor Analytics" />
-                        </mat-form-field>
-                        <!-- input -->
-                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                          >Business Address*</mat-label
-                        >
-                        <mat-form-field
-                          appearance="outline"
-                          class="w-100"
-                          color="primary"
-                        >
-                          <input matInput type="text" />
-                        </mat-form-field>
-                        <!-- input -->
-                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                          >First Name*</mat-label
-                        >
-                        <mat-form-field
-                          appearance="outline"
-                          class="w-100"
-                          color="primary"
-                        >
-                          <input matInput type="text" />
-                        </mat-form-field>
-                      </div>
-                      <div class="col-sm-6">
-                        <!-- input -->
-                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                          >Business Sector*</mat-label
-                        >
-                        <mat-form-field
-                          appearance="outline"
-                          class="w-100"
-                          color="primary"
-                        >
-                          <input
-                            matInput
-                            type="text"
-                            value="Arts, Media & Entertainment"
-                          />
-                        </mat-form-field>
-                        <!-- input -->
-                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                          >Country*</mat-label
-                        >
-                        <mat-form-field
-                          appearance="outline"
-                          class="w-100"
-                          color="primary"
-                        >
-                          <input matInput type="text" value="Romania" />
-                        </mat-form-field>
-                        <!-- input -->
-                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                          >Last Name*</mat-label
-                        >
-                        <mat-form-field
-                          appearance="outline"
-                          class="w-100"
-                          color="primary"
-                        >
-                          <input matInput type="text" />
-                        </mat-form-field>
-                      </div>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
-  
-                <mat-card class="cardWithShadow">
-                  <mat-card-content class="p-y-24">
-                    <mat-card-title
-                      >Current Plan : <span class="text-success">Execusive</span>
-                    </mat-card-title>
-                    <mat-card-subtitle class="mat-body-1"
-                      >Thanks for being a premium member and supporting our
-                      development.</mat-card-subtitle
-                    >
-  
+                    <mat-card-title>Método de Pago </mat-card-title>
                     <div class="d-flex align-items-center m-t-24">
-                      <button
-                        mat-mini-fab
-                        class="bg-light-primary shadow-none rounded icon-48"
-                      >
-                        <i-tabler
-                          name="box"
-                          class="icon-20 d-flex text-primary"
-                        ></i-tabler>
-                      </button>
-                      <div class="m-l-16 w-100">
-                        <span class="f-s-14 d-block m-b-4">Current Plan</span>
-                        <h5 class="f-s-16 f-w-600 m-0 m-b-4">
-                          750.000 Monthly Visits
-                        </h5>
-                      </div>
-                      <span class="m-l-auto">
-                        <i-tabler name="circle-plus" class="icon-20"></i-tabler>
-                      </span>
-                    </div>
-  
-                    <div class="m-t-24">
-                      <button mat-flat-button color="primary">Change Plan</button>
-                      <button mat-stroked-button class="m-l-8" color="warn">
-                        Reset Plan
-                      </button>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
-  
-                <mat-card class="cardWithShadow">
-                  <mat-card-content class="p-y-24">
-                    <mat-card-title>Payment Method </mat-card-title>
-                    <mat-card-subtitle class="mat-body-1"
-                      >On 26 December, 2023</mat-card-subtitle
-                    >
-  
-                    <div class="d-flex align-items-center m-t-24">
-                      <button
-                        mat-mini-fab
-                        class="bg-light-primary shadow-none rounded icon-48"
-                      >
-                        <i-tabler
-                          name="credit-card"
-                          class="icon-20 d-flex text-primary"
-                        ></i-tabler>
+                      <button mat-mini-fab class="bg-light-primary shadow-none rounded icon-48">
+                        <i-tabler name="credit-card" class="icon-20 d-flex text-primary"></i-tabler>
                       </button>
                       <div class="m-l-16 w-100">
                         <span class="f-s-14 d-block m-b-4">Visa</span>
@@ -317,11 +143,8 @@
                         <i-tabler name="pencil-minus" class="icon-20"></i-tabler>
                       </span>
                     </div>
-  
                     <div class="m-t-24">
-                      <button mat-stroked-button class="m-l-8" color="warn">
-                        Cancel Subscription
-                      </button>
+                      <button mat-stroked-button class="m-l-8" color="warn">Eliminar</button>
                     </div>
                   </mat-card-content>
                 </mat-card>
