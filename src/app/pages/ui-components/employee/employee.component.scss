@@ -2,9 +2,9 @@
 .crud-container {
   padding: 20px;
   background-color: white;
-  border: 4px solid #007bff;
+  border: 3px solid #5193da;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   margin: 20px;
   max-width: 100%; /* Set a max width for responsiveness */
   overflow: hidden; /* Hide horizontal overflow */
@@ -17,6 +17,7 @@
 
 .add-button {
   background-color: #007bff;
+  display: flex;
   color: white;
   position: absolute; /* Position the button fixed to the viewport */
   top: 15px; /* Adjust the top position as needed */
