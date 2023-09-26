@@ -57,7 +57,7 @@ export class EditFormComponent implements OnInit{
 
   getEmployee(){
 
-    this.apiService.get<CrudResponse>('/api/employee/B0A44A92-33AC-4EC2-8184-2F83FF2CA22E').subscribe(
+    this.apiService.get<CrudResponse>('/api/employee/').subscribe(
             response => {
               console.log(response.result)
               this.employee =  response.result

@@ -45,7 +45,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   openEditForm() {
-    this._dialog.open(EditFormComponent)
+    this._dialog.open(AddEditFormComponent)
   }
 
   crudData: CrudResponse["result"] = {id: '', officeId: '', rut: '', name: '', lastName: '', age: 0, email: '',
