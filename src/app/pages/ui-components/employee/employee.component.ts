@@ -48,23 +48,10 @@ export class EmployeeComponent implements OnInit {
     this._dialog.open(EditFormComponent)
   }
 
-  crudData: CrudResponse["result"] = {id: '', officeId: '', rut: '', name: '', lastname: '', age: 0, email: '',
+  crudData: CrudResponse["result"] = {id: '', officeId: '', rut: '', name: '', lastName: '', age: 0, email: '',
    role: Role.Default, workPosition: '', country: '', city: '', bonus: 0 };
 
   employees: CrudResponse["result"] [];
-
-  editData: CrudRequest = {
-    rut: '',
-    name: '',
-    lastname: '',
-    age: 0,
-    email: '',
-    role: 1,
-    workPosition: '',
-    country: '',
-    city: '',
-    bonus: 0,
-  };
 
   
   getEmployeeList(){

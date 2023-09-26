@@ -9,7 +9,7 @@ export interface CrudResponse {
         officeId: string;
         rut: string;
         name: string;
-        lastname: string;
+        lastName: string;
         age: number;
         email: string;
         role: Role;

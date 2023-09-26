@@ -7,37 +7,37 @@
         <div class="row">
             <mat-form-field appearance="outline">
                 <mat-label>RUT</mat-label>
-                <input matInput type="text" [(ngModel)]="crudData.rut" name="rut">
+                <input matInput type="text" [(ngModel)]="employee.rut" name="rut">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Nombre</mat-label>
-                <input matInput type="text" [(ngModel)]="crudData.name" name="name">
+                <input matInput type="text" [(ngModel)]="employee.name" name="name">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Apellido</mat-label>
-                <input matInput type="text" [(ngModel)]="crudData.lastname" name="lastname">
+                <input matInput type="text" [(ngModel)]="employee.lastName" name="lastname">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Edad</mat-label>
-                <input matInput type="number" [(ngModel)]="crudData.age" name="age">
+                <input matInput type="number" [(ngModel)]="employee.age" name="age">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
-                <input matInput type="email" [(ngModel)]="crudData.email" name="email">
+                <input matInput type="email" [(ngModel)]="employee.email" name="email">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Rol</mat-label>
-                <input matInput type="number" [(ngModel)]="crudData.role" name="role">
+                <input matInput type="number" [(ngModel)]="employee.role" name="role">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Puesto de Trabajo</mat-label>
-                <mat-select [(ngModel)]="crudData.workPosition" name="workPosition">
+                <mat-select [(ngModel)]="employee.workPosition" name="workPosition">
                 <mat-option *ngFor="let val of workPositions" [value]="val">{{val}}
                 </mat-option>
                 </mat-select>
@@ -45,7 +45,7 @@
 
             <mat-form-field>
                 <mat-label>País</mat-label>
-                <mat-select [(ngModel)]="crudData.country" name="country">
+                <mat-select [(ngModel)]="employee.country" name="country">
                 <mat-option *ngFor="let val of countries" [value]="val">{{val}}
                 </mat-option>
                 </mat-select>
@@ -53,12 +53,12 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Ciudad</mat-label>
-                <input matInput type="text" [(ngModel)]="crudData.city" name="city">
+                <input matInput type="text" [(ngModel)]="employee.city" name="city">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Bonus</mat-label>
-                <input matInput type="number" [(ngModel)]="crudData.bonus" name="bonus">
+                <input matInput type="number" [(ngModel)]="employee.bonus" name="bonus">
             </mat-form-field>
 
         </div>

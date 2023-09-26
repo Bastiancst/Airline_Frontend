@@ -4,7 +4,7 @@ export interface CrudUpdate {
     id: string;
     rut: string;
     name: string;
-    lastname: string;
+    lastName: string;
     age: number;
     email: string;
     role: Role;
