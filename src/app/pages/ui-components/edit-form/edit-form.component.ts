@@ -4,7 +4,7 @@ import { ApiRequestService } from 'src/app/services/api-request.service';
 import { CrudRequest } from '../employee/Models/crud-request';
 import { Router } from '@angular/router';
 import { CrudResponse } from '../employee/Models/crud-response';
-
+import { CrudUpdate } from '../employee/Models/crud-update';
 @Component({
   selector: 'app-edit-form',
   templateUrl: './edit-form.component.html',
@@ -40,7 +40,8 @@ export class EditFormComponent {
     'Seguridad',
   ];
 
-  crudData: CrudRequest = {
+  crudData: CrudUpdate = {
+    id: "string",
     rut: "string",
     name: "string",
     lastname: "string",
@@ -60,7 +61,7 @@ export class EditFormComponent {
   {
     console.log('Empleado Añadido con exito:');
 
-    this.apiService.put<CrudResponse, CrudRequest>('/api/employee/update', this.crudData).subscribe
+    this.apiService.put<CrudResponse, CrudUpdate>('/api/employee/update/', this.crudData).subscribe
         (
             response => {
                 console.log('Empleado actualizado:', response);
