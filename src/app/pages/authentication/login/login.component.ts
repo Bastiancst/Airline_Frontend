@@ -27,7 +27,6 @@ export class AppSideLoginComponent {
                 console.log('Usuario autenticado:', response);
                 if(response.success)
                 {
-                  console.log(response);
                   this.CookieService.setToken(response.result.jwTtoken);
                   this.router.navigate(['/ui-components/user-panel']);
                 }
