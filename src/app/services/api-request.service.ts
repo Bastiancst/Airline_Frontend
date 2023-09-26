@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiRequestService {
 
-    private baseUrl: string = 'https://93a5-200-27-88-4.ngrok-free.app';
+    private baseUrl: string = 'https://260f-200-27-88-4.ngrok-free.app';
 
     constructor(private http: HttpClient) 
     { 
@@ -21,11 +21,11 @@ export class ApiRequestService {
 
     getUserByToken<T>(endpoint: string, token: string): Observable<T> 
     {
-      const headers = {
-        'Content-Type': 'application/json',
+      //fix endpoint and headers
+      const headers = new HttpHeaders({
         'Authorization': 'Bearer ' + token
-      }
-      return this.http.get<T>(`${this.baseUrl}${endpoint}`, {headers});
+      });
+      return this.http.post<T>(`${this.baseUrl}${endpoint}?token=`+token, {headers});
     }
   
     post<T, U>(endpoint: string, data: U): Observable<T> 

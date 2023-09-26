@@ -12,26 +12,77 @@ export class UserPanelComponent implements OnInit{
 
   public clientInfo = {
     id: '',
-    userName: '',
+    name: '',
+    addres: '',
+    phoneNumber: '',
     email: '',
-    roles: [],
-    isVerified: '',
-    jwTtoken: '',
   };
 
   constructor(private ApiService: ApiRequestService, private CookieService: CoookieService){}
 
-  ngOnInit(): void {
-    //falta colocar endpoint
+  editUser(){
+    console.log(this.clientInfo);
+    this.ApiService.post<any, any>('/api/client/create', this.clientInfo).subscribe(
+      response => {
+        if (response.success){
+          this.getUserInfo();
+        }
+        console.log(response);
+      },
+      error => {
+        console.error('Error al actualizar información del usuario:', error);
+      }
+    )
+  }
+
+  getUserInfoByToken(){
     console.log(this.CookieService.getToken());
-    this.ApiService.getUserByToken<LoginResponse>('/api/account', this.CookieService.getToken()).subscribe(
+    this.ApiService.getUserByToken<LoginResponse>('/api/account/user', this.CookieService.getToken()).subscribe(
       response => {
         console.log(response);
+        if(response.success){
+          this.clientInfo.id = response.result.id;
+          this.clientInfo.email = response.result.email;
+          this.getUserInfo();
+        }  
       },
       error => {
         console.error('Error al obtener información del usuario:', error);
       }
     );
+  }
+
+  getUserInfo(){
+    console.log(this.clientInfo.id);
+    this.ApiService.post<any, any>('/api/client/' + this.clientInfo.id, this.clientInfo.id).subscribe(
+      response => {
+        if(response.success){
+          this.clientInfo.id = response.result.id;
+          this.clientInfo.email = response.result.email;
+          this.clientInfo.addres = response.result.addres;
+          this.clientInfo.phoneNumber = response.result.phoneNumber;
+          this.clientInfo.name = response.result.name;
+        }
+        console.log(response);
+      }
+    )
+  }
+
+  updateUser(){
+    this.ApiService.put<any, any>('/api/client/update?id='+this.clientInfo.id, this.clientInfo).subscribe(
+      response => {
+        console.log(response);
+      }
+    );
+  }
+
+  ngOnInit(): void {
+    this.getUserInfoByToken();
+  }
+
+  onSubmit(form: any){
+    if (this.clientInfo.name == "" || this.clientInfo.phoneNumber == "" || this.clientInfo.addres == "") console.error("Error al recopilar datos del usuario");
+    this.editUser();
   }
 
 
