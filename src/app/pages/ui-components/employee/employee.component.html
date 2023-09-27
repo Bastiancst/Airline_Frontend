@@ -1,5 +1,67 @@
 <!-- employee.components.html -->
+<link rel="stylesheet" href="employee.component.scss">
 
+<div class="crud-container">
+  <h1>Lista de Empleados</h1>
+  <mat-form-field>
+    <mat-label>Búsqueda<mat-icon>search</mat-icon></mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input>
+  </mat-form-field>
+  <div class="table-container">
+    <button mat-raised-button color="primary" class="add-button" (click)="openAddForm()">
+      <mat-icon>add</mat-icon> Añadir Empleado
+    </button>
+    <div class="table-scroll">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        
+        <ng-container matColumnDef="rut">
+          <th mat-header-cell *matHeaderCellDef>RUT</th>
+          <td mat-cell *matCellDef="let row"> {{row.rut}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let row"> {{row.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef>Pais</th>
+          <td mat-cell *matCellDef="let row"> {{row.country}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef>rol</th>
+          <td mat-cell *matCellDef="let row"> {{ getRoleName(row.role) }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="workPosition">
+          <th mat-header-cell *matHeaderCellDef>Puesto de Trabajo</th>
+          <td mat-cell *matCellDef="let row"> {{row.workPosition}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Acción</th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="primary" (click)="openEditForm(row)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteEmployee(row.id)">  
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+  </div>
+</div>
+
+
+<!--
 <div class="crud-container">
   <h1>Lista de Empleados</h1>
   <div class="table-container">
@@ -20,12 +82,7 @@
           <th mat-header-cell *matHeaderCellDef>Pais</th>
           <td mat-cell *matCellDef="let employee">{{ employee.country }}</td>
         </ng-container>
-        <!--
-        <ng-container matColumnDef="role">
-          <th mat-header-cell *matHeaderCellDef>rol</th>
-          <td mat-cell *matCellDef="let employee">{{ employee.role }}</td>
-        </ng-container>
-        -->
+
         <ng-container matColumnDef="role">
           <th mat-header-cell *matHeaderCellDef>rol</th>
           <td mat-cell *matCellDef="let employee">{{ getRoleName(employee.role) }}</td>
@@ -40,7 +97,7 @@
             <button mat-icon-button color="primary" (click)="openEditForm()">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" (click)="deleteEmployee(employee)">
+            <button mat-icon-button color="warn" (click)="deleteEmployee(employee.id)">
               <mat-icon>delete</mat-icon>
             </button>
           </td>
@@ -50,6 +107,8 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
       </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
     </div>
   </div>
 </div>
+-->

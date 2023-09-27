@@ -1,10 +1,8 @@
 // employee.components.ts
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { ApiRequestService } from 'src/app/services/api-request.service';
-import { CrudRequest } from './Models/crud-request';
 import { CrudResponse } from './Models/crud-response';
 import { Router } from '@angular/router';
-import { UicomponentsModule } from '../ui-components.module';
 import { AddEditFormComponent } from '../add-edit-form/add-edit-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
@@ -12,7 +10,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ResponseModel } from './Models/get-employees';
 import { Role } from "src/app/pages/enums/role.enum";
-import { EditFormComponent } from '../edit-form/edit-form.component';
+import { EmployeeService } from 'src/app/services/employee.service';
+import { CoreService } from '../../core/core.service';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-employee',
@@ -30,9 +30,33 @@ export class EmployeeComponent implements OnInit {
     'actions'
   ];
 
+  /*
+  employeeData: CrudResponse["result"] = {
+    id: '', 
+    officeId: '', 
+    rut: '', 
+    name: '', 
+    lastName: '', 
+    age: 0, 
+    email: '',
+    role: Role.Default, 
+    workPosition: '', 
+    country: '', 
+    city: '', 
+    bonus: 0,
+   };
+   */
+
+  dataSource!: MatTableDataSource<CrudResponse["result"]>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   constructor(
     private _dialog: MatDialog,
     private apiService: ApiRequestService,
+    private _empService: EmployeeService,
+    private _coreService: CoreService,
     private router: Router
     ) {}
 
@@ -41,19 +65,36 @@ export class EmployeeComponent implements OnInit {
   }
 
   openAddForm() {
-    this._dialog.open(AddEditFormComponent)
+    const dialogRef = this._dialog.open(AddEditFormComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.getEmployeeList();
+        }
+      },
+    });
   }
 
-  openEditForm() {
-    this._dialog.open(EditFormComponent)
+  openEditForm(data: any) {
+    const dialogRef = this._dialog.open(AddEditFormComponent, {
+      data,
+    });
+
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.getEmployeeList();
+        }
+      },
+    });
   }
 
+  /*
   crudData: CrudResponse["result"] = {id: '', officeId: '', rut: '', name: '', lastName: '', age: 0, email: '',
    role: Role.Default, workPosition: '', country: '', city: '', bonus: 0 };
 
   employees: CrudResponse["result"] [];
 
-  
   getEmployeeList(){
 
     this.apiService.get<ResponseModel>('/api/employee').subscribe(
@@ -66,18 +107,47 @@ export class EmployeeComponent implements OnInit {
             }
       );
   }
+  */
 
-  deleteEmployee(employee: any) {
-    // Implement delete functionality here
+
+  getEmployeeList() {
+    this._empService.getEmployeeList().subscribe({
+      next: (res) => {
+        const employees = res.result;
+        this.dataSource = new MatTableDataSource(employees);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      },
+      error: console.log,
+    });
   }
 
-  getRoleName(role: Role): string {
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  deleteEmployee(id : string ) {
+    this._empService.deleteEmployee(id).subscribe({
+      next: (res) => {
+        this._coreService.openSnackBar('Empleado Eliminado!', 'Aceptar');
+        this.getEmployeeList();
+      },
+      error: console.log,
+    });
+  }
+
+  getRoleName(role :number) {
     switch (role) {
-      case Role.Default:
+      case role = 0:
         return 'Default';
-      case Role.Admin:
+      case role = 1:
         return 'Admin';
-      case Role.Empleado:
+      case role = 2:
         return 'Empleado';
       default:
         return 'Desconocido';

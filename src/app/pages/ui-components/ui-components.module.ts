@@ -25,7 +25,8 @@ import { AddEditFormComponent } from './add-edit-form/add-edit-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
-import { EditFormComponent } from './edit-form/edit-form.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -41,6 +42,8 @@ import { EditFormComponent } from './edit-form/edit-form.component';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatSortModule,
+    MatPaginatorModule,
   ],
   declarations: [
     AppBadgeComponent,
@@ -50,7 +53,6 @@ import { EditFormComponent } from './edit-form/edit-form.component';
     AppTooltipsComponent,
     EmployeeComponent,
     AddEditFormComponent,
-    EditFormComponent,
   ],
 })
 export class UicomponentsModule {
