@@ -1,9 +1,14 @@
 <!-- employee.components.html -->
-<!--
+<link rel="stylesheet" href="employee.component.scss">
+
 <div class="crud-container">
   <h1>Lista de Empleados</h1>
+  <mat-form-field>
+    <mat-label>Búsqueda<mat-icon>search</mat-icon></mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input>
+  </mat-form-field>
   <div class="table-container">
-    <button mat-raised-button color="primary" class="add-button" (click)="openAddEditEmpForm()">
+    <button mat-raised-button color="primary" class="add-button" (click)="openAddForm()">
       <mat-icon>add</mat-icon> Añadir Empleado
     </button>
     <div class="table-scroll">
@@ -26,12 +31,12 @@
 
         <ng-container matColumnDef="role">
           <th mat-header-cell *matHeaderCellDef>rol</th>
-          <td mat-cell *matCellDef="let row"> {{row.role}}</td>
+          <td mat-cell *matCellDef="let row"> {{ getRoleName(row.role) }}</td>
         </ng-container>
 
         <ng-container matColumnDef="workPosition">
           <th mat-header-cell *matHeaderCellDef>Puesto de Trabajo</th>
-          <td mat-cell *matCellDef="let row"> {{row.workPositon}}</td>
+          <td mat-cell *matCellDef="let row"> {{row.workPosition}}</td>
         </ng-container>
 
         <ng-container matColumnDef="actions">
@@ -40,7 +45,7 @@
             <button mat-icon-button color="primary" (click)="openEditForm(row)">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" (click)="deleteEmployee(row.id)">
+            <button mat-icon-button color="warn" (click)="deleteEmployee(row.id)">  
               <mat-icon>delete</mat-icon>
             </button>
           </td>
@@ -54,8 +59,9 @@
     </div>
   </div>
 </div>
--->
 
+
+<!--
 <div class="crud-container">
   <h1>Lista de Empleados</h1>
   <div class="table-container">
@@ -91,7 +97,7 @@
             <button mat-icon-button color="primary" (click)="openEditForm()">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" (click)="deleteEmployee(employee)">
+            <button mat-icon-button color="warn" (click)="deleteEmployee(employee.id)">
               <mat-icon>delete</mat-icon>
             </button>
           </td>
@@ -101,6 +107,8 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
       </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
     </div>
   </div>
 </div>
+-->

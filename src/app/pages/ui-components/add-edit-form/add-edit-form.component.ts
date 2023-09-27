@@ -44,6 +44,12 @@ export class AddEditFormComponent implements OnInit {
     'Seguridad',
   ];
 
+  roles: number[] = [
+    0,
+    1,
+    2,
+  ]
+
   /*
   crudData: CrudRequest = {
     rut: '',
@@ -71,7 +77,7 @@ export class AddEditFormComponent implements OnInit {
     this.employeeForm = this._fb.group({
       rut: '',
       name: '',
-      lastname: '',
+      lastName: '',
       age: '',
       email: '',
       role: '',
@@ -102,8 +108,6 @@ export class AddEditFormComponent implements OnInit {
     }
   */
 
-
-    
     onFormSubmit() {
     if (this.employeeForm.valid) {
       if (this.data) {
@@ -111,7 +115,7 @@ export class AddEditFormComponent implements OnInit {
           .updateEmployee(this.data.id, this.employeeForm.value)
           .subscribe({
             next: (val: any) => {
-              this._coreService.openSnackBar('Employee detail updated!');
+              this._coreService.openSnackBar('Empleado actualizado!');
               this._dialogRef.close(true);
             },
             error: (err: any) => {
@@ -121,7 +125,7 @@ export class AddEditFormComponent implements OnInit {
       } else {
         this._empService.addEmployee(this.employeeForm.value).subscribe({
           next: (val: any) => {
-            this._coreService.openSnackBar('Employee added successfully');
+            this._coreService.openSnackBar('Empleado añadido!');
             this._dialogRef.close(true);
           },
           error: (err: any) => {

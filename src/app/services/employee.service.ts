@@ -18,14 +18,15 @@ export class EmployeeService {
   }
 
   addEmployee(data: any): Observable<any> {
+    console.log(data)
     return this._http.post('https://localhost:7292/api/employee/create', data);
   }
 
-  updateEmployee(id: number, data: any): Observable<any> {
-    return this._http.put(`https://localhost:7292/api/employee/update/${id}`, data);
+  updateEmployee(id: string, data: any): Observable<any> {
+    return this._http.put(`https://localhost:7292/api/employee/update/?id=${id}`, data);
   }
 
-  deleteEmployee(id: number): Observable<any> {
-    return this._http.delete(`https://localhost:7292/api/employee/delete/${id}`);
+  deleteEmployee(id: string): Observable<any> {
+    return this._http.delete(`https://localhost:7292/api/employee/delete/?id=${id}`);
   }
 }
