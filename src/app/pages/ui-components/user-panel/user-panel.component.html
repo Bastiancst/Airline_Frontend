@@ -1,0 +1,154 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-0">
+      <mat-tab-group mat-stretch-tabs="false" animationDuration="0ms">
+        
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="d-flex align-items-center">
+              <mat-icon>
+                <i-tabler name="user" class="icon-20 m-r-8"></i-tabler>
+              </mat-icon>
+            </div>
+            Editar Perfil
+          </ng-template>
+          <mat-card-content class="p-y-24 b-t-1">
+            <div class="row">
+              <div class="col-sm-5">
+                <mat-card class="cardWithShadow">
+                  <mat-card-content class="p-y-24">
+                    <mat-card-title>Editar Perfil</mat-card-title>
+                    <mat-card-subtitle class="mat-body-1"
+                      >Foto de Perfil</mat-card-subtitle
+                    >
+                    <div class="text-center m-t-24">
+                      <img
+                        src="/assets/images/profile/user-1.jpg"
+                        class="rounded-circle"
+                        width="120"
+                      />
+                      <div class="m-t-24">
+                        <button mat-flat-button color="primary" class="m-r-8">
+                          Subir
+                        </button>
+                        <button mat-stroked-button color="warn">Reiniciar</button>
+                      </div>
+                      <span class="f-s-14 m-t-24 d-block"
+                        >Formatos permitidos JPG, GIF o PNG. Peso máximo 800K</span
+                      >
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="col-sm-7">
+                <mat-card class="cardWithShadow">
+                  <mat-card-content>
+                    <mat-card-title>Datos Personales</mat-card-title>
+                    <mat-card-subtitle class="mat-body-1"
+                      >Cambia tus datos personales aquí</mat-card-subtitle
+                    >
+  
+                    <div class="row m-t-24">
+                      <div class="col-sm-8">
+                        <!-- input -->
+                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+                          >Nombre</mat-label
+                        >
+                        <mat-form-field
+                          appearance="outline"
+                          class="w-100"
+                          color="primary"
+                        >
+                          <input matInput type="text" value="Mathew Anderson" />
+                        </mat-form-field>
+
+                        <!-- input -->
+                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+                          >Email</mat-label
+                        >
+                        <mat-form-field
+                          appearance="outline"
+                          class="w-100"
+                          color="primary"
+                        >
+                          <input
+                            matInput
+                            type="email"
+                            value="info@modernize.com"
+                          />
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-8">
+                        <!-- input -->
+                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+                          >Numero de telefono</mat-label
+                        >
+                        <mat-form-field
+                          appearance="outline"
+                          class="w-100"
+                          color="primary"
+                        >
+                          <input matInput type="text" value="+91 12345 65478" />
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-12">
+                        <!-- input -->
+                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+                          >Direccion</mat-label
+                        >
+                        <mat-form-field
+                          appearance="outline"
+                          class="w-100"
+                          color="primary"
+                        >
+                          <input
+                            matInput
+                            type="text"
+                            value="814 Howard Street, 120065, India"
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="d-flex align-items-center">
+              <mat-icon>
+                <i-tabler name="wallet" class="icon-20 m-r-8"></i-tabler>
+              </mat-icon>
+            </div>
+            Método de Pago
+          </ng-template>
+          <mat-card-content class="p-y-24 b-t-1">
+            <div class="row justify-content-center">
+              <div class="col-lg-9">
+                
+                <!-- Payment Method (Esta sección se mantiene) -->
+                <mat-card class="cardWithShadow">
+                  <mat-card-content class="p-y-24">
+                    <mat-card-title>Método de Pago </mat-card-title>
+                    <div class="d-flex align-items-center m-t-24">
+                      <button mat-mini-fab class="bg-light-primary shadow-none rounded icon-48">
+                        <i-tabler name="credit-card" class="icon-20 d-flex text-primary"></i-tabler>
+                      </button>
+                      <div class="m-l-16 w-100">
+                        <span class="f-s-14 d-block m-b-4">Visa</span>
+                        <h5 class="f-s-16 f-w-600 m-0 m-b-4">*****2102</h5>
+                      </div>
+                      <span class="m-l-auto">
+                        <i-tabler name="pencil-minus" class="icon-20"></i-tabler>
+                      </span>
+                    </div>
+                    <div class="m-t-24">
+                      <button mat-stroked-button class="m-l-8" color="warn">Eliminar</button>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-tab>
