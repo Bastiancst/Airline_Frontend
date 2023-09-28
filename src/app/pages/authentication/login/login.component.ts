@@ -13,6 +13,7 @@ import { CoookieService } from 'src/app/services/cookie.service';
 export class AppSideLoginComponent {
 
   loginData: LoginRequest = { email: '', password: '' };
+  public loginStatus = "";
 
   constructor(private apiService: ApiRequestService, private router: Router,
     private CookieService: CoookieService) {}
@@ -33,6 +34,7 @@ export class AppSideLoginComponent {
                 
             },
             error => {
+                this.loginStatus = "Invalid credentials";
                 console.error('Error al autenticar:', error);
             }
         );
