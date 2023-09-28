@@ -1,0 +1,36 @@
+<div class="blank-layout-container justify-content-center align-items-center bg-light-primary">
+  <div
+    class="position-relative row w-100 h-100 bg-gredient justify-content-center"
+  >
+    <div class="col-lg-4 d-flex align-items-center">
+      <mat-card class="cardWithShadow boxed-auth">
+        <mat-card-content class="p-32">
+          <div class="text-center">
+            <a [routerLink]="['/dashboard']">
+              <img
+                width="200" height="50" viewBox="0 0 174 26"
+                src="./assets/images/logos/zyro-image.png"
+                class="align-middle m-2"
+                alt="logo"
+              />
+            </a>
+            <h1>
+              Verifica tu email
+            </h1><br>
+            <h3>Le hemos enviado un correo electrónico, por favor revisar su bandeja de entrada </h3><br>
+          </div>
+          <button type="submit" mat-flat-button color="primary" class="w-100"
+          [routerLink]="['/authentication/login']">
+          Volver</button>
+          </mat-card-content>
+          <span class="d-block f-w-500 text-center m-t-24"
+            >¿No recibiste el correo?
+            <a
+              [routerLink]="['/dashboard']"
+              class="text-decoration-none text-primary f-w-500 f-s-14">
+              Reenviar</a>
+          </span>
+      </mat-card>
+    </div>
+  </div>
+</div>
