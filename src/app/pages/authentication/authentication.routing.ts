@@ -4,6 +4,7 @@ import { AppSideLoginComponent } from './login/login.component';
 import { AppSideRegisterComponent } from './register/register.component';
 import { AppSideVerifyComponent } from './Verify/Verify.component';
 
+
 export const AuthenticationRoutes: Routes = [
   {
     path: '',
