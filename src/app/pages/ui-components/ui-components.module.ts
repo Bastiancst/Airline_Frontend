@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../material.module';
+import { MatDialogModule, matDialogAnimations } from '@angular/material/dialog';
 
 // icons
 import { TablerIconsModule } from 'angular-tabler-icons';
@@ -18,7 +19,14 @@ import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { EmployeeComponent } from './employee/employee.component';
-import { UserPanelComponent } from './user-panel/user-panel.component';
+import { MatButtonModule } from '@angular/material/button';
+import { AppComponent } from 'src/app/app.component';
+import { AddEditFormComponent } from './add-edit-form/add-edit-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -29,6 +37,13 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
     ReactiveFormsModule,
     TablerIconsModule.pick(TablerIcons),
     MatNativeDateModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatSortModule,
+    MatPaginatorModule,
   ],
   declarations: [
     AppBadgeComponent,
@@ -37,7 +52,9 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
     AppMenuComponent,
     AppTooltipsComponent,
     EmployeeComponent,
-    UserPanelComponent,
+    AddEditFormComponent,
   ],
 })
-export class UicomponentsModule {}
+export class UicomponentsModule {
+  
+}
