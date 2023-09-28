@@ -59,9 +59,12 @@
                 <input matInput type="text" formControlName="city">
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field>
                 <mat-label>Bonus</mat-label>
-                <input matInput type="number" formControlName="bonus">
+                <mat-select formControlName="bonus">
+                <mat-option *ngFor="let val of bonus" [value]="val">{{val}}
+                </mat-option>
+                </mat-select>
             </mat-form-field>
 
         </div>
@@ -72,78 +75,3 @@
         <button mat-raised-button color="primary" type="submit">{{data? 'Actualizar': 'Guardar'}}</button>
     </div>
 </form>
-
-
-<!--
-    
-<div mat-dialog-title>
-    <h1>Agregar Empleado</h1>
-</div>
-<form (ngSubmit)="onFormSubmit()">
-    <div mat-dialog-content class="content">
-        <div class="row">
-            <mat-form-field appearance="outline">
-                <mat-label>RUT</mat-label>
-                <input matInput type="text" [(ngModel)]="crudData.rut" name="rut">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Nombre</mat-label>
-                <input matInput type="text" [(ngModel)]="crudData.name" name="name">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Apellido</mat-label>
-                <input matInput type="text" [(ngModel)]="crudData.lastname" name="lastname">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Edad</mat-label>
-                <input matInput type="number" [(ngModel)]="crudData.age" name="age">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input matInput type="email" [(ngModel)]="crudData.email" name="email">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Rol</mat-label>
-                <input matInput type="number" [(ngModel)]="crudData.role" name="role">
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Puesto de Trabajo</mat-label>
-                <mat-select [(ngModel)]="crudData.workPosition" name="workPosition">
-                <mat-option *ngFor="let val of workPositions" [value]="val">{{val}}
-                </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>País</mat-label>
-                <mat-select [(ngModel)]="crudData.country" name="country">
-                <mat-option *ngFor="let val of countries" [value]="val">{{val}}
-                </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Ciudad</mat-label>
-                <input matInput type="text" [(ngModel)]="crudData.city" name="city">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Bonus</mat-label>
-                <input matInput type="number" [(ngModel)]="crudData.bonus" name="bonus">
-            </mat-form-field>
-
-        </div>
-    </div>    
-
-    <div mat-dialog-actions class="action">
-        <button mat-raised-button>Cancel</button>
-        <button mat-raised-button color="primary" type="submit">Save</button>
-    </div>
-</form>
--->

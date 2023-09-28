@@ -1,18 +1,13 @@
 // employee.components.ts
 import { Component, OnInit, ViewChild} from '@angular/core';
-import { ApiRequestService } from 'src/app/services/api-request.service';
 import { CrudResponse } from './Models/crud-response';
-import { Router } from '@angular/router';
 import { AddEditFormComponent } from '../add-edit-form/add-edit-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ResponseModel } from './Models/get-employees';
-import { Role } from "src/app/pages/enums/role.enum";
 import { EmployeeService } from 'src/app/services/employee.service';
 import { CoreService } from '../../core/core.service';
-import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-employee',
@@ -30,23 +25,6 @@ export class EmployeeComponent implements OnInit {
     'actions'
   ];
 
-  /*
-  employeeData: CrudResponse["result"] = {
-    id: '', 
-    officeId: '', 
-    rut: '', 
-    name: '', 
-    lastName: '', 
-    age: 0, 
-    email: '',
-    role: Role.Default, 
-    workPosition: '', 
-    country: '', 
-    city: '', 
-    bonus: 0,
-   };
-   */
-
   dataSource!: MatTableDataSource<CrudResponse["result"]>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -54,10 +32,8 @@ export class EmployeeComponent implements OnInit {
 
   constructor(
     private _dialog: MatDialog,
-    private apiService: ApiRequestService,
     private _empService: EmployeeService,
     private _coreService: CoreService,
-    private router: Router
     ) {}
 
   ngOnInit(): void {
@@ -88,27 +64,6 @@ export class EmployeeComponent implements OnInit {
       },
     });
   }
-
-  /*
-  crudData: CrudResponse["result"] = {id: '', officeId: '', rut: '', name: '', lastName: '', age: 0, email: '',
-   role: Role.Default, workPosition: '', country: '', city: '', bonus: 0 };
-
-  employees: CrudResponse["result"] [];
-
-  getEmployeeList(){
-
-    this.apiService.get<ResponseModel>('/api/employee').subscribe(
-            response => {
-              console.log(response.result)
-              this.employees = response.result
-            },
-            error => {
-                console.error('Error al conectar con Empleados:', error);
-            }
-      );
-  }
-  */
-
 
   getEmployeeList() {
     this._empService.getEmployeeList().subscribe({
