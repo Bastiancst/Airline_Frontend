@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class AppSideLoginComponent {
 
   loginData: LoginRequest = { email: '', password: '' };
+  public loginStatus = "";
 
   constructor(private apiService: ApiRequestService, private router: Router) {}
 
@@ -30,6 +31,7 @@ export class AppSideLoginComponent {
                 
             },
             error => {
+                this.loginStatus = "Invalid credentials";
                 console.error('Error al autenticar:', error);
             }
         );
