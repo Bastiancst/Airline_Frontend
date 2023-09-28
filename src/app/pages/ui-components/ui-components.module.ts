@@ -19,7 +19,6 @@ import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { EmployeeComponent } from './employee/employee.component';
-import { UserPanelComponent } from './user-panel/user-panel.component';
 import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from 'src/app/app.component';
 import { AddEditFormComponent } from './add-edit-form/add-edit-form.component';
@@ -53,9 +52,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AppMenuComponent,
     AppTooltipsComponent,
     EmployeeComponent,
-    UserPanelComponent,
     AddEditFormComponent,
-    feature/crudemployee
   ],
 })
 export class UicomponentsModule {
