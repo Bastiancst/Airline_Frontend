@@ -63,7 +63,17 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Verify Email',
     iconName: 'lock',
-    route: '/authentication/emailVerify',
+    route: '/authentication/verify-email',
+  },
+  {
+    displayName: 'Forgot Password',
+    iconName: 'user-circle',
+    route: '/authentication/forgotPass',
+  },
+  {
+    displayName: 'Enter Password',
+    iconName: 'user-circle',
+    route: '/authentication/enterPass',
   },
   {
     navCap: 'Extra',

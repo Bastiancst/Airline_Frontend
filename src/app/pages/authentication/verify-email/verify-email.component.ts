@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './emailVerify.component.html',
-  styleUrls: ['./emailVerify.component.scss'],
+  templateUrl: './verify-email.component.html',
+  styleUrls: ['./verify-email.component.scss'],
 })
 export class emailVerifyComponent {
 

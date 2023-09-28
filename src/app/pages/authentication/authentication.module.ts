@@ -14,7 +14,9 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 import { AuthenticationRoutes } from './authentication.routing';
 import { AppSideLoginComponent } from './login/login.component';
 import { AppSideRegisterComponent } from './register/register.component';
-import { emailVerifyComponent } from './emailVerify/emailVerify.component';
+import { emailVerifyComponent } from './verify-email/verify-email.component';
+import { forgotPassComponent } from './forgotPass/forgotPassComponent';
+import { enterPassComponent } from './enterPass/enterPass.component';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { emailVerifyComponent } from './emailVerify/emailVerify.component';
     AppSideLoginComponent,
     AppSideRegisterComponent,
     emailVerifyComponent,
-
+    forgotPassComponent,
+    enterPassComponent,
   ],
 })
 export class AuthenticationModule {}
