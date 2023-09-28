@@ -18,16 +18,19 @@ export class UserPanelComponent implements OnInit{
     email: '',
   };
 
+  public changeStatus = "";
+  public updatedInfo: boolean = false;
+
   constructor(private ApiService: ApiRequestService, private CookieService: CoookieService){}
 
-  editUser(){
+  createUserInfo(){
     console.log(this.clientInfo);
     this.ApiService.post<any, any>('/api/client/create', this.clientInfo).subscribe(
       response => {
         if (response.success){
-          this.getUserInfo();
+          this.changeStatus = "La información se ha guardado correctamente";
+          this.updatedInfo = true;
         }
-        console.log(response);
       },
       error => {
         console.error('Error al actualizar información del usuario:', error);
@@ -36,14 +39,12 @@ export class UserPanelComponent implements OnInit{
   }
 
   getUserInfoByToken(){
-    console.log(this.CookieService.getToken());
     this.ApiService.getUserByToken<LoginResponse>('/api/account/user', this.CookieService.getToken()).subscribe(
       response => {
-        console.log(response);
         if(response.success){
           this.clientInfo.id = response.result.id;
           this.clientInfo.email = response.result.email;
-          this.getUserInfo();
+          this.getUserInfo(response.result.id);
         }  
       },
       error => {
@@ -52,9 +53,8 @@ export class UserPanelComponent implements OnInit{
     );
   }
 
-  getUserInfo(){
-    console.log(this.clientInfo.id);
-    this.ApiService.post<any, any>('/api/client/' + this.clientInfo.id, this.clientInfo.id).subscribe(
+  getUserInfo(id: string){
+    this.ApiService.post<any, any>('/api/client/' + id, this.clientInfo.id).subscribe(
       response => {
         if(response.success){
           this.clientInfo.id = response.result.id;
@@ -62,8 +62,12 @@ export class UserPanelComponent implements OnInit{
           this.clientInfo.addres = response.result.addres;
           this.clientInfo.phoneNumber = response.result.phoneNumber;
           this.clientInfo.name = response.result.name;
+          this.updatedInfo = true;
         }
-        console.log(response);
+      },
+      error => { 
+        this.updatedInfo = false;
+        console.error("error getUserInfo: ", error);
       }
     )
   }
@@ -71,7 +75,13 @@ export class UserPanelComponent implements OnInit{
   updateUser(){
     this.ApiService.put<any, any>('/api/client/update?id='+this.clientInfo.id, this.clientInfo).subscribe(
       response => {
-        console.log(response);
+        if (response.success) {
+          this.changeStatus = "La información se ha actualizado correctamente";
+          this.getUserInfo(this.clientInfo.id);
+        }
+      },
+      error => {
+        console.error("Error al actualizar info usuario: ", error);
       }
     );
   }
@@ -81,8 +91,15 @@ export class UserPanelComponent implements OnInit{
   }
 
   onSubmit(form: any){
+    /*
     if (this.clientInfo.name == "" || this.clientInfo.phoneNumber == "" || this.clientInfo.addres == "") console.error("Error al recopilar datos del usuario");
-    this.editUser();
+    */
+
+    this.getUserInfo(this.clientInfo.id);
+
+    if(!this.updatedInfo) this.createUserInfo();
+    else if (this.updatedInfo) this.updateUser();
+
   }
 
 
