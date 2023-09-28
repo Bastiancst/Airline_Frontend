@@ -36,12 +36,10 @@ import { enterPassComponent } from './enterPass/enterPass.component';
   declarations: [
     AppSideLoginComponent,
     AppSideRegisterComponent,
-    feature/Verify_Code
-    AppSideVerifyComponent
+    AppSideVerifyComponent,
     emailVerifyComponent,
     forgotPassComponent,
     enterPassComponent,
-    feature/emailVerified
   ],
 })
 export class AuthenticationModule {}
