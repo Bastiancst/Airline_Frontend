@@ -35,7 +35,10 @@ export const UiComponentsRoutes: Routes = [
         path: 'employee',
         component: EmployeeComponent,
       },
-      
+      {
+        path: 'user-panel',
+        component: UserPanelComponent 
+      },
     ],
   },
 ];
