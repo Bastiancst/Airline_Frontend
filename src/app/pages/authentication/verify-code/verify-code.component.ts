@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-Verify',
-  templateUrl: './Verify.component.html',
-  styleUrls: ['./Verify.component.scss'],
+  selector: 'app-verify-code',
+  templateUrl: './verify-code.component.html',
+  styleUrls: ['./verify-code.component.scss'],
 })
 export class AppSideVerifyComponent implements OnInit {
 

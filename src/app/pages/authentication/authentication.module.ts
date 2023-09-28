@@ -16,7 +16,7 @@ import { AuthenticationRoutes } from './authentication.routing';
 
 import { AppSideLoginComponent } from './login/login.component';
 import { AppSideRegisterComponent } from './register/register.component';
-import { AppSideVerifyComponent } from './Verify/Verify.component';
+import { AppSideVerifyComponent } from './verify-code/verify-code.component';
 
 
 @NgModule({
