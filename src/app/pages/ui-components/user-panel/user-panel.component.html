@@ -46,7 +46,7 @@
                     <mat-card-subtitle class="mat-body-1"
                       >Cambia tus datos personales aquí</mat-card-subtitle
                     >
-  
+                    <form #formUser="ngForm" (ngSubmit)="onSubmit(formUser)">
                     <div class="row m-t-24">
                       <div class="col-sm-8">
                         <!-- input -->
@@ -58,24 +58,9 @@
                           class="w-100"
                           color="primary"
                         >
-                          <input matInput type="text" value="Mathew Anderson" />
+                          <input matInput type="text" placeholder="Nombre" name="name" #name="ngModel" [(ngModel)]="clientInfo.name"/>
                         </mat-form-field>
 
-                        <!-- input -->
-                        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                          >Email</mat-label
-                        >
-                        <mat-form-field
-                          appearance="outline"
-                          class="w-100"
-                          color="primary"
-                        >
-                          <input
-                            matInput
-                            type="email"
-                            value="info@modernize.com"
-                          />
-                        </mat-form-field>
                       </div>
                       <div class="col-sm-8">
                         <!-- input -->
@@ -87,7 +72,7 @@
                           class="w-100"
                           color="primary"
                         >
-                          <input matInput type="text" value="+91 12345 65478" />
+                          <input matInput type="text" placeholder="Teléfono" name="phoneNumber" #phoneNumber="ngModel" [(ngModel)]="clientInfo.phoneNumber"/>
                         </mat-form-field>
                       </div>
                       <div class="col-sm-12">
@@ -103,11 +88,19 @@
                           <input
                             matInput
                             type="text"
-                            value="814 Howard Street, 120065, India"
+                            placeholder="Dirección"
+                            name="addres" #addres="ngModel" [(ngModel)]="clientInfo.addres"
                           />
-                        </mat-form-field>
+                        </mat-form-field>        
                       </div>
                     </div>
+                    <button type="submit" mat-flat-button color="primary" class="m-r-8">
+                      Aplicar cambios
+                    </button>
+                    <span>
+                      {{changeStatus}}
+                    </span>
+                    </form>
                   </mat-card-content>
                 </mat-card>
               </div>

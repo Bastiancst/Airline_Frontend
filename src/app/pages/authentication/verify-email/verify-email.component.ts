@@ -3,20 +3,18 @@ import { LoginRequest } from '../models/login-request';
 import { ApiRequestService } from 'src/app/services/api-request.service';
 import { LoginResponse } from '../models/login-response';
 import { Router } from '@angular/router';
-import { CoookieService } from 'src/app/services/cookie.service';
 
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
+  templateUrl: './verify-email.component.html',
+  styleUrls: ['./verify-email.component.scss'],
 })
-export class AppSideLoginComponent {
+export class emailVerifyComponent {
 
   loginData: LoginRequest = { email: '', password: '' };
-  public loginStatus = "";
 
-  constructor(private apiService: ApiRequestService, private router: Router,
-    private CookieService: CoookieService) {}
+  constructor(private apiService: ApiRequestService, private router: Router) {}
 
   onSubmit() 
   {
@@ -28,13 +26,11 @@ export class AppSideLoginComponent {
                 console.log('Usuario autenticado:', response);
                 if(response.success)
                 {
-                  this.CookieService.setToken(response.result.jwTtoken);
-                  this.router.navigate(['/ui-components/user-panel']);
+                  this.router.navigate(['/dashboard']);
                 }
                 
             },
             error => {
-                this.loginStatus = "Invalid credentials";
                 console.error('Error al autenticar:', error);
             }
         );
