@@ -20,7 +20,7 @@
               <mat-form-field appearance="outline" class="w-100" color="primary" style="width: 50px;" *ngFor="let _ of [].constructor(numInputs); let i = index">
                 <input 
                   matInput 
-                  type="text" 
+                  type="number" 
                   [name]="'digit' + (i + 1)" 
                   [id]="'digit' + (i + 1)" 
                   maxlength="1" 
@@ -35,8 +35,9 @@
               mat-flat-button 
               id="btnConcatenate" (click)="concatenateNumbers()" 
               color="primary" 
-              class="w-100">Send
+              class="w-100"
               [disabled]="!isFormComplete()"
+              >Send
             </button>
           </form>
         </mat-card-content>
