@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 import { AppSideLoginComponent } from './login/login.component';
 import { AppSideRegisterComponent } from './register/register.component';
-import { AppSideVerifyComponent } from './verify-code/verify-code.component';
+import { VerifyCodeComponent } from './verify-code/verify-code.component';
+import { EmailVerifiedComponent } from './email-verified/email-verified.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ModifyPasswordComponent } from './modify-password/modify-password.component';
 
-import { emailVerifyComponent } from './verify-email/verify-email.component';
-import { forgotPassComponent } from './forgotPass/forgotPassComponent';
-import { enterPassComponent } from './enterPass/enterPass.component';
 
 export const AuthenticationRoutes: Routes = [
   {
@@ -21,20 +21,23 @@ export const AuthenticationRoutes: Routes = [
       },
       {
         path: 'verify-code',
-        component: AppSideVerifyComponent
-      },
+        component: VerifyCodeComponent
+      }
+      ,
       {
-        path: 'verify-email',
-        component: emailVerifyComponent,
-      },
+        path: 'email-verified',
+        component: EmailVerifiedComponent
+      }
+      ,
       {
-        path: 'forgotPass',
-        component: forgotPassComponent,
-      },
+        path: 'forgot-password',
+        component: ForgotPasswordComponent
+      }
+      ,
       {
-        path: 'enterPass',
-        component: enterPassComponent,
-      },
+        path: 'modify-password',
+        component: ModifyPasswordComponent
+      }
     ],
   },
 ];

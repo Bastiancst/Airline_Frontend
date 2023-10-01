@@ -1,7 +1,5 @@
 <div class="blank-layout-container justify-content-center align-items-center bg-light-primary">
-  <div
-    class="position-relative row w-100 h-100 bg-gredient justify-content-center"
-  >
+  <div class="position-relative row w-100 h-100 bg-gredient justify-content-center">
     <div class="col-lg-4 d-flex align-items-center">
       <mat-card class="cardWithShadow boxed-auth">
         <mat-card-content class="p-32">
@@ -16,41 +14,36 @@
             </a>
           </div>
           <div class="or-border m-t-30">Enter Your Code</div>
-
-          <form  class="m-t-30">
-            <!-- password -->
-            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
-              >Code</mat-label
-            >
-            <mat-form-field appearance="outline" class="w-100" color="primary" style="width: 50px;">
-              <input matInput type="text"  name="password1"  id="password1" maxlength="1" oninput="avanzarInput(this, 'password2')"  />
-            </mat-form-field>
-            
-            <mat-form-field appearance="outline" class="w-100" color="primary" style=" width: 50px; margin:6px;">
-              <input matInput type="text" maxlength="1" name="password2" id="password2" oninput="avanzarInput(this, 'password3')"/>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="w-100" color="primary" style=" width: 50px; margin:6px;">
-              <input matInput type="text" maxlength="1" name="password3" id="password3"oninput="avanzarInput(this, 'password4')"/>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="w-100" color="primary" style=" width: 50px; margin:6px;">
-              <input matInput type="text" maxlength="1" name="password4" id="password4" oninput="avanzarInput(this, 'password5')"/>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="w-100" color="primary" style=" width: 50px; margin:6px;">
-              <input matInput type="text" maxlength="1" name="password5" id="password5" oninput="avanzarInput(this, 'password6')"/>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="w-100" color="primary" style=" width: 50px; margin:3px;">
-              <input matInput type="text" maxlength="1" name="password6" id="password6"/>
-            </mat-form-field>
-
-            <button type="button" mat-flat-button id="btnConcatenar" (click)="concatenarNumeros()" color="primary" class="w-100">Send</button>
-
+          <form class="m-t-30">
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Code</mat-label>
+            <div class="input-container" >
+              <mat-form-field appearance="outline" class="w-100" color="primary" style="width: 50px;" *ngFor="let _ of [].constructor(numInputs); let i = index">
+                <input 
+                  matInput 
+                  type="text" 
+                  [name]="'digit' + (i + 1)" 
+                  [id]="'digit' + (i + 1)" 
+                  maxlength="1" 
+                  (input)="handleInput($event, 'digit' + (i + 2), 'digit' + i)" 
+                  (keydown)="handleInput($event, 'digit' + (i + 2), 'digit' + i)"
+                  pattern="[0-9]*"
+                />
+              </mat-form-field>
+            </div>
+            <button 
+              type="button" 
+              mat-flat-button 
+              id="btnConcatenate" (click)="concatenateNumbers()" 
+              color="primary" 
+              class="w-100">Send
+              [disabled]="!isFormComplete()"
+            </button>
           </form>
         </mat-card-content>
       </mat-card>
     </div>
   </div>
 </div>
+
+
+

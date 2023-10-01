@@ -9,69 +9,45 @@ import { Router } from '@angular/router';
   templateUrl: './verify-code.component.html',
   styleUrls: ['./verify-code.component.scss'],
 })
-export class AppSideVerifyComponent implements OnInit {
+export class VerifyCodeComponent implements OnInit {
+  numInputs: number = 6;
+  constructor() {}
 
-  constructor(private apiService: ApiRequestService, private router: Router, private elementRef: ElementRef) {}
-  
-  ngOnInit(): void {
-    //LLama a la funcion avanzarInput
-    this.assignInputHandlers();
-    // Llama a la función concatenarNumeros desde ngOnInit
-    this.concatenarNumeros();
-  }
+  ngOnInit(): void {}
 
-// Esta función se llama cuando se ingresa un dígito en un campo
-avanzarOretrocederInput(event: KeyboardEvent, siguienteInputId: string, anteriorInputId: string) {
-  const inputElement = event.target as HTMLInputElement;
-  const valorActual = inputElement.value;
-  
-  if (valorActual.length === 1) {
-    const nextInput = this.elementRef.nativeElement.querySelector(`#${siguienteInputId}`);
-    if (nextInput) {
-      nextInput.focus();
-    }
-  } else if (valorActual.length === 0) {
-    const previousInput = this.elementRef.nativeElement.querySelector(`#${anteriorInputId}`);
-    if (previousInput) {
-      previousInput.focus();
+  handleInput(event: Event, nextInputId: string, prevInputId: string): void {
+    const inputElement = event.target as HTMLInputElement;
+    const isBackspace = (event as KeyboardEvent).key === 'Backspace';
+    if (isBackspace && inputElement.value.length === 0) {
+      const prevInput = document.getElementById(prevInputId);
+      if (prevInput) {
+        prevInput.focus();
+      }
+    } else if (inputElement.value.length === 1) {
+      const nextInput = document.getElementById(nextInputId);
+      if (nextInput) {
+        nextInput.focus();
+      }
     }
   }
-}
 
-// Asignar el manejador de eventos a todos los campos de entrada
-assignInputHandlers() {
-  const inputIds = ['password1', 'password2', 'password3', 'password4', 'password5', 'password6'];
-
-  inputIds.forEach((inputId, index) => {
-    const nextInputId = inputIds[index + 1]; // ID del siguiente campo de entrada
-    const previousInputId = inputIds[index - 1]; // ID del campo de entrada anterior
-    const inputElement = this.elementRef.nativeElement.querySelector(`#${inputId}`);
-
-    if (inputElement) {
-      inputElement.addEventListener('input', (event: Event) => {
-        this.avanzarOretrocederInput(event as KeyboardEvent, nextInputId, previousInputId);
-      });
+  concatenateNumbers(): void {
+    let sixDigitCode = '';
+    for (let i = 1; i <= this.numInputs; i++) {
+      const inputElement = document.getElementById('digit' + i) as HTMLInputElement;
+      sixDigitCode += inputElement ? inputElement.value : '';
     }
-  });
-}
+    console.log("Concatenated result:", sixDigitCode);
+    alert(sixDigitCode);
+  }
 
-  concatenarNumeros() {
-    // Obtener los valores de los campos de entrada
-    const num1 = (<HTMLInputElement>document.getElementById("password1"))?.value;
-    const num2 = (<HTMLInputElement>document.getElementById("password2"))?.value;
-    const num3 = (<HTMLInputElement>document.getElementById("password3"))?.value;
-    const num4 = (<HTMLInputElement>document.getElementById("password4"))?.value;
-    const num5 = (<HTMLInputElement>document.getElementById("password5"))?.value;
-    const num6 = (<HTMLInputElement>document.getElementById("password6"))?.value;
-
-    // Verifica si los elementos existen antes de acceder a sus propiedades
-    if (num1 !== null && num2 !== null && num3 !== null && num4 !== null && num5 !== null && num6 !== null) {
-      // Concatenar los números
-      const codigoSeisDigitos = num1 + num2 + num3 + num4 + num5 + num6;
-
-      // Mostrar el resultado en la consola
-      console.log("Resultado concatenado:", codigoSeisDigitos);
-      alert(codigoSeisDigitos);
+  isFormComplete(): boolean {
+    for (let i = 1; i <= this.numInputs; i++) {
+      const inputElement = document.getElementById('digit' + i) as HTMLInputElement;
+      if (!inputElement || inputElement.value.length !== 1 || isNaN(Number(inputElement.value))) {
+        return false;  
+      }
     }
+    return true;  
   }
 }

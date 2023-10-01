@@ -14,10 +14,10 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 import { AuthenticationRoutes } from './authentication.routing';
 import { AppSideLoginComponent } from './login/login.component';
 import { AppSideRegisterComponent } from './register/register.component';
-import { AppSideVerifyComponent } from './verify-code/verify-code.component';
-import { emailVerifyComponent } from './verify-email/verify-email.component';
-import { forgotPassComponent } from './forgotPass/forgotPassComponent';
-import { enterPassComponent } from './enterPass/enterPass.component';
+import { VerifyCodeComponent } from './verify-code/verify-code.component';
+import { EmailVerifiedComponent } from './email-verified/email-verified.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ModifyPasswordComponent } from './modify-password/modify-password.component';
 
 
 @NgModule({
@@ -36,10 +36,10 @@ import { enterPassComponent } from './enterPass/enterPass.component';
   declarations: [
     AppSideLoginComponent,
     AppSideRegisterComponent,
-    AppSideVerifyComponent,
-    emailVerifyComponent,
-    forgotPassComponent,
-    enterPassComponent,
+    VerifyCodeComponent,
+    EmailVerifiedComponent,
+    ForgotPasswordComponent,
+    ModifyPasswordComponent,
   ],
 })
 export class AuthenticationModule {}

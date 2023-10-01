@@ -1,0 +1,11 @@
+.input-container {
+    display: flex;
+    justify-content: space-between;  
+    flex-wrap: nowrap;  
+  
+    mat-form-field {
+      margin: 0 5px;  
+      flex: 1;  
+    }
+  }
+  
