@@ -21,7 +21,7 @@ export class AppSideLoginComponent {
   onSubmit() 
   {
     console.log('Usuario autenticado:');
-
+    this.loginStatus = "";
     this.apiService.post<LoginResponse, LoginRequest>('/api/account/authenticate', this.loginData).subscribe
         (
             response => {
@@ -34,7 +34,9 @@ export class AppSideLoginComponent {
                 
             },
             error => {
-                this.loginStatus = "Invalid credentials";
+                this.loginStatus = "Invalid Credentials";
+                if(!this.loginData.email.includes('@')) this.loginStatus += " / Enter a valid email";
+                else if(this.loginData.password.length == 0) this.loginStatus += " / Enter your password";
                 console.error('Error al autenticar:', error);
             }
         );
