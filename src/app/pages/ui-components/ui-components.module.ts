@@ -12,16 +12,10 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 import { UiComponentsRoutes } from './ui-components.routing';
 
 // ui components
-import { AppBadgeComponent } from './badge/badge.component';
-import { AppChipsComponent } from './chips/chips.component';
-import { AppListsComponent } from './lists/lists.component';
-import { AppMenuComponent } from './menu/menu.component';
-import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { MatButtonModule } from '@angular/material/button';
-import { AppComponent } from 'src/app/app.component';
 import { AddEditFormComponent } from './add-edit-form/add-edit-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -49,11 +43,6 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatDialogModule,
   ],
   declarations: [
-    AppBadgeComponent,
-    AppChipsComponent,
-    AppListsComponent,
-    AppMenuComponent,
-    AppTooltipsComponent,
     UserPanelComponent,
     EmployeeComponent,
     AddEditFormComponent,
