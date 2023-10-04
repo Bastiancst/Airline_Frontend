@@ -28,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -56,6 +57,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     UserPanelComponent,
     EmployeeComponent,
     AddEditFormComponent,
+    ConfirmDialogComponent,
+    
   ],
 })
 export class UicomponentsModule {}
