@@ -66,11 +66,11 @@ export class AddEditFormComponent implements OnInit {
       lastName: '',
       age: '',
       email: ['', [Validators.required, Validators.email]],
-      role: '',
+      role: ['', [this.roleToNumber]],
       workPosition: '',
       country: '',
       city: '',
-      bonus: '',
+      bonus: ['',[this.bonusToNumber]],
     })
   }
 
@@ -149,6 +149,45 @@ export class AddEditFormComponent implements OnInit {
     }
     // If all checks pass, the RUT is valid
     return null;
+  }
+  
+  roleToNumber(role: string): number{
+    if(role == "Admin"){
+      return 1;
+    }
+    if(role == "Empleado"){
+     return 2;
+    }
+    else{
+      return 0;
+    }
+  }
+  
+  roleToString(role: number): string {
+    if (role === 1) {
+      return 'Admin';
+    } else if (role === 2) {
+      return 'Empleado';
+    } else {
+      return 'Default';
+    }
+  }
+
+  bonusToNumber(role: string): number{
+    if(role == "Sí"){
+      return 1;
+    }
+    else{
+      return 0;
+    }
+  }
+
+  bonusToString(role: number): string {
+    if (role === 1) {
+      return 'Sí';
+    } else {
+      return 'No';
+    }
   }
   
 }
