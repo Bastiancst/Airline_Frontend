@@ -58,7 +58,7 @@
                           class="w-100"
                           color="primary"
                         >
-                          <input matInput type="text" placeholder="Nombre" name="name" #name="ngModel" [(ngModel)]="clientInfo.name"/>
+                          <input matInput type="text" maxlength="50" placeholder="Nombre" name="name" #name="ngModel" [(ngModel)]="clientInfo.name"/>
                         </mat-form-field>
 
                       </div>
@@ -69,10 +69,13 @@
                         >
                         <mat-form-field
                           appearance="outline"
-                          class="w-100"
+                          class="w-80"
                           color="primary"
+                          style="margin-top: 10px;"
                         >
-                          <input matInput type="text" placeholder="Teléfono" name="phoneNumber" #phoneNumber="ngModel" [(ngModel)]="clientInfo.phoneNumber"/>
+                        <input matInput type="text" placeholder="Teléfono" name="phoneNumber" #phoneNumber="ngModel" [(ngModel)]="clientInfo.phoneNumber" (input)="limitLength($event)" (keypress)="numberOnly($event)">
+
+                          
                         </mat-form-field>
                       </div>
                       <div class="col-sm-12">
@@ -88,6 +91,7 @@
                           <input
                             matInput
                             type="text"
+                            maxlength="150"
                             placeholder="Dirección"
                             name="addres" #addres="ngModel" [(ngModel)]="clientInfo.addres"
                           />

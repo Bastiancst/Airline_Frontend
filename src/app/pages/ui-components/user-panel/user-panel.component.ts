@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiRequestService } from 'src/app/services/api-request.service';
 import { CoookieService } from 'src/app/services/cookie.service';
 import { LoginResponse } from '../../authentication/models/login-response';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'app-user-panel',
@@ -20,8 +21,25 @@ export class UserPanelComponent implements OnInit{
 
   public changeStatus = "";
   public updatedInfo: boolean = false;
+  selectedCountryCode: string;
 
   constructor(private ApiService: ApiRequestService, private CookieService: CoookieService){}
+
+  limitLength(event: any) {
+    const maxLength = 10; // Cambia este valor al máximo que desees
+    if (event.target.value.length > maxLength) {
+      event.target.value = event.target.value.slice(0, maxLength);
+    }
+  }
+
+  numberOnly(event: any): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      event.preventDefault();
+      return false;
+    }
+    return true;
+  }
 
   createUserInfo(){
     console.log(this.clientInfo);
