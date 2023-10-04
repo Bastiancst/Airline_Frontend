@@ -45,7 +45,7 @@
             <mat-form-field>
                 <mat-label>Rol</mat-label>
                 <mat-select formControlName="role">
-                <mat-option *ngFor="let val of roles" [value]="val">{{val}}
+                <mat-option *ngFor="let val of roles" [value]="val">{{(roleToString(val))}} 
                 </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -74,7 +74,7 @@
             <mat-form-field>
                 <mat-label>Bonus</mat-label>
                 <mat-select formControlName="bonus">
-                <mat-option *ngFor="let val of bonus" [value]="val">{{val}}
+                <mat-option *ngFor="let val of bonus" [value]="val">{{bonusToString(val)}}
                 </mat-option>
                 </mat-select>
             </mat-form-field>
