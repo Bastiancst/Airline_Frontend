@@ -4,6 +4,8 @@ import { Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CoreService } from '../../core/core.service';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { Validators } from '@angular/forms';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-add-edit-form',
@@ -56,20 +58,20 @@ export class AddEditFormComponent implements OnInit {
     private _empService: EmployeeService,
     private _dialogRef: MatDialogRef<AddEditFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private _coreService: CoreService
+    private _coreService: CoreService,
   ) {
     this.employeeForm = this._fb.group({
-      rut: '',
+      rut: ['', [Validators.required, this.rutValidator]],
       name: '',
       lastName: '',
       age: '',
-      email: '',
+      email: ['', [Validators.required, Validators.email]],
       role: '',
       workPosition: '',
       country: '',
       city: '',
       bonus: '',
-    });
+    })
   }
 
   ngOnInit(): void {
@@ -103,4 +105,50 @@ export class AddEditFormComponent implements OnInit {
       }
     } 
   }
+
+  limitAgeInput(event: any) {
+    const input = event.target;
+    const maxLength = 2;
+    if (input.value.length > maxLength) {
+      input.value = input.value.slice(0, maxLength);
+    }
+  }
+
+  rutValidator(control: AbstractControl): ValidationErrors | null {
+    const rut = control.value;
+    // Regular expression for RUT validation
+    const rutPattern = /^[0-9]{7,8}-[0-9K]$/;
+
+    if (!rutPattern.test(rut)) {
+      return { invalidRut: true };
+    }
+    // Separate the RUT into digits and the verifier (last character)
+    const parts = rut.split('-');
+    const digits = parts[0].split('').reverse().map(Number);
+    const verifier = parts[1];
+  
+    // Calculate the verification digit
+    let sum = 0;
+    let multiplier = 2;
+  
+    for (const digit of digits) {
+      sum += digit * multiplier;
+      multiplier = multiplier === 7 ? 2 : multiplier + 1;
+    }
+  
+    let expectedVerifier = String(11 - (sum % 11));
+  
+    if (expectedVerifier === '11') {
+      expectedVerifier = '0';
+    } else if (expectedVerifier === '10') {
+      expectedVerifier = 'K';
+    }
+  
+    if (expectedVerifier !== verifier.toUpperCase()) {
+      return { invalidRut: true };
+    }
+    // If all checks pass, the RUT is valid
+    return null;
+  }
+  
 }
