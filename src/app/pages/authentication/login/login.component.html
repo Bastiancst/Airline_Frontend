@@ -1,3 +1,7 @@
+  <!-- --------------------------------------------------------------------------- -->
+  <!--                           Login Components                                  -->
+  <!-- --------------------------------------------------------------------------- -->
+
 <div class="blank-layout-container justify-content-center align-items-center bg-light-primary">
   <div
     class="position-relative row w-100 h-100 bg-gredient justify-content-center"
@@ -16,7 +20,7 @@
             </a>
           </div>
           <div class="or-border m-t-30">or sign in with</div>
-
+          <!-- Email -->
           <form (ngSubmit)="onSubmit()" class="m-t-30">
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
               >Email</mat-label
@@ -31,7 +35,7 @@
             <mat-form-field appearance="outline" class="w-100" color="primary">
               <input matInput type="password" [(ngModel)]="loginData.password" name="password" />
             </mat-form-field>
-
+            <!-- Forgot Password -->
             <div class="d-flex align-items-center m-b-12">
               <a
                 [routerLink]="['/']"
@@ -41,8 +45,8 @@
               >
             </div>
             <button type="submit" mat-flat-button color="primary" class="w-100">Sign In</button>
-
           </form>
+          <!-- Sign up | Create account -->
           <span class="d-block f-w-500 text-center m-t-24"
             >New to Airline D&E?
             <a

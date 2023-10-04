@@ -15,7 +15,7 @@
               />
             </a>
           </div>
-
+          <!-- Sign with Google account -->
           <div class="row m-t-24 custom-row">
             <div class="col-12 col-sm-6">
               <button mat-stroked-button class="w-100">
@@ -30,6 +30,7 @@
                 </div>
               </button>
             </div>
+            <!-- Sign with Facebook -->
             <div class="col-12 col-sm-6">
               <button
                 mat-stroked-button
@@ -47,30 +48,34 @@
               </button>
             </div>
           </div>
+        
+          <!-- Sign up with personal credentials -->
 
           <div class="or-border m-t-30">or sign up with</div>
-
+          
           <form class="m-t-30">
+            <!-- name -->
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
               >Name</mat-label
             >
             <mat-form-field appearance="outline" class="w-100" color="primary">
               <input matInput />
             </mat-form-field>
+            <!-- Email -->
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
               >Email Adddress</mat-label
             >
             <mat-form-field appearance="outline" class="w-100" color="primary">
               <input matInput type="email" />
             </mat-form-field>
-            <!-- password -->
+            <!-- Password -->
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
               >Password</mat-label
             >
             <mat-form-field appearance="outline" class="w-100" color="primary">
               <input matInput type="password" />
             </mat-form-field>
-
+            <!-- Sign up -->
             <a [routerLink]="['/']" mat-flat-button color="primary" class="w-100">
               Sign Up
             </a>
@@ -78,7 +83,6 @@
           </form>
           <span class="d-block f-w-500 text-center m-t-24"
             >Already have an Account?
-
             <a
               [routerLink]="['/authentication/login']"
               class="text-decoration-none text-primary f-w-500 f-s-14"
