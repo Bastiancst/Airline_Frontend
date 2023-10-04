@@ -8,6 +8,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { CoreService } from '../../core/core.service';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 
 @Component({
   selector: 'app-employee',
@@ -34,6 +36,7 @@ export class EmployeeComponent implements OnInit {
     private _dialog: MatDialog,
     private _empService: EmployeeService,
     private _coreService: CoreService,
+    private confirmDialogService: ConfirmDialogService
     ) {}
 
   ngOnInit(): void {
@@ -86,6 +89,7 @@ export class EmployeeComponent implements OnInit {
     }
   }
 
+  /*
   deleteEmployee(id : string ) {
     this._empService.deleteEmployee(id).subscribe({
       next: (res) => {
@@ -95,6 +99,22 @@ export class EmployeeComponent implements OnInit {
       error: console.log,
     });
   }
+  */
+
+  async deleteEmployee(id: string) {
+    const confirmed = await this.confirmDialogService.openConfirmDialog();
+
+    if (confirmed) {
+      this._empService.deleteEmployee(id).subscribe({
+        next: (res) => {
+          this._coreService.openSnackBar('Empleado Eliminado!', 'Aceptar');
+          this.getEmployeeList();
+        },
+        error: console.log,
+      });
+    }
+  }
+
 
   getRoleName(role :number) {
     switch (role) {
