@@ -18,6 +18,15 @@ export class ApiRequestService {
     {
       return this.http.get<T>(`${this.baseUrl}${endpoint}`);
     }
+
+    getUserByToken<T>(endpoint: string, token: string): Observable<T> 
+    {
+      //fix endpoint and headers
+      const headers = new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+      });
+      return this.http.post<T>(`${this.baseUrl}${endpoint}?token=`+token, {headers});
+    }
   
     post<T, U>(endpoint: string, data: U): Observable<T> 
     {

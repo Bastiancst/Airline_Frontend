@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../material.module';
+import { MatDialogModule, matDialogAnimations } from '@angular/material/dialog';
 
 // icons
 import { TablerIconsModule } from 'angular-tabler-icons';
@@ -11,14 +12,17 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 import { UiComponentsRoutes } from './ui-components.routing';
 
 // ui components
-import { AppBadgeComponent } from './badge/badge.component';
-import { AppChipsComponent } from './chips/chips.component';
-import { AppListsComponent } from './lists/lists.component';
-import { AppMenuComponent } from './menu/menu.component';
-import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
-import { EmployeeComponent } from './employee/employee.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { MatButtonModule } from '@angular/material/button';
+import { AddEditFormComponent } from './add-edit-form/add-edit-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -29,15 +33,21 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
     ReactiveFormsModule,
     TablerIconsModule.pick(TablerIcons),
     MatNativeDateModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatDialogModule,
   ],
   declarations: [
-    AppBadgeComponent,
-    AppChipsComponent,
-    AppListsComponent,
-    AppMenuComponent,
-    AppTooltipsComponent,
-    EmployeeComponent,
     UserPanelComponent,
+    EmployeeComponent,
+    AddEditFormComponent,
+    ConfirmDialogComponent,
+    
   ],
 })
 export class UicomponentsModule {}
