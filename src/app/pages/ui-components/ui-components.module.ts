@@ -23,6 +23,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { PassengersComponent } from './passengers/passengers.component';
+import { BuyPassengersComponent } from './buy-passengers/buy-passengers.component';
 
 @NgModule({
   imports: [
@@ -47,6 +49,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     EmployeeComponent,
     AddEditFormComponent,
     ConfirmDialogComponent,
+    PassengersComponent,
+    BuyPassengersComponent,
     
   ],
 })
