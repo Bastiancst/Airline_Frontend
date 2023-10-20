@@ -1,34 +1,24 @@
-<!-- <div>
-    <div class="col-sm-8">
-        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-          >Ingrese cantidad de pasajeros</mat-label
-        >
-        <mat-form-field
-          appearance="outline"
-          class="w-100"
-          color="primary"
-        >
-          <select name="passengerCount" id="">
-            <option value="1"></option>
-            <option value="2"></option>
-            <option value="3"></option>
-            <option value="4"></option>
-          </select>
-        </mat-form-field>
-
-      </div>
+<div class="select-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Ingrese cantidad de pasajeros</mat-label>
+    <mat-select [(value)]="selectedPassengerCount">
+      <mat-option *ngFor="let passengerCount of passengerCounts" [value]="passengerCount">
+        {{passengerCount}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
--->
-<div class="col-sm-7">
+
+<div class="col-sm-16">
   <mat-card class="cardWithShadow">
     <mat-card-content>
-      <mat-card-title>Datos Personales</mat-card-title>
+      <mat-card-title>Ingresa datos del Pasajero</mat-card-title>
       <mat-card-subtitle class="mat-body-1"
-        >Cambia tus datos personales aquí</mat-card-subtitle
+        >Datos pasajero 1</mat-card-subtitle
       >
       <form #formPassenger="ngForm" (ngSubmit)="onSubmit(formPassenger)">
       <div class="row m-t-24">
-        <div class="col-sm-8">
+        <div class="col-sm-5">
           <!-- input -->
           <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
             >Nombre</mat-label

@@ -16,7 +16,8 @@ export class BuyPassengersComponent {
     Email: '',
     SeatNumber: ''
   };
-
+  selectedPassengerCount = '1';  // valor inicial
+  passengerCounts = ['1', '2', '3', '4'];  // opciones disponibles
   onSubmit(form: any) {
 
   }
