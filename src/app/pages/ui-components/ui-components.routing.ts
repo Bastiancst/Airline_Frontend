@@ -5,6 +5,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { PassengersComponent } from './passengers/passengers.component';
 import { BuyPassengersComponent } from './buy-passengers/buy-passengers.component';
+import { FligthInformationComponent } from './fligth-information/fligth-information.component';
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -25,6 +26,10 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'buyPassenger',
         component: BuyPassengersComponent
+      },
+      {
+        path: 'flight-information',
+        component: FligthInformationComponent
       }
     ],
   },
