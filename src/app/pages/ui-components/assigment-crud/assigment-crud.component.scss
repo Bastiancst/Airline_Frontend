@@ -1,0 +1,46 @@
+/* assigment-crud.components.scss */
+.crud-container {
+    padding: 20px;
+    background-color: white;
+    border: 3px solid #5193da;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    max-width: 100%; /* Set a max width for responsiveness */
+    overflow: hidden; /* Hide horizontal overflow */
+    position: relative; /* Add relative positioning to the container */
+  }
+  
+  .table-container {
+    overflow-x: auto; /* Add horizontal scrollbar when table exceeds container width */
+  }
+  
+  .add-button {
+    background-color: #007bff;
+    display: flex;
+    color: white;
+    position: absolute; /* Position the button fixed to the viewport */
+    top: 15px; /* Adjust the top position as needed */
+    right: 15px; /* Adjust the right position as needed */
+  }
+  
+  .table-scroll {
+    overflow-x: auto; /* Add horizontal scrollbar below the table */
+    max-width: 100%; /* Allow horizontal scrolling */
+  }
+  
+  .mat-table {
+    width: 100%; /* Ensure table takes up 100% width of its container */
+  }
+  
+  .mat-header-cell {
+    font-weight: bold;
+  }
+  
+  .mat-row {
+    cursor: pointer;
+  }
+  
+  .mat-row:hover {
+    background-color: #f0f0f0;
+  }
