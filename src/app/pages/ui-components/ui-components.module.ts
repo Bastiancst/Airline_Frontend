@@ -26,6 +26,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { PassengersComponent } from './passengers/passengers.component';
 import { BuyPassengersComponent } from './buy-passengers/buy-passengers.component';
 import { FligthInformationComponent } from './fligth-information/fligth-information.component';
+import { FlightsAvailableComponent } from './flights-available/flights-available.component';
 
 @NgModule({
   imports: [
@@ -53,6 +54,7 @@ import { FligthInformationComponent } from './fligth-information/fligth-informat
     PassengersComponent,
     BuyPassengersComponent,
     FligthInformationComponent,
+    FlightsAvailableComponent,
     
   ],
 })

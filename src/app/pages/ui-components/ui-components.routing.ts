@@ -6,6 +6,7 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
 import { PassengersComponent } from './passengers/passengers.component';
 import { BuyPassengersComponent } from './buy-passengers/buy-passengers.component';
 import { FligthInformationComponent } from './fligth-information/fligth-information.component';
+import { FlightsAvailableComponent } from './flights-available/flights-available.component';
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -30,6 +31,10 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'flight-information',
         component: FligthInformationComponent
+      },
+      {
+        path: 'flights-available',
+        component: FlightsAvailableComponent
       }
     ],
   },
