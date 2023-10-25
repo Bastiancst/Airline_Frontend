@@ -7,40 +7,37 @@
       <input matInput (keyup)="applyFilter($event)" #input>
     </mat-form-field>
     <div class="table-container">
-      <button mat-raised-button color="primary" class="add-button" (click)="openAddForm()">
+      <button mat-raised-button color="primary" class="add-button" (click)="openAdd()">
         <mat-icon>add</mat-icon> Añadir Encomienda
       </button>
       <div class="table-scroll">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           
-          <ng-container matColumnDef="rut">
-            <th mat-header-cell *matHeaderCellDef>Weight</th>
-            <td mat-cell *matCellDef="let row"> {{row.rut}}</td>
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef>Peso</th>
+            <td mat-cell *matCellDef="let row"> {{row.weight}}</td>
           </ng-container>
   
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Height</th>
-            <td mat-cell *matCellDef="let row"> {{row.name}}</td>
+          <ng-container matColumnDef="height">
+            <th mat-header-cell *matHeaderCellDef>Altura</th>
+            <td mat-cell *matCellDef="let row"> {{row.height}}</td>
           </ng-container>
   
-          <ng-container matColumnDef="country">
-            <th mat-header-cell *matHeaderCellDef>Origin</th>
-            <td mat-cell *matCellDef="let row"> {{row.country}}</td>
+          <ng-container matColumnDef="origin">
+            <th mat-header-cell *matHeaderCellDef>Origen</th>
+            <td mat-cell *matCellDef="let row"> {{row.origin}}</td>
           </ng-container>
   
-          <ng-container matColumnDef="workPosition">
-            <th mat-header-cell *matHeaderCellDef>Destination</th>
-            <td mat-cell *matCellDef="let row"> {{row.workPosition}}</td>
+          <ng-container matColumnDef="destination">
+            <th mat-header-cell *matHeaderCellDef>Destino</th>
+            <td mat-cell *matCellDef="let row"> {{row.destination}}</td>
           </ng-container>
   
-          <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef>Acción</th>
+          <ng-container matColumnDef="detalles">
+            <th mat-header-cell *matHeaderCellDef>Detalles</th>
             <td mat-cell *matCellDef="let row">
-              <button mat-icon-button color="primary" (click)="openEditForm(row)">
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-icon-button color="warn" (click)="deleteEmployee(row.id)">  
-                <mat-icon>delete</mat-icon>
+              <button mat-icon-button color="primary">
+                <mat-icon>search</mat-icon>
               </button>
             </td>
           </ng-container>

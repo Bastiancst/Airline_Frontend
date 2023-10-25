@@ -4,6 +4,7 @@ import { Routes } from '@angular/router';
 import { EmployeeComponent } from './employee/employee.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { AssigmentCrudComponent } from './assigment-crud/assigment-crud.component';
+import { AssigmentAddComponent } from './assigment-crud/assigment-add/assigment-add/assigment-add.component';
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -20,6 +21,10 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'assigment',
         component: AssigmentCrudComponent 
+      },
+      {
+        path: 'assigment-add',
+        component: AssigmentAddComponent 
       },
     ],
   },

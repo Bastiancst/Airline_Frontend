@@ -9,6 +9,9 @@ import { EmployeeService } from 'src/app/services/employee.service';
 import { CoreService } from '../../core/core.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
+import { AssignmentService } from 'src/app/services/assignment.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-assigment-crud',
@@ -19,11 +22,11 @@ import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 export class AssigmentCrudComponent implements OnInit {
 
   displayedColumns: string[] = [
-    'rut', 
-    'name', 
-    'country',  
-    'workPosition', 
-    'actions'
+    'weight', 
+    'height', 
+    'origin',  
+    'destination', 
+    'detalles'
   ];
 
   dataSource!: MatTableDataSource<CrudResponse["result"]>;
@@ -32,14 +35,15 @@ export class AssigmentCrudComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
+    private router:Router,
     private _dialog: MatDialog,
-    private _empService: EmployeeService,
+    private _assignService: AssignmentService,
     private _coreService: CoreService,
     private confirmDialogService: ConfirmDialogService
     ) {}
 
   ngOnInit(): void {
-    this.getEmployeeList()
+    this.getAssignmentList()
   }
 
   openAddForm() {
@@ -47,28 +51,17 @@ export class AssigmentCrudComponent implements OnInit {
     dialogRef.afterClosed().subscribe({
       next: (val) => {
         if (val) {
-          this.getEmployeeList();
+          this.getAssignmentList();
         }
       },
     });
   }
-
-  openEditForm(data: any) {
-    const dialogRef = this._dialog.open(AddEditFormComponent, {
-      data,
-    });
-
-    dialogRef.afterClosed().subscribe({
-      next: (val) => {
-        if (val) {
-          this.getEmployeeList();
-        }
-      },
-    });
+  openAdd(){
+    this.router.navigate(['/ui-components/assigment-add']);
   }
 
-  getEmployeeList() {
-    this._empService.getEmployeeList().subscribe({
+  getAssignmentList() {
+    this._assignService.getAssigmentList().subscribe({
       next: (res) => {
         const employees = res.result;
         this.dataSource = new MatTableDataSource(employees);
@@ -100,31 +93,4 @@ export class AssigmentCrudComponent implements OnInit {
   }
   */
 
-  async deleteEmployee(id: string) {
-    const confirmed = await this.confirmDialogService.openConfirmDialog();
-
-    if (confirmed) {
-      this._empService.deleteEmployee(id).subscribe({
-        next: (res) => {
-          this._coreService.openSnackBar('Empleado Eliminado!', 'Aceptar');
-          this.getEmployeeList();
-        },
-        error: console.log,
-      });
-    }
-  }
-
-
-  getRoleName(role :number) {
-    switch (role) {
-      case role = 0:
-        return 'Default';
-      case role = 1:
-        return 'Admin';
-      case role = 2:
-        return 'Empleado';
-      default:
-        return 'Desconocido';
-    }
-  }
 }

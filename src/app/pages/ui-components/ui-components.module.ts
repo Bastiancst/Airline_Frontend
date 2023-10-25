@@ -24,6 +24,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { AssigmentCrudComponent } from './assigment-crud/assigment-crud.component';
+import { AssigmentAddComponent } from './assigment-crud/assigment-add/assigment-add/assigment-add.component';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { AssigmentCrudComponent } from './assigment-crud/assigment-crud.componen
     AddEditFormComponent,
     ConfirmDialogComponent,
     AssigmentCrudComponent,
+    AssigmentAddComponent,
     
   ],
 })
