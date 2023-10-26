@@ -37,11 +37,6 @@
               <input matInput type="text" maxlength="50" formControlName="destination">
             </mat-form-field>
 
-            <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Copia documento</mat-label>
-              <input matInput type="text" maxlength="50" formControlName="isCopyDocumentEmail">
-            </mat-form-field>
-
           </div>
         </form>
       </mat-card-content>
@@ -50,43 +45,42 @@
     <mat-card class="right-card">
       <h3 class="card-title">Datos Receptor</h3>
       <mat-card-content>
-        <form [formGroup]="assignmentForm" (ngSubmit)="onFormSubmit()">
-          <div class="row" >
+        <form [formGroup]="receiverForm" (ngSubmit)="onFormSubmit()">
+          <div class="row">
 
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Nombre </mat-label>
-              <input matInput type="text" maxlength="50" formControlName.receiver="name">
+              <input matInput type="text" maxlength="50" formControlName="name">
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Apellido </mat-label>
-              <input matInput type="text" maxlength="50" formControlName.receiver="lastName">
+              <input matInput type="text" maxlength="50" formControlName="lastName">
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Direccion </mat-label>
-              <input matInput type="text" maxlength="50" formControlName.receiver="addres">
+              <input matInput type="text" maxlength="50" formControlName="addres">
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Email </mat-label>
-              <input matInput type="text" maxlength="50" formControlName.receiver="email">
+              <input matInput type="text" maxlength="50" formControlName="email">
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Telefono </mat-label>
-              <input matInput type="text" maxlength="50" formControlName.receiver="phoneNumber">
+              <input matInput type="text" maxlength="50" formControlName="phoneNumber">
             </mat-form-field>
 
-
+          </div>
+          <div mat-dialog-actions class="action">
+            <button mat-raised-button type="button">Cancelar</button>
+            <button mat-raised-button color="primary" type="submit">Añadir</button>
           </div>
         </form>
       </mat-card-content>
     </mat-card>
-  </div>
-  <div mat-dialog-actions class="action">
-    <button mat-raised-button type="button">Cancelar</button>
-    <button mat-raised-button color="primary" type="submit">Añadir</button>
   </div>
 </div>
 
