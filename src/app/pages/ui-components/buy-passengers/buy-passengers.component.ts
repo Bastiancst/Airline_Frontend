@@ -57,7 +57,7 @@ export class BuyPassengersComponent {
 
   buyPassengers(){
     console.log(this.passengersCart);
-    this.ApiService.post<any, any>('' + this.clientInfo.id, this.passengerInfo).subscribe(
+    this.ApiService.post<any, any>('' + this.clientInfo.id, this.passengersCart).subscribe(
       response =>{
         if(response.success){
           this._router.navigate(['/ui-components/passengers']);

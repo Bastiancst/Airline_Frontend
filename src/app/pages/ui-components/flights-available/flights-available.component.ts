@@ -1,6 +1,7 @@
 // flights-available.component.ts
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-flights-available',
@@ -71,7 +72,7 @@ export class FlightsAvailableComponent implements OnInit {
   uniqueDestinations: string[] = [];
 
 
-  constructor() {
+  constructor(private _router: Router) {
     this.flightInformation = this.allFlights; // Asigna 'allFlights' a 'flightInformation' aquí en lugar de declararlo como una nueva propiedad.
   }
   // Estas son las cadenas que almacenarán los términos de búsqueda ingresados por el usuario.
@@ -89,6 +90,7 @@ export class FlightsAvailableComponent implements OnInit {
 
   seleccionarVuelo(flightSelected: Flight) {
     console.log('Vuelo seleccionado:', flightSelected);
+    this._router.navigate(['/ui-components/buyPassenger']);
   }
 
   // Este método se llama cada vez que el usuario cambia el texto en los campos de búsqueda.

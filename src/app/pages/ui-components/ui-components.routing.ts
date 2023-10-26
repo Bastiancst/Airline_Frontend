@@ -29,6 +29,10 @@ export const UiComponentsRoutes: Routes = [
         component: BuyPassengersComponent
       },
       {
+        path: 'buyPassenger:?id',
+        component: BuyPassengersComponent
+      },
+      {
         path: 'flight-information',
         component: FligthInformationComponent
       },

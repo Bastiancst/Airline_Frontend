@@ -7,6 +7,7 @@ import { EditPassengerComponent } from '../edit-passenger/edit-passenger.compone
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { CoreService } from '../../core/core.service';
+import { PassengerInfo } from '../buy-passengers/models/passengerInfo';
 @Component({
   selector: 'app-fligth-information',
   templateUrl: './fligth-information.component.html',
@@ -24,18 +25,27 @@ export class FligthInformationComponent implements OnInit{
   },
   ];
 
-  flights = [
-    { Name: 'Juan', 
-      Lastname: 'Perez',
-      IdentityDocument: '12.323.257-9',
-      SeatNumber: 'B23',
-    },
+  dataSource: any;
+  passengersList: PassengerInfo[] = [{ Name: 'Juan', 
+        Lastname: 'Perez',
+        IdentityDocument: '12.323.257-9',
+        SeatNumber: 'B23',
+        Age: 21,
+        Address: 'aaa',
+        PhoneNumber: '543534',
+        Email: 'asdkas',
+        IsCopyDocumentEmail: true
+      },
   ];
+  passengerModel: PassengerInfo;
+  
   constructor(
     private _dialog: MatDialog,
     private _coreService: CoreService,
     private confirmDialogService: ConfirmDialogService
-    ) {}
+    ) {
+      this.dataSource = [...this.passengersList];
+    }
   // Define las columnas que quieres mostrar
   firstDisplayedColumns: string[] = ['Name','Lastname','IdentityDocument','SeatNumber', 'edit', 'delete']
   secondDisplayedColumns: string[] = ['Id', 'OfficeId', 'OriginAirportId', 'FinalAirportId', 'Startime', 'Endtime', 'Price'];
@@ -67,10 +77,10 @@ export class FligthInformationComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(confirmed => {
       if (confirmed) {
-        const index = this.flights.indexOf(flight);
+        const index = this.passengersList.indexOf(flight);
         if (index > -1) {
-          this.flights.splice(index, 1);
-          this.flights = [...this.flights];
+          this.passengersList.splice(index, 1);
+          this.dataSource = [...this.passengersList];
         }
       }
     });
