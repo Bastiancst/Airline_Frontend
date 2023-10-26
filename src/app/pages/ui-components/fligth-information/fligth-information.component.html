@@ -1,0 +1,95 @@
+<h2>Información de Pasajero</h2>
+<div class="cardWithShadow">
+    <table mat-table [dataSource]="flights" class="mat-elevation-z8" style="border-radius: 20px;">
+
+        <!-- Define the columns -->
+        <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef>Nombre</th>
+            <td mat-cell *matCellDef="let flight">{{ flight.Name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Lastname">
+            <th mat-header-cell *matHeaderCellDef>Apellido</th>
+            <td mat-cell *matCellDef="let flight">{{ flight.Lastname }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="IdentityDocument">
+            <th mat-header-cell *matHeaderCellDef>Numero de Identificación</th>
+            <td mat-cell *matCellDef="let flight">{{ flight.IdentityDocument }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="SeatNumber">
+            <th mat-header-cell *matHeaderCellDef>Numero de Asiento</th>
+            <td mat-cell *matCellDef="let flight">{{ flight.SeatNumber }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef> Editar </th>
+            <td mat-cell *matCellDef="let flight"> 
+                <button mat-icon-button (click)="editPassenger(flight)">
+                    <mat-icon class="material-icons">edit</mat-icon>
+                </button> 
+            </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+            <td mat-cell *matCellDef="let flight"> 
+                <button mat-icon-button color="warn" (click)="deletePassenger(flight)">
+                    <mat-icon>delete_outline</mat-icon>
+                </button> 
+            </td>
+        </ng-container>
+        
+
+        <!-- Add the columns to the table -->
+        <tr mat-header-row *matHeaderRowDef="firstDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: firstDisplayedColumns;"></tr>
+    </table>
+</div>
+
+<h2>Información de Vuelo</h2>
+<div class="cardWithShadow">
+    <table mat-table [dataSource]="flightInformation" class="mat-elevation-z8" style="border-radius: 20px;">
+
+        <!-- Define the columns -->
+        <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let flightInformation">{{ flightInformation.Id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="OfficeId">
+            <th mat-header-cell *matHeaderCellDef>Oficina</th>
+            <td mat-cell *matCellDef="let flightInformation">{{ flightInformation.OfficeId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="OriginAirportId">
+            <th mat-header-cell *matHeaderCellDef>Origen</th>
+            <td mat-cell *matCellDef="let flightInformation">{{ flightInformation.OriginAirportId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="FinalAirportId">
+            <th mat-header-cell *matHeaderCellDef>Destino</th>
+            <td mat-cell *matCellDef="let flightInformation">{{ flightInformation.FinalAirportId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Startime">
+            <th mat-header-cell *matHeaderCellDef>Hora Salida</th>
+            <td mat-cell *matCellDef="let flightInformation">{{ flightInformation.Startime }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Endtime">
+            <th mat-header-cell *matHeaderCellDef>Hora Llegada</th>
+            <td mat-cell *matCellDef="let flightInformation">{{ flightInformation.Endtime }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Price">
+            <th mat-header-cell *matHeaderCellDef>Precio (USD)</th>
+            <td mat-cell *matCellDef="let flightInformation">{{ flightInformation.Price }}</td>
+        </ng-container>
+
+        <!-- Add the columns to the table -->
+        <tr mat-header-row *matHeaderRowDef="secondDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: secondDisplayedColumns;"></tr>
+    </table>
+</div>

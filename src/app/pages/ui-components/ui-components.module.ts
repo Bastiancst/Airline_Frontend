@@ -25,6 +25,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { PassengersComponent } from './passengers/passengers.component';
 import { BuyPassengersComponent } from './buy-passengers/buy-passengers.component';
+import { FligthInformationComponent } from './fligth-information/fligth-information.component';
+import { FlightsAvailableComponent } from './flights-available/flights-available.component';
+import { EditPassengerComponent } from './edit-passenger/edit-passenger.component';
 
 @NgModule({
   imports: [
@@ -51,6 +54,9 @@ import { BuyPassengersComponent } from './buy-passengers/buy-passengers.componen
     ConfirmDialogComponent,
     PassengersComponent,
     BuyPassengersComponent,
+    FligthInformationComponent,
+    FlightsAvailableComponent,
+    EditPassengerComponent,
     
   ],
 })
