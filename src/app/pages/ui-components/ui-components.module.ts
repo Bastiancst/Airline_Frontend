@@ -27,6 +27,7 @@ import { PassengersComponent } from './passengers/passengers.component';
 import { BuyPassengersComponent } from './buy-passengers/buy-passengers.component';
 import { FligthInformationComponent } from './fligth-information/fligth-information.component';
 import { FlightsAvailableComponent } from './flights-available/flights-available.component';
+import { EditPassengerComponent } from './edit-passenger/edit-passenger.component';
 
 @NgModule({
   imports: [
@@ -55,6 +56,7 @@ import { FlightsAvailableComponent } from './flights-available/flights-available
     BuyPassengersComponent,
     FligthInformationComponent,
     FlightsAvailableComponent,
+    EditPassengerComponent,
     
   ],
 })
