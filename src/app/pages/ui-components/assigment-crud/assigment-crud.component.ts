@@ -60,6 +60,11 @@ export class AssigmentCrudComponent implements OnInit {
     this.router.navigate(['/ui-components/assigment-add']);
   }
 
+  openDetails(){
+    this.router.navigate(['/ui-components/assigment-details']);
+  }
+
+
   getAssignmentList() {
     this._assignService.getAssigmentList().subscribe({
       next: (res) => {

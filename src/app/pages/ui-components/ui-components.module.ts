@@ -26,6 +26,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { AssigmentCrudComponent } from './assigment-crud/assigment-crud.component';
 import { AssigmentAddComponent } from './assigment-crud/assigment-add/assigment-add/assigment-add.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AssigmentDetailsComponent } from './assigment-crud/assigment-details/assigment-details/assigment-details.component';
 
 @NgModule({
   imports: [
@@ -53,6 +54,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ConfirmDialogComponent,
     AssigmentCrudComponent,
     AssigmentAddComponent,
+    AssigmentDetailsComponent,
     
   ],
 })

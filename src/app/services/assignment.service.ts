@@ -13,11 +13,9 @@ export class AssignmentService {
     return this._http.get('https://localhost:7292/api/assignment?clientId=5554DB96-8602-45ED-A0EA-A188B91C93E3');
   }
 
-  /*
-  getAssignment(id: number): Observable<any> {
-    return this._http.get(`https://localhost:7292/api/employee/${id}`);
+  getAssignment(id: string): Observable<any> {
+    return this._http.get('https://localhost:7292/api/assignment?clientId=5554DB96-8602-45ED-A0EA-A188B91C93E3');
   }
-  */
 
   addAssignment(data: any): Observable<any> {
     console.log(data)
