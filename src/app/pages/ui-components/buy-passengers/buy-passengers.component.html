@@ -1,24 +1,26 @@
+<!--
 <div class="select-container">
   <mat-form-field appearance="outline">
     <mat-label>Ingrese cantidad de pasajeros</mat-label>
-    <mat-select [(value)]="selectedPassengerCount">
-      <mat-option *ngFor="let passengerCount of passengerCounts" [value]="passengerCount">
+    <mat-select [(ngModel)]="selectedPassengerCount">
+      <mat-option *ngFor="let passengerCount of passengerCounts" [value]="passengerCount" (click)="changePassengerCount()">
         {{passengerCount}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 </div>
+-->
 
 <div class="col-sm-16">
   <mat-card class="cardWithShadow">
     <mat-card-content>
       <mat-card-title>Ingresa datos del Pasajero</mat-card-title>
       <mat-card-subtitle class="mat-body-1"
-        >Datos pasajero 1</mat-card-subtitle
+        >Datos pasajero</mat-card-subtitle
       >
       <form #formPassenger="ngForm" (ngSubmit)="onSubmit(formPassenger)">
       <div class="row m-t-24">
-        <div class="col-sm-5">
+        <div class="col-sm-12">
           <!-- input -->
           <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
             >Nombre</mat-label
@@ -32,14 +34,14 @@
           </mat-form-field>
 
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-12">
           <!-- input -->
           <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
             >Apellido</mat-label
           >
           <mat-form-field
             appearance="outline"
-            class="w-80"
+            class="w-100"
             color="primary"
             style="margin-top: 10px;"
           >
@@ -48,6 +50,27 @@
             
           </mat-form-field>
         </div>
+
+        <div class="col-sm-12">
+          <!-- input -->
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Número de Identificación</mat-label
+          >
+          <mat-form-field
+            appearance="outline"
+            class="w-100"
+            color="primary"
+          >
+            <input
+              matInput
+              type="text"
+              maxlength="150"
+              placeholder="Número de Identificación"
+              name="IdentityDocument" #IdentityDocument="ngModel" [(ngModel)]="passengerInfo.IdentityDocument"
+            />
+          </mat-form-field>        
+        </div>
+
         <div class="col-sm-12">
           <!-- input -->
           <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
@@ -60,7 +83,7 @@
           >
             <input
               matInput
-              type="text"
+              type="number"
               maxlength="150"
               placeholder="Edad"
               name="Age" #Age="ngModel" [(ngModel)]="passengerInfo.Age"
@@ -82,7 +105,7 @@
                 type="text"
                 maxlength="150"
                 placeholder="Dirección"
-                name="Adress" #Adress="ngModel" [(ngModel)]="passengerInfo.Address"
+                name="Address" #Address="ngModel" [(ngModel)]="passengerInfo.Address"
               />
             </mat-form-field>        
           </div>
@@ -138,16 +161,73 @@
                 matInput
                 type="text"
                 maxlength="150"
-                placeholder="Número de Asiento"
+                placeholder="Número de asiento"
                 name="SeatNumber" #SeatNumber="ngModel" [(ngModel)]="passengerInfo.SeatNumber"
               />
             </mat-form-field>        
           </div>
       </div>
       <button type="submit" mat-flat-button color="primary" class="m-r-8">
-        Pagar
+        Agregar a Carrito
       </button>
       </form>
     </mat-card-content>
   </mat-card>
 </div>
+
+<h2>Pasajeros en el Carrito</h2>
+<h2>Total: {{ totalPrice }}  USD</h2>
+
+<div class="cardWithShadow">
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="border-radius: 20px;">
+
+      <!-- Define the columns -->
+      <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let passenger">{{ passenger.Name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Lastname">
+          <th mat-header-cell *matHeaderCellDef>Apellido</th>
+          <td mat-cell *matCellDef="let passenger">{{ passenger.Lastname }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="IdentityDocument">
+          <th mat-header-cell *matHeaderCellDef>Numero de Identificación</th>
+          <td mat-cell *matCellDef="let passenger">{{ passenger.IdentityDocument }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Age">
+          <th mat-header-cell *matHeaderCellDef>Edad</th>
+          <td mat-cell *matCellDef="let passenger">{{ passenger.Age }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Address">
+        <th mat-header-cell *matHeaderCellDef>Dirección</th>
+        <td mat-cell *matCellDef="let passenger">{{ passenger.Address }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="PhoneNumber">
+          <th mat-header-cell *matHeaderCellDef>Numero de Teléfono</th>
+          <td mat-cell *matCellDef="let passenger">{{ passenger.PhoneNumber }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let passenger">{{ passenger.Email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="SeatNumber">
+        <th mat-header-cell *matHeaderCellDef>Número de Asiento</th>
+        <td mat-cell *matCellDef="let passenger">{{ passenger.SeatNumber }}</td>
+      </ng-container>
+
+      <!-- Add the columns to the table -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<button mat-flat-button color="primary" class="m-r-8" style="margin-top: 20px;" (click)="buyPassengers()">
+  Comprar pasajes
+</button>
