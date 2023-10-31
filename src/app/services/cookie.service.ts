@@ -16,4 +16,12 @@ export class CoookieService {
     getToken() {
         return this.cookies.get("token");
     }
+
+    setRole(role: any){
+        this.cookies.set("role", role);
+    }
+
+    getRole(){
+        return this.cookies.get("role");
+    }
 }

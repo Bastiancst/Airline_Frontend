@@ -3,6 +3,8 @@ import { Routes } from '@angular/router';
 // ui
 import { EmployeeComponent } from './employee/employee.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
+import { RoleGuard } from 'src/app/guards/role.guard';
+import { Role } from '../enums/role.enum';
 import { PassengersComponent } from './passengers/passengers.component';
 import { BuyPassengersComponent } from './buy-passengers/buy-passengers.component';
 import { FligthInformationComponent } from './fligth-information/fligth-information.component';
@@ -18,10 +20,13 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'employee',
         component: EmployeeComponent,
+        canActivate: [RoleGuard],
+        data: {roles: ['Admin']}
       },
       {
         path: 'user-panel',
-        component: UserPanelComponent 
+        component: UserPanelComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'passengers',

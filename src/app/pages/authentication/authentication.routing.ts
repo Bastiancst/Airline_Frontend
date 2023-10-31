@@ -5,6 +5,9 @@ import { VerifyCodeComponent } from './verify-code/verify-code.component';
 import { EmailVerifiedComponent } from './email-verified/email-verified.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ModifyPasswordComponent } from './modify-password/modify-password.component';
+import { RoleGuard } from 'src/app/guards/role.guard';
+import { Role } from '../enums/role.enum';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 
 export const AuthenticationRoutes: Routes = [
@@ -21,7 +24,7 @@ export const AuthenticationRoutes: Routes = [
       },
       {
         path: 'verify-code',
-        component: VerifyCodeComponent
+        component: VerifyCodeComponent,
       }
       ,
       {
@@ -37,6 +40,11 @@ export const AuthenticationRoutes: Routes = [
       {
         path: 'modify-password',
         component: ModifyPasswordComponent
+      }
+      ,
+      {
+        path: 'unauthorized',
+        component: UnauthorizedComponent
       }
     ],
   },
