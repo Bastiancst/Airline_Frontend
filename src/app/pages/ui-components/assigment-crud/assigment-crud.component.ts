@@ -1,6 +1,5 @@
-// employee.components.ts
-import { Component, OnInit, ViewChild} from '@angular/core';
-import { CrudResponse } from './Models/crud-response';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CrudResponse } from '../employee/Models/crud-response';
 import { AddEditFormComponent } from '../add-edit-form/add-edit-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
@@ -10,21 +9,24 @@ import { EmployeeService } from 'src/app/services/employee.service';
 import { CoreService } from '../../core/core.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
+import { AssignmentService } from 'src/app/services/assignment.service';
+import { Router } from '@angular/router';
+
 
 @Component({
-  selector: 'app-employee',
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss']
+  selector: 'app-assigment-crud',
+  templateUrl: './assigment-crud.component.html',
+  styleUrls: ['./assigment-crud.component.scss']
 })
-export class EmployeeComponent implements OnInit {
+
+export class AssigmentCrudComponent implements OnInit {
 
   displayedColumns: string[] = [
-    'rut', 
-    'name', 
-    'country', 
-    'role', 
-    'workPosition', 
-    'actions'
+    'weight', 
+    'height', 
+    'origin',  
+    'destination', 
+    'detalles'
   ];
 
   dataSource!: MatTableDataSource<CrudResponse["result"]>;
@@ -33,14 +35,15 @@ export class EmployeeComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
+    private router:Router,
     private _dialog: MatDialog,
-    private _empService: EmployeeService,
+    private _assignService: AssignmentService,
     private _coreService: CoreService,
     private confirmDialogService: ConfirmDialogService
     ) {}
 
   ngOnInit(): void {
-    this.getEmployeeList()
+    this.getAssignmentList()
   }
 
   openAddForm() {
@@ -48,28 +51,22 @@ export class EmployeeComponent implements OnInit {
     dialogRef.afterClosed().subscribe({
       next: (val) => {
         if (val) {
-          this.getEmployeeList();
+          this.getAssignmentList();
         }
       },
     });
   }
-
-  openEditForm(data: any) {
-    const dialogRef = this._dialog.open(AddEditFormComponent, {
-      data,
-    });
-
-    dialogRef.afterClosed().subscribe({
-      next: (val) => {
-        if (val) {
-          this.getEmployeeList();
-        }
-      },
-    });
+  openAdd(){
+    this.router.navigate(['/ui-components/assigment-add']);
   }
 
-  getEmployeeList() {
-    this._empService.getEmployeeList().subscribe({
+  openDetails(assignmentId: string){
+    this.router.navigate(['/ui-components/assigment-details', assignmentId]);
+  }
+
+
+  getAssignmentList() {
+    this._assignService.getAssigmentList().subscribe({
       next: (res) => {
         const employees = res.result;
         this.dataSource = new MatTableDataSource(employees);
@@ -89,31 +86,4 @@ export class EmployeeComponent implements OnInit {
     }
   }
 
-  async deleteEmployee(id: string) {
-    const confirmed = await this.confirmDialogService.openConfirmDialog();
-
-    if (confirmed) {
-      this._empService.deleteEmployee(id).subscribe({
-        next: (res) => {
-          this._coreService.openSnackBar('Empleado Eliminado!', 'Aceptar');
-          this.getEmployeeList();
-        },
-        error: console.log,
-      });
-    }
-  }
-
-  getRoleName(role :number) {
-    switch (role) {
-      case role = 0:
-        return 'Default';
-      case role = 1:
-        return 'Admin';
-      case role = 2:
-        return 'Empleado';
-      default:
-        return 'Desconocido';
-    }
-  }
 }
-
