@@ -11,6 +11,6 @@ export class UnauthorizedComponent {
   constructor(private _router: Router){}
 
   redirect(){
-    this._router.navigate(['/ui-components/user-panel']);
+    this._router.navigate(['/authentication/login']);
   }
 }
