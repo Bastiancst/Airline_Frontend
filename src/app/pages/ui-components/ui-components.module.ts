@@ -23,6 +23,10 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { PassengersComponent } from './passengers/passengers.component';
+import { BuyPassengersComponent } from './buy-passengers/buy-passengers.component';
+import { FligthInformationComponent } from './fligth-information/fligth-information.component';
+import { FlightsAvailableComponent } from './flights-available/flights-available.component';
 import { AssigmentCrudComponent } from './assigment-crud/assigment-crud.component';
 import { AssigmentAddComponent } from './assigment-crud/assigment-add/assigment-add/assigment-add.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -52,10 +56,13 @@ import { AssigmentDetailsComponent } from './assigment-crud/assigment-details/as
     EmployeeComponent,
     AddEditFormComponent,
     ConfirmDialogComponent,
+    PassengersComponent,
+    BuyPassengersComponent,
+    FligthInformationComponent,
+    FlightsAvailableComponent,
     AssigmentCrudComponent,
     AssigmentAddComponent,
     AssigmentDetailsComponent,
-    
   ],
 })
 export class UicomponentsModule {}

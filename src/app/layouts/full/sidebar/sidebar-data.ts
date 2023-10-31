@@ -23,6 +23,11 @@ export const navItems: NavItem[] = [
     route: '/ui-components/employee',
   },
   {
+    displayName: 'Mis vuelos',
+    iconName: 'plane',
+    route: '/ui-components/passengers',
+  },
+  {
     displayName: 'Assigment',
     iconName: 'rosette',
     route: '/ui-components/assigment',
