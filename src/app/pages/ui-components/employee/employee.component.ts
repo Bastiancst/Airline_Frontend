@@ -89,18 +89,6 @@ export class EmployeeComponent implements OnInit {
     }
   }
 
-  /*
-  deleteEmployee(id : string ) {
-    this._empService.deleteEmployee(id).subscribe({
-      next: (res) => {
-        this._coreService.openSnackBar('Empleado Eliminado!', 'Aceptar');
-        this.getEmployeeList();
-      },
-      error: console.log,
-    });
-  }
-  */
-
   async deleteEmployee(id: string) {
     const confirmed = await this.confirmDialogService.openConfirmDialog();
 
@@ -114,7 +102,6 @@ export class EmployeeComponent implements OnInit {
       });
     }
   }
-
 
   getRoleName(role :number) {
     switch (role) {
