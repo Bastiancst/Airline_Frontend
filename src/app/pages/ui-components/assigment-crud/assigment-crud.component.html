@@ -1,0 +1,57 @@
+<!-- assigment-crud.components.html -->
+
+<div class="crud-container">
+    <h1>Lista de Encomiendas</h1>
+    <mat-form-field>
+      <mat-label>Búsqueda<mat-icon>search</mat-icon></mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+    <div class="table-container">
+      <button mat-raised-button color="primary" class="add-button" (click)="openAdd()">
+        <mat-icon>add</mat-icon> Añadir Encomienda
+      </button>
+      <div class="table-scroll">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>id</th>
+            <td mat-cell *matCellDef="let row" class="hidden-column"> {{row.id}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef>Peso</th>
+            <td mat-cell *matCellDef="let row"> {{row.weight}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="height">
+            <th mat-header-cell *matHeaderCellDef>Altura</th>
+            <td mat-cell *matCellDef="let row"> {{row.height}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="origin">
+            <th mat-header-cell *matHeaderCellDef>Origen</th>
+            <td mat-cell *matCellDef="let row"> {{row.origin}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="destination">
+            <th mat-header-cell *matHeaderCellDef>Destino</th>
+            <td mat-cell *matCellDef="let row"> {{row.destination}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="detalles">
+            <th mat-header-cell *matHeaderCellDef>Detalles</th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button color="primary" (click)="openDetails(row.id)">
+                <mat-icon>search</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+  
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+    </div>
+  </div>
