@@ -109,7 +109,6 @@ export class AssigmentAddComponent {
   }
 
   onFormSubmit(){
-    //PUT IN THIS LINE THE CODE FOR JOIN THE RECEIVERFORM DATA ON RECEIVER PROPERTY IN ASSIGNMENTFORM
     this.assignmentForm.patchValue({
       receiver: this.receiverForm.value
     });

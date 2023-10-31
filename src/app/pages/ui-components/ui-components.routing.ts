@@ -28,7 +28,7 @@ export const UiComponentsRoutes: Routes = [
         component: AssigmentAddComponent 
       },
       {
-        path: 'assigment-details',
+        path: 'assigment-details/:id',
         component: AssigmentDetailsComponent 
       },
     ],

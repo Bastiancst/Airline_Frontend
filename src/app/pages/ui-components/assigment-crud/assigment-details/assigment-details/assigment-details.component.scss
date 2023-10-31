@@ -7,7 +7,8 @@
     max-width: 80%;
     overflow: hidden;
     position: relative;
-    text-align: center; 
+    text-align: center;
+    font-size:large;
   }
   
 .card-title {
@@ -16,9 +17,29 @@ padding: 10px;
 
 .content {
     margin: 10px;
-    padding-left: 5%;
 }
 
+.img-container {
+  align-items: center; /* Ajusta el ancho máximo para que se ajuste al contenedor */
+  height: auto; /* Permite que la altura se ajuste automáticamente manteniendo la relación de aspecto */
+}
 
+.encomienda-data {
+  margin-top: 15px; /* Añade un espacio entre los elementos */
+}
+
+.encomienda-label {
+  font-weight: bold;
+}
+
+.action {
+  padding: 10% 35% 20px;
+  button {
+    flex: 1;
+    background-color: #3b94f3;
+    color: #fff;
+  }
+  display: flex;
+}
   
 

@@ -60,8 +60,8 @@ export class AssigmentCrudComponent implements OnInit {
     this.router.navigate(['/ui-components/assigment-add']);
   }
 
-  openDetails(){
-    this.router.navigate(['/ui-components/assigment-details']);
+  openDetails(assignmentId: string){
+    this.router.navigate(['/ui-components/assigment-details', assignmentId]);
   }
 
 
@@ -85,17 +85,5 @@ export class AssigmentCrudComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
-  /*
-  deleteEmployee(id : string ) {
-    this._empService.deleteEmployee(id).subscribe({
-      next: (res) => {
-        this._coreService.openSnackBar('Empleado Eliminado!', 'Aceptar');
-        this.getEmployeeList();
-      },
-      error: console.log,
-    });
-  }
-  */
 
 }

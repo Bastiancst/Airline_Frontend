@@ -1,30 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AssignmentService } from 'src/app/services/assignment.service';
 import { CoreService } from 'src/app/pages/core/core.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-assigment-details',
   templateUrl: './assigment-details.component.html',
   styleUrls: ['./assigment-details.component.scss']
 })
-export class AssigmentDetailsComponent {
+export class AssigmentDetailsComponent implements OnInit {
+
+  assignment: any = {}; 
 
   constructor(
     private _assigment: AssignmentService,
     private _coreService: CoreService,
     private router:Router,
+    private route: ActivatedRoute,
   ){}
-
   
-  /*
-  getAssignment() {
-    this._assigment.getAssignment(1F0B504F-5DAA-4881-B6CE-6A88CA928CA5).subscribe({
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const assignmentId = params['id']; 
+      this.getAssignment(assignmentId);
+    });
+  }
+  
+  getAssignment(assignmentId: string) {
+    this._assigment.getAssignment(assignmentId).subscribe({
       next: (res) => {
+        const assignmentData = res.result;
+        this.assignment.height = assignmentData.height;
+        this.assignment.weight = assignmentData.weight;
+        this.assignment.wide = assignmentData.wide;
+        this.assignment.lenght = assignmentData.lenght;
+        this.assignment.origin = assignmentData.origin;
+        this.assignment.destination = assignmentData.destination;
       },
       error: console.log,
     });
   }
-  */
+
+  BackToAssignmentList(){
+    this.router.navigate(['/ui-components/assigment']);
+  }
   
 }
