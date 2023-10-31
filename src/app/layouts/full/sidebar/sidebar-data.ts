@@ -8,6 +8,7 @@ export const navItems: NavItem[] = [
     displayName: 'Dashboard',
     iconName: 'layout-dashboard',
     route: '/dashboard',
+    requiresRole: "Admin"
   },
   {
     navCap: 'Ui Components',
@@ -21,6 +22,7 @@ export const navItems: NavItem[] = [
     displayName: 'Employee',
     iconName: 'rosette',
     route: '/ui-components/employee',
+    requiresRole: "Admin"
   },
   {
     navCap: 'Auth',
