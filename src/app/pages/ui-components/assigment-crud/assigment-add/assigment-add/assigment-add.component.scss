@@ -1,0 +1,54 @@
+.add-assign-container {
+  width: 100%;
+  padding: 15px;
+  background-color: white;
+  border: 3px solid #5193da;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  max-width: 100%; /* Set a max width for responsiveness */
+  overflow: hidden; /* Hide horizontal overflow */
+  position: relative; /* Add relative positioning to the container */
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0; /* Add margin between rows */
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-title {
+  padding: 10px;
+}
+
+.left-card, .right-card {
+  width: 48%; /* Adjust the width as needed to leave some spacing between cards */
+}
+
+.input {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-card, .right-card {
+    width: 100%; /* Full width on smaller screens */
+  }
+}
+
+.action {
+  padding: 0px 25px 20px;
+  button {
+    flex: 1;
+  }
+  display: flex;
+}
+

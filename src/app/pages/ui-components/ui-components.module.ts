@@ -27,6 +27,10 @@ import { PassengersComponent } from './passengers/passengers.component';
 import { BuyPassengersComponent } from './buy-passengers/buy-passengers.component';
 import { FligthInformationComponent } from './fligth-information/fligth-information.component';
 import { FlightsAvailableComponent } from './flights-available/flights-available.component';
+import { AssigmentCrudComponent } from './assigment-crud/assigment-crud.component';
+import { AssigmentAddComponent } from './assigment-crud/assigment-add/assigment-add/assigment-add.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AssigmentDetailsComponent } from './assigment-crud/assigment-details/assigment-details/assigment-details.component';
 
 @NgModule({
   imports: [
@@ -45,6 +49,7 @@ import { FlightsAvailableComponent } from './flights-available/flights-available
     MatSortModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatCheckboxModule,
   ],
   declarations: [
     UserPanelComponent,
@@ -55,6 +60,9 @@ import { FlightsAvailableComponent } from './flights-available/flights-available
     BuyPassengersComponent,
     FligthInformationComponent,
     FlightsAvailableComponent,
+    AssigmentCrudComponent,
+    AssigmentAddComponent,
+    AssigmentDetailsComponent,
   ],
 })
 export class UicomponentsModule {}

@@ -28,6 +28,11 @@ export const navItems: NavItem[] = [
     route: '/ui-components/passengers',
   },
   {
+    displayName: 'Assigment',
+    iconName: 'rosette',
+    route: '/ui-components/assigment',
+  },
+  {
     navCap: 'Auth',
   },
   {
