@@ -17,11 +17,15 @@ export class SidebarComponent implements OnInit {
   }
 
   private menuFilter(): void {
-    const userRoles = this.CookieService.getRole();
-
-    const result = navItems.filter(x => userRoles.includes(x.requiresRole));
-  
+    const userRoles: any = this.CookieService.getRole();
+    var result: any;
+    result = navItems.filter(x => {
+      if(x.requiresRole?.indexOf(userRoles) != -1) return true;
+      else return false;
+    //userRoles.includes(x.requiresRole?.find(userRoles)));
+    });
     this.navItems = result;
     console.log(this.navItems);
-  }
+
+}
 }
