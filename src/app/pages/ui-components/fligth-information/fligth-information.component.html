@@ -5,35 +5,26 @@
         <!-- Define the columns -->
         <ng-container matColumnDef="Name">
             <th mat-header-cell *matHeaderCellDef>Nombre</th>
-            <td mat-cell *matCellDef="let flight">{{ flight.Name }}</td>
+            <td mat-cell *matCellDef="let flight">{{ flight.name }}</td>
         </ng-container>
 
         <ng-container matColumnDef="Lastname">
             <th mat-header-cell *matHeaderCellDef>Apellido</th>
-            <td mat-cell *matCellDef="let flight">{{ flight.Lastname }}</td>
+            <td mat-cell *matCellDef="let flight">{{ flight.lastName }}</td>
         </ng-container>
 
         <ng-container matColumnDef="IdentityDocument">
             <th mat-header-cell *matHeaderCellDef>Numero de Identificación</th>
-            <td mat-cell *matCellDef="let flight">{{ flight.IdentityDocument }}</td>
+            <td mat-cell *matCellDef="let flight">{{ flight.identityDocument }}</td>
         </ng-container>
 
         <ng-container matColumnDef="SeatNumber">
             <th mat-header-cell *matHeaderCellDef>Numero de Asiento</th>
-            <td mat-cell *matCellDef="let flight">{{ flight.SeatNumber }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="edit">
-            <th mat-header-cell *matHeaderCellDef> Editar </th>
-            <td mat-cell *matCellDef="let flight"> 
-                <button mat-icon-button (click)="editPassenger(flight)">
-                    <mat-icon class="material-icons">edit</mat-icon>
-                </button> 
-            </td>
+            <td mat-cell *matCellDef="let flight">{{ flight.seatNumber }}</td>
         </ng-container>
         
         <ng-container matColumnDef="delete">
-            <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+            <th mat-header-cell *matHeaderCellDef> Quitar Pasajero </th>
             <td mat-cell *matCellDef="let flight"> 
                 <button mat-icon-button color="warn" (click)="deletePassenger(flight)">
                     <mat-icon>delete_outline</mat-icon>

@@ -3,11 +3,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { EditPassengerComponent } from '../edit-passenger/edit-passenger.component';
+
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { CoreService } from '../../core/core.service';
 import { PassengerInfo } from '../buy-passengers/models/passengerInfo';
+import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-fligth-information',
   templateUrl: './fligth-information.component.html',
@@ -26,45 +27,29 @@ export class FligthInformationComponent implements OnInit{
   ];
 
   dataSource: any;
-  passengersList: PassengerInfo[] = [{ 
-        clientId: '',
-        flightPlanningId: '',
-        name: 'Juan', 
-        lastName: 'Perez',
-        identityDocument: '12.323.257-9',
-        seatNumber: 23,
-        age: 21,
-        address: 'aaa',
-        phoneNumber: '543534',
-        email: 'asdkas',
-        isCopyDocumentEmail: true
-      },
-  ];
+  passengersList: PassengerInfo[] = [];
   passengerModel: PassengerInfo;
   
   constructor(
     private _dialog: MatDialog,
     private _coreService: CoreService,
-    private confirmDialogService: ConfirmDialogService
+    private confirmDialogService: ConfirmDialogService,
+    private dataService: DataService<PassengerInfo>
     ) {
       this.dataSource = [...this.passengersList];
     }
   // Define las columnas que quieres mostrar
-  firstDisplayedColumns: string[] = ['Name','Lastname','IdentityDocument','SeatNumber', 'edit', 'delete']
+  firstDisplayedColumns: string[] = ['Name','Lastname','IdentityDocument','SeatNumber', 'delete']
   secondDisplayedColumns: string[] = ['Id', 'OfficeId', 'OriginAirportId', 'FinalAirportId', 'Startime', 'Endtime', 'Price'];
-  ngOnInit(): void {
-  }
-  editPassenger(flight: any): void {
-   const dialogRef = this._dialog.open(EditPassengerComponent, {
-      width: '250px',
-      data: { passenger: Object.assign({}, flight) } // enviamos una copia del pasajero para evitar cambios en tiempo real
-    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // Actualiza tu pasajero con los datos del formulario
-        Object.assign(flight, result); // Esto es una edición directa de los datos del cliente. En un entorno real, llamarías a una API.
-      }
+  ngOnInit(): void {
+    this.dataService.data$.subscribe(data => {
+      this.passengerModel = new PassengerInfo(data?.clientId!, data?.flightPlanningId!, data?.name!, data?.lastName!, data?.identityDocument!, data?.age!, data?.address!, data?.phoneNumber!, data?.email!, data?.seatNumber!, data?.isCopyDocumentEmail!);
+
+      console.log(this.passengerModel);
+
+      this.passengersList.push(this.passengerModel);
+      this.dataSource = [...this.passengersList];
     });
   }
 

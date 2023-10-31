@@ -42,6 +42,7 @@ export class BuyPassengersComponent implements OnInit{
   constructor(private ApiService: ApiRequestService, private CookieService: CoookieService, private _router: Router){
     this.totalPrice = 0;
   }
+  
   ngOnInit(): void {
     this.getUserInfoByToken();
   }
