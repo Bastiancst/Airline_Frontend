@@ -30,7 +30,7 @@
             class="w-100"
             color="primary"
           >
-            <input matInput type="text" maxlength="50" placeholder="Nombre" name="Name" #Name="ngModel" [(ngModel)]="passengerInfo.Name"/>
+            <input matInput type="text" maxlength="50" placeholder="Nombre" name="name" #name="ngModel" [(ngModel)]="passengerInfo.name"/>
           </mat-form-field>
 
         </div>
@@ -45,7 +45,7 @@
             color="primary"
             style="margin-top: 10px;"
           >
-          <input matInput type="text" placeholder="Apellido" name="Lastname" #Lastname="ngModel" [(ngModel)]="passengerInfo.Lastname">
+          <input matInput type="text" placeholder="Apellido" name="lastName" #lastName="ngModel" [(ngModel)]="passengerInfo.lastName">
 
             
           </mat-form-field>
@@ -66,7 +66,7 @@
               type="text"
               maxlength="150"
               placeholder="Número de Identificación"
-              name="IdentityDocument" #IdentityDocument="ngModel" [(ngModel)]="passengerInfo.IdentityDocument"
+              name="identityDocument" #identityDocument="ngModel" [(ngModel)]="passengerInfo.identityDocument"
             />
           </mat-form-field>        
         </div>
@@ -86,7 +86,7 @@
               type="number"
               maxlength="150"
               placeholder="Edad"
-              name="Age" #Age="ngModel" [(ngModel)]="passengerInfo.Age"
+              name="age" #age="ngModel" [(ngModel)]="passengerInfo.age"
             />
           </mat-form-field>        
         </div>
@@ -105,7 +105,7 @@
                 type="text"
                 maxlength="150"
                 placeholder="Dirección"
-                name="Address" #Address="ngModel" [(ngModel)]="passengerInfo.Address"
+                name="address" #address="ngModel" [(ngModel)]="passengerInfo.address"
               />
             </mat-form-field>        
           </div>
@@ -124,7 +124,7 @@
                 type="text"
                 maxlength="150"
                 placeholder="Número de teléfono"
-                name="PhoneNumber" #PhoneNumber="ngModel" [(ngModel)]="passengerInfo.PhoneNumber"
+                name="phoneNumber" #phoneNumber="ngModel" [(ngModel)]="passengerInfo.phoneNumber"
               />
             </mat-form-field>        
           </div>
@@ -143,7 +143,7 @@
                 type="email"
                 maxlength="150"
                 placeholder="Email"
-                name="Email" #Email="ngModel" [(ngModel)]="passengerInfo.Email"
+                name="email" #email="ngModel" [(ngModel)]="passengerInfo.email"
               />
             </mat-form-field>        
           </div>
@@ -162,7 +162,7 @@
                 type="text"
                 maxlength="150"
                 placeholder="Número de asiento"
-                name="SeatNumber" #SeatNumber="ngModel" [(ngModel)]="passengerInfo.SeatNumber"
+                name="seatNumber" #seatNumber="ngModel" [(ngModel)]="passengerInfo.seatNumber"
               />
             </mat-form-field>        
           </div>
@@ -185,42 +185,42 @@
       <!-- Define the columns -->
       <ng-container matColumnDef="Name">
           <th mat-header-cell *matHeaderCellDef>Nombre</th>
-          <td mat-cell *matCellDef="let passenger">{{ passenger.Name }}</td>
+          <td mat-cell *matCellDef="let passenger">{{ passenger.name }}</td>
       </ng-container>
 
       <ng-container matColumnDef="Lastname">
           <th mat-header-cell *matHeaderCellDef>Apellido</th>
-          <td mat-cell *matCellDef="let passenger">{{ passenger.Lastname }}</td>
+          <td mat-cell *matCellDef="let passenger">{{ passenger.lastName }}</td>
       </ng-container>
 
       <ng-container matColumnDef="IdentityDocument">
           <th mat-header-cell *matHeaderCellDef>Numero de Identificación</th>
-          <td mat-cell *matCellDef="let passenger">{{ passenger.IdentityDocument }}</td>
+          <td mat-cell *matCellDef="let passenger">{{ passenger.identityDocument }}</td>
       </ng-container>
 
       <ng-container matColumnDef="Age">
           <th mat-header-cell *matHeaderCellDef>Edad</th>
-          <td mat-cell *matCellDef="let passenger">{{ passenger.Age }}</td>
+          <td mat-cell *matCellDef="let passenger">{{ passenger.age }}</td>
       </ng-container>
 
       <ng-container matColumnDef="Address">
         <th mat-header-cell *matHeaderCellDef>Dirección</th>
-        <td mat-cell *matCellDef="let passenger">{{ passenger.Address }}</td>
+        <td mat-cell *matCellDef="let passenger">{{ passenger.address }}</td>
       </ng-container>
 
       <ng-container matColumnDef="PhoneNumber">
           <th mat-header-cell *matHeaderCellDef>Numero de Teléfono</th>
-          <td mat-cell *matCellDef="let passenger">{{ passenger.PhoneNumber }}</td>
+          <td mat-cell *matCellDef="let passenger">{{ passenger.phoneNumber }}</td>
       </ng-container>
 
       <ng-container matColumnDef="Email">
         <th mat-header-cell *matHeaderCellDef>Email</th>
-        <td mat-cell *matCellDef="let passenger">{{ passenger.Email }}</td>
+        <td mat-cell *matCellDef="let passenger">{{ passenger.email }}</td>
       </ng-container>
 
       <ng-container matColumnDef="SeatNumber">
         <th mat-header-cell *matHeaderCellDef>Número de Asiento</th>
-        <td mat-cell *matCellDef="let passenger">{{ passenger.SeatNumber }}</td>
+        <td mat-cell *matCellDef="let passenger">{{ passenger.seatNumber }}</td>
       </ng-container>
 
       <!-- Add the columns to the table -->

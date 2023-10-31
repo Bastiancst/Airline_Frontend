@@ -26,15 +26,18 @@ export class FligthInformationComponent implements OnInit{
   ];
 
   dataSource: any;
-  passengersList: PassengerInfo[] = [{ Name: 'Juan', 
-        Lastname: 'Perez',
-        IdentityDocument: '12.323.257-9',
-        SeatNumber: 'B23',
-        Age: 21,
-        Address: 'aaa',
-        PhoneNumber: '543534',
-        Email: 'asdkas',
-        IsCopyDocumentEmail: true
+  passengersList: PassengerInfo[] = [{ 
+        clientId: '',
+        flightPlanningId: '',
+        name: 'Juan', 
+        lastName: 'Perez',
+        identityDocument: '12.323.257-9',
+        seatNumber: 23,
+        age: 21,
+        address: 'aaa',
+        phoneNumber: '543534',
+        email: 'asdkas',
+        isCopyDocumentEmail: true
       },
   ];
   passengerModel: PassengerInfo;

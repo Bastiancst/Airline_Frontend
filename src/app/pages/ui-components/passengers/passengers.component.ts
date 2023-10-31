@@ -47,7 +47,7 @@ export class PassengersComponent implements OnInit {
       response => {
         if(response.success){
           for (let i = 0; i < response.data.length; i++) {
-            this.passengerModel = new PassengerInfo(response.data[i].Name, response.data[i].Lastname, response.data[i].IdentityDocument, response.data[i].Age, response.data[i].Address, response.data[i].PhoneNumber, response.data[i].Email, response.data[i].SeatNumber, response.data[i].IsCopyDocumentEmail);
+            this.passengerModel = new PassengerInfo(this.CookieService.getToken(), '376B4429-1CE7-4DFF-940E-04A0CD1D3FFC',response.data[i].Name, response.data[i].Lastname, response.data[i].IdentityDocument, response.data[i].Age, response.data[i].Address, response.data[i].PhoneNumber, response.data[i].Email, response.data[i].SeatNumber, response.data[i].IsCopyDocumentEmail);
 
             this.passengersList.push(this.passengerModel);          
           }
