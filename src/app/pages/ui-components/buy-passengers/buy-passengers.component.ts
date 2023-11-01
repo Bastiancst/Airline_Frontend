@@ -42,6 +42,23 @@ export class BuyPassengersComponent implements OnInit{
   constructor(private ApiService: ApiRequestService, private CookieService: CoookieService, private _router: Router){
     this.totalPrice = 0;
   }
+
+  limitLength(event: any, limit: number) {
+    const maxLength = limit;
+    if (event.target.value.length > maxLength) {
+      event.target.value = event.target.value.slice(0, maxLength);
+    }
+  }
+
+  numberOnly(event: any): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      event.preventDefault();
+      return false;
+    }
+    return true;
+  }
+
   
   ngOnInit(): void {
     this.getUserInfoByToken();
