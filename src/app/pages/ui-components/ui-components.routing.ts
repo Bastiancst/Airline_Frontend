@@ -26,39 +26,56 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'user-panel',
         component: UserPanelComponent,
-        canActivate: [RoleGuard]
+        canActivate: [RoleGuard],
+        data: {roles: ['Client', 'Employee','Admin']}
       },
       {
         path: 'passengers',
-        component: PassengersComponent
+        component: PassengersComponent,
+        canActivate: [RoleGuard],
+        data: {roles: ['Client', 'Employee','Admin']}
       },
       {
         path: 'buyPassenger',
-        component: BuyPassengersComponent
+        component: BuyPassengersComponent,
+        canActivate: [RoleGuard],
+        data: {roles: ['Client', 'Employee','Admin']}
       },
       {
         path: 'buyPassenger:?id',
-        component: BuyPassengersComponent
+        component: BuyPassengersComponent,
+        canActivate: [RoleGuard],
+        data: {roles: ['Client', 'Employee','Admin']}
       },
       {
         path: 'flight-information',
-        component: FligthInformationComponent
+        component: FligthInformationComponent,
+        canActivate: [RoleGuard],
+        data: {roles: ['Client', 'Employee','Admin']}
       },
       {
         path: 'flights-available',
-        component: FlightsAvailableComponent
+        component: FlightsAvailableComponent,
+        canActivate: [RoleGuard],
+        data: {roles: ['Client', 'Employee','Admin']}
       },
       {
         path: 'assigment',
-        component: AssigmentCrudComponent 
+        component: AssigmentCrudComponent,
+        canActivate: [RoleGuard],
+        data: {roles: ['Client', 'Employee','Admin']}
       },
       {
         path: 'assigment-add',
-        component: AssigmentAddComponent 
+        component: AssigmentAddComponent,
+        canActivate: [RoleGuard],
+        data: {roles: ['Client', 'Employee','Admin']}
       },
       {
         path: 'assigment-details/:id',
-        component: AssigmentDetailsComponent 
+        component: AssigmentDetailsComponent,
+        canActivate: [RoleGuard],
+        data: {roles: ['Client', 'Employee','Admin']}
       },
     ],
   },
