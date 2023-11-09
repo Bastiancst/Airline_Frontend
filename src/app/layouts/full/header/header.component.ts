@@ -1,3 +1,4 @@
+import { _fixedSizeVirtualScrollStrategyFactory } from '@angular/cdk/scrolling';
 import {
   Component,
   Output,
@@ -23,4 +24,5 @@ export class HeaderComponent {
   showFiller = false;
 
   constructor(public dialog: MatDialog) {}
+
 }
