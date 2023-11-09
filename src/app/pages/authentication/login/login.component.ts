@@ -4,6 +4,7 @@ import { ApiRequestService } from 'src/app/services/api-request.service';
 import { LoginResponse } from '../models/login-response';
 import { Router } from '@angular/router';
 import { CoookieService } from 'src/app/services/cookie.service';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
@@ -41,5 +42,9 @@ export class AppSideLoginComponent {
                 console.error('Error al autenticar:', error);
             }
         );
+  }
+
+  redirectToHome() : void{
+    this.router.navigate(['/dashboard']);
   }
 }

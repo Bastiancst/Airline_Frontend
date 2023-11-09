@@ -26,6 +26,5 @@ export class SidebarComponent implements OnInit {
     });
     this.navItems = result;
     console.log(this.navItems);
-
-}
+  }
 }

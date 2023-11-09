@@ -17,11 +17,19 @@ export class CoookieService {
         return this.cookies.get("token");
     }
 
+    removeCookies() {
+        this.cookies.deleteAll();
+    }
+
     setRole(role: any){
         this.cookies.set("role", role);
     }
 
     getRole(){
         return this.cookies.get("role");
+    }
+
+    removeRole(){
+        return this.cookies.delete("role");
     }
 }

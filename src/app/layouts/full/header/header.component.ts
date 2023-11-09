@@ -7,6 +7,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { CoookieService } from 'src/app/services/cookie.service';
 
 
 @Component({
@@ -23,6 +25,11 @@ export class HeaderComponent {
 
   showFiller = false;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private CookieService: CoookieService, private _router: Router) {}
+
+  logOut(): void{
+    this.CookieService.removeCookies();
+    this._router.navigate(['/authentication/login']);
+  }
 
 }
