@@ -15,9 +15,25 @@ export class AppSideLoginComponent {
 
   loginData: LoginRequest = { email: '', password: '' };
   public loginStatus = "";
+  public istogglePassword = false;
 
   constructor(private apiService: ApiRequestService, private router: Router,
     private CookieService: CoookieService) {}
+
+    togglePassword(){
+      var pwdInp = document.getElementById("passwordInput");
+      var pwdIco = document.getElementById("passwordIcon");
+      if(this.istogglePassword) {
+        pwdInp?.setAttribute("type", "password");
+        pwdIco?.setAttribute("fontIcon", "visibility");
+        this.istogglePassword = !this.istogglePassword;
+      }
+      else {
+        pwdInp?.setAttribute("type", "text");
+        pwdIco?.setAttribute("fontIcon", "visibility_off");
+        this.istogglePassword = !this.istogglePassword;
+      }
+    }
 
   onSubmit() 
   {
