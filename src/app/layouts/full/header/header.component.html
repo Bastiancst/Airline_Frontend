@@ -17,11 +17,12 @@
     mat-icon-button
     [matMenuTriggerFor]="profilemenu"
     aria-label="Notifications"
+    class="myProfile"
+    *ngIf="isLogged"
   >
     <img
-      src="/assets/images/profile/user-1.jpg"
-      class="rounded-circle object-cover"
-      width="35"
+        src="/assets/images/profile/user-1.jpg"
+        class="rounded-circle object-cover myProfileImg"
     />
   </button>
   <mat-menu #profilemenu="matMenu" class="topbar-dd cardWithShadow">
