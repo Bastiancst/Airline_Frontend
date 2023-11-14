@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiRequestService } from 'src/app/services/api-request.service';
 import { CoookieService } from 'src/app/services/cookie.service';
 import { LoginResponse } from '../../authentication/models/login-response';
+import { DataService } from 'src/app/services/data.service';
+import { Invoices } from '../user-panel/models/invoices';
 import { MatSelect } from '@angular/material/select';
 
 @Component({
@@ -10,6 +13,8 @@ import { MatSelect } from '@angular/material/select';
   styleUrls: ['./user-panel.component.scss']
 })
 export class UserPanelComponent implements OnInit{
+  dataSource: any;
+  InvoicesModel: Invoices;
 
   public clientInfo = {
     id: '',
@@ -19,14 +24,18 @@ export class UserPanelComponent implements OnInit{
     email: '',
   };
 
+  public invoices : Invoices[] = [];
+
+  displayedColumns: string[] = ['Id', 'Amount', 'Date', 'viewDetail'];
+
   public changeStatus = "";
   public updatedInfo: boolean = false;
   selectedCountryCode: string;
 
-  constructor(private ApiService: ApiRequestService, private CookieService: CoookieService){}
+  constructor(private _router: Router, private DataService: DataService<any>, private ApiService: ApiRequestService, private CookieService: CoookieService){}
 
   limitLength(event: any) {
-    const maxLength = 10; // Cambia este valor al máximo que desees
+    const maxLength = 10;
     if (event.target.value.length > maxLength) {
       event.target.value = event.target.value.slice(0, maxLength);
     }
@@ -74,6 +83,7 @@ export class UserPanelComponent implements OnInit{
   getUserInfo(id: string){
     this.ApiService.post<any, any>('/api/client/' + id, this.clientInfo.id).subscribe(
       response => {
+        this.listInvoices();
         if(response.success){
           this.clientInfo.id = response.result.id;
           this.clientInfo.email = response.result.email;
@@ -119,6 +129,22 @@ export class UserPanelComponent implements OnInit{
     else if (this.updatedInfo) this.updateUser();
 
   }
+  viewInvoiceDetail() {
+    this.InvoicesModel = new Invoices('1', '10', '10/1/23', '12');
+    console.log(this.InvoicesModel)
+    this.DataService.setData(this.InvoicesModel);
+    this._router.navigate(['/ui-components/invoices']);
+}
 
+  listInvoices(){
+    this.InvoicesModel = new Invoices('1', '10', '10/1/23', '12');
+    this.invoices.push(this.InvoicesModel);
+    console.log(this.invoices);
+    this.dataSource = [...this.invoices];
+  }
+
+  redirectToInvoices(){
+    this._router.navigate(['/ui-components/invoices']);
+  }
 
 }

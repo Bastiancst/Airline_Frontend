@@ -12,6 +12,8 @@ import { FlightsAvailableComponent } from './flights-available/flights-available
 import { AssigmentCrudComponent } from './assigment-crud/assigment-crud.component';
 import { AssigmentAddComponent } from './assigment-crud/assigment-add/assigment-add/assigment-add.component';
 import { AssigmentDetailsComponent } from './assigment-crud/assigment-details/assigment-details/assigment-details.component';
+import { Invoices } from './user-panel/models/invoices';
+import { InvoicesComponent } from './invoices/invoices.component';
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -76,6 +78,11 @@ export const UiComponentsRoutes: Routes = [
         component: AssigmentDetailsComponent,
         canActivate: [RoleGuard],
         data: {roles: ['Client', 'Employee','Admin']}
+      },
+      {path: 'invoices',
+      component: InvoicesComponent,
+      canActivate: [RoleGuard],
+      data: {roles: ['Client', 'Employee','Admin']}
       },
     ],
   },
