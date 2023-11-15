@@ -13,7 +13,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class InvoicesComponent implements OnInit {
   dataSource: any; 
-  invoices: Invoices[];
+  public invoices: Invoices[] = []; //Aqui estaba el error, estaba mal definida la matriz
   InvoicesModel: Invoices;
   
   firstDisplayedColumns: string[] = ['Name', 'Lastname', 'IdentityDocument', 'Email'];
@@ -24,7 +24,7 @@ export class InvoicesComponent implements OnInit {
     private route: ActivatedRoute,
     private dataService: DataService<Invoices>
   ) {
-   // this.dataSource = [...this.invoices]
+   this.dataSource = [...this.invoices]
   }
 
   ngOnInit(): void {
