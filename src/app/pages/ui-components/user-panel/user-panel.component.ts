@@ -38,11 +38,13 @@ export class UserPanelComponent implements OnInit{
 
 
   public invoices : Invoices[] = [];
+
   public employee: {
     name: string;
     lastName: string;
     email: string;
-  }
+  } = { name: '', lastName: '', email: '' };
+
 
   displayedColumns: string[] = ['Id', 'Amount', 'Date', 'viewDetail'];
 
@@ -135,12 +137,14 @@ export class UserPanelComponent implements OnInit{
   ngOnInit(): void {
     this.getUserInfoByToken();
 
-    this.ApiRequestService.post<Response, null>(`api/client/employee?id=83811B9A-C9E6-45ED-BB0E-0EB114DDE329`, null).subscribe
+    this.ApiRequestService.post<Response, null>(`/api/client/employee?id=83811B9A-C9E6-45ED-BB0E-0EB114DDE329`, null).subscribe
     (
       response => {
-
+        console.log(response)
         if (response.success) {
-         this.employee = response.result
+
+          console.log(response)
+          this.employee = response.result
         } else {
           console.log('Error al recibir empleado')
         }
