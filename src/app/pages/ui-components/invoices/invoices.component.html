@@ -5,22 +5,22 @@
         <!-- Define the columns -->
         <ng-container matColumnDef="Name">
             <th mat-header-cell *matHeaderCellDef>Nombre</th>
-            <td mat-cell *matCellDef="let clientInfo">{{ clientInfo.name }}</td>
+            <td mat-cell *matCellDef="let clientInfo">{{ clientData.name }}</td>
         </ng-container>
 
         <ng-container matColumnDef="Lastname">
             <th mat-header-cell *matHeaderCellDef>Apellido</th>
-            <td mat-cell *matCellDef="let clientInfo">{{ clientInfo.lastName }}</td>
+            <td mat-cell *matCellDef="let clientInfo">{{ clientData.addres }}</td>
         </ng-container>
 
         <ng-container matColumnDef="IdentityDocument">
             <th mat-header-cell *matHeaderCellDef>Numero de Identificación</th>
-            <td mat-cell *matCellDef="let clientInfo">{{ clientInfo.identityDocument }}</td>
+            <td mat-cell *matCellDef="let clientInfo">{{ clientData.phoneNumber }}</td>
         </ng-container>
 
         <ng-container matColumnDef="Email">
             <th mat-header-cell *matHeaderCellDef>Email</th>
-            <td mat-cell *matCellDef="let clientInfo">{{ clientInfo.Email }}</td>
+            <td mat-cell *matCellDef="let clientInfo">{{ clientData.email }}</td>
         </ng-container>
         
         

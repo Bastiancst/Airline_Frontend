@@ -15,27 +15,45 @@ export class InvoicesComponent implements OnInit {
   dataSource: any; 
   public invoices: Invoices[] = []; //Aqui estaba el error, estaba mal definida la matriz
   InvoicesModel: Invoices;
+  invoicesData: any;
+  clientData : any;
+  public clientInfo = {
+    id: '',
+    name: '',
+    addres: '',
+    phoneNumber: '',
+    email: '',
+  };
   
-  firstDisplayedColumns: string[] = ['Name', 'Lastname', 'IdentityDocument', 'Email'];
+  firstDisplayedColumns: string[] = ['name', 'addres', 'phoneNumber', 'email'];
   secondDisplayedColumns: string[] = ['Id', 'Amount', 'Date', 'BuyOrder'];
 
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private dataService: DataService<Invoices>
+    private dataService: DataService<any>,
+    private clientService: DataService<PassengerInfo>
   ) {
    this.dataSource = [...this.invoices]
   }
 
   ngOnInit(): void {
     this.dataService.data$.subscribe(data => {
-      this.InvoicesModel = new Invoices(data?.Id!, data?.Amount!, data?.Date!, data?.BuyOrder!);
-
+      this.clientData = data[0];
+      this.invoicesData = data[1];
+      console.log(this.clientData, this.invoicesData)
+      this.InvoicesModel = new Invoices(this.invoicesData?.Id!, this.invoicesData?.Amount!, this.invoicesData?.Date!, this.invoicesData?.BuyOrder!);
       console.log(this.InvoicesModel);
-
       this.invoices.push(this.InvoicesModel);
       this.dataSource = [...this.invoices];
     });
-  }
+    this.clientInfo = {
+      id: this.clientData.id,
+      name: this.clientData.name,
+      addres: this.clientData.addres,
+      phoneNumber: this.clientData.phoneNumber,
+      email: this.clientData.email
+  };  
+}
 
 }

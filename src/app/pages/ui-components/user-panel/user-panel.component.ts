@@ -7,6 +7,17 @@ import { DataService } from 'src/app/services/data.service';
 import { Invoices } from '../user-panel/models/invoices';
 import { MatSelect } from '@angular/material/select';
 
+
+interface Response {
+  success: boolean;
+  message: string;
+  errors: any;
+  result: {
+    name: string;
+    lastName: string;
+    email: string;
+  }
+}
 @Component({
   selector: 'app-user-panel',
   templateUrl: './user-panel.component.html',
@@ -15,6 +26,7 @@ import { MatSelect } from '@angular/material/select';
 export class UserPanelComponent implements OnInit{
   dataSource: any;
   InvoicesModel: Invoices;
+  data: any[] = [];
 
   public clientInfo = {
     id: '',
@@ -24,7 +36,13 @@ export class UserPanelComponent implements OnInit{
     email: '',
   };
 
+
   public invoices : Invoices[] = [];
+  public employee: {
+    name: string;
+    lastName: string;
+    email: string;
+  }
 
   displayedColumns: string[] = ['Id', 'Amount', 'Date', 'viewDetail'];
 
@@ -32,7 +50,7 @@ export class UserPanelComponent implements OnInit{
   public updatedInfo: boolean = false;
   selectedCountryCode: string;
 
-  constructor(private _router: Router, private DataService: DataService<any>, private ApiService: ApiRequestService, private CookieService: CoookieService){}
+  constructor(private ApiRequestService: ApiRequestService, private _router: Router, private DataService: DataService<any>, private ApiService: ApiRequestService, private CookieService: CoookieService){}
 
   limitLength(event: any) {
     const maxLength = 10;
@@ -116,6 +134,19 @@ export class UserPanelComponent implements OnInit{
 
   ngOnInit(): void {
     this.getUserInfoByToken();
+
+    this.ApiRequestService.post<Response, null>(`api/client/employee?id=83811B9A-C9E6-45ED-BB0E-0EB114DDE329`, null).subscribe
+    (
+      response => {
+
+        if (response.success) {
+         this.employee = response.result
+        } else {
+          console.log('Error al recibir empleado')
+        }
+      }
+
+    );
   }
 
   onSubmit(form: any){
@@ -131,8 +162,10 @@ export class UserPanelComponent implements OnInit{
   }
   viewInvoiceDetail() {
     this.InvoicesModel = new Invoices('1', '10', '10/1/23', '12');
+    this.data.push(this.clientInfo);
+    this.data.push(this.InvoicesModel);
     console.log(this.InvoicesModel)
-    this.DataService.setData(this.InvoicesModel);
+    this.DataService.setData(this.data);
     this._router.navigate(['/ui-components/invoices']);
 }
 
