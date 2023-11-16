@@ -72,4 +72,8 @@ export class AppSideRegisterComponent implements OnInit {
       console.log('Formulario inválido');
     }
   }
+
+  redirectToHome() : void{
+    this.router.navigate(['/dashboard']);
+  }
 }
