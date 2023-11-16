@@ -10,7 +10,7 @@ export class CoookieService {
     constructor(private http: HttpClient, private cookies: CookieService) {}
     
     setToken(token: string) {
-        this.cookies.set("token", token);
+        this.cookies.set("token", token, {secure : true,  path: '/' });
     }
 
     getToken() {

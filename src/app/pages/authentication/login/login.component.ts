@@ -29,7 +29,6 @@ export class AppSideLoginComponent {
                 if(response.success)
                 {
                   this.CookieService.setToken(response.result.jwTtoken);
-                  this.CookieService.setRole(response.result.roles);
                   this.router.navigate(['/ui-components/user-panel']);
                 }
                 
