@@ -86,8 +86,8 @@ export class BuyPassengersComponent implements OnInit{
   }
 
   toWebpay(){
-    this.paymentInfo = new PaymentInfo(this.totalPrice, '611E41A4-B67C-4498-B3B1-224D3420C4C7');
-    this.ApiService.post<any, any>('/api/transaction?amount='+this.totalPrice+'&clientId=611E41A4-B67C-4498-B3B1-224D3420C4C7', this.paymentInfo).subscribe(
+    this.paymentInfo = new PaymentInfo(this.totalPrice, this.clientInfo.clientId);
+    this.ApiService.post<any, any>('/api/transaction?amount='+this.totalPrice+'&clientId='+this.clientInfo.clientId, this.paymentInfo).subscribe(
       response => {
         this.paymentResponse = new PaymentResponse(response.result.token, response.result.url);
         console.log(this.paymentResponse);

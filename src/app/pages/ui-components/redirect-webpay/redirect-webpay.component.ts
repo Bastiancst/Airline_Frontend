@@ -13,14 +13,30 @@ export class RedirectWebpayComponent implements OnInit{
   token: any;
   url: any;
   form: any;
+  formTemplate: any;
 
   constructor(private dataService: DataService<PaymentResponse>){
     this.getParameters();
   }
 
   ngOnInit(): void {
+    var form = document.createElement("form");
+    var input = document.createElement("input");
+
+    form.id = "paymentForm";
+    form.method = "post";
+    form.action = this.url;
+
+    input.type = "hidden";
+    input.name = "token_ws";
+    input.value = this.token;
+
+    form.appendChild(input);
+    
+    document.body.appendChild(form);
+
     this.form = document.getElementById("paymentForm");
-    console.log(this.form);
+
     this.form.submit();
   }
 
@@ -30,8 +46,8 @@ export class RedirectWebpayComponent implements OnInit{
         this.data = data;
         this.token = this.data.token;
         this.url = this.data.url;
-        console.log(this.url, this.token, this.form);
-        //this.form.submit();
+        console.log('url: ' + this.url);
+        console.log('token: ' + this.token);
       }
     );
   }
