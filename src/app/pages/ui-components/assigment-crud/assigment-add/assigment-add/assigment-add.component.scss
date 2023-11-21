@@ -1,9 +1,8 @@
 .add-assign-container {
   width: 100%;
-  padding: 15px;
-  background-color: white;
-  border: 3px solid #5193da;
-  border-radius: 5px;
+  padding: 30px;
+  background-color: #F9FAFC;
+  border-radius: 45px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   margin: 10px;
   max-width: 100%; /* Set a max width for responsiveness */
@@ -43,6 +42,7 @@
     width: 100%; /* Full width on smaller screens */
   }
 }
+
 
 .action {
   padding: 0px 25px 20px;

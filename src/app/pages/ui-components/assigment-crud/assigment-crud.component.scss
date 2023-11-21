@@ -1,9 +1,8 @@
 /* assigment-crud.components.scss */
 .crud-container {
     padding: 20px;
-    background-color: white;
-    border: 3px solid #5193da;
-    border-radius: 5px;
+    background-color: #F9FAFC;
+    border-radius: 40px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     margin: 20px;
     max-width: 100%; /* Set a max width for responsiveness */
@@ -16,7 +15,7 @@
   }
   
   .add-button {
-    background-color: #007bff;
+    background-color: #4EDAFF;
     display: flex;
     color: white;
     position: absolute; /* Position the button fixed to the viewport */

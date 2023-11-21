@@ -1,9 +1,8 @@
 /* employee.components.scss */
 .crud-container {
-  padding: 20px;
-  background-color: white;
-  border: 3px solid #5193da;
-  border-radius: 5px;
+  padding: 40px;
+  background-color: #F9FAFC;
+  border-radius: 40px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   margin: 20px;
   max-width: 100%; /* Set a max width for responsiveness */
@@ -16,12 +15,12 @@
 }
 
 .add-button {
-  background-color: #007bff;
+  background-color: #4EDAFF;
   display: flex;
   color: white;
   position: absolute; /* Position the button fixed to the viewport */
-  top: 15px; /* Adjust the top position as needed */
-  right: 15px; /* Adjust the right position as needed */
+  top: 45px; /* Adjust the top position as needed */
+  right: 35px; /* Adjust the right position as needed */
 }
 
 .table-scroll {
@@ -32,6 +31,7 @@
 .mat-table {
   width: 100%; /* Ensure table takes up 100% width of its container */
 }
+
 
 .mat-header-cell {
   font-weight: bold;
