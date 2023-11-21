@@ -17,6 +17,7 @@ export class BuyPassengersComponent implements OnInit{
   public passengerInfo = {
     clientId: '',
     flightPlanningId: '376B4429-1CE7-4DFF-940E-04A0CD1D3FFC',
+    paymentId: '', 
     name: '',
     lastName: '',
     identityDocument: '',
@@ -100,22 +101,22 @@ export class BuyPassengersComponent implements OnInit{
     )
   }
 
-  /*buyPassengers(){
+  buyPassengers(){
     console.log(this.passengersCart);
     this.ApiService.post<any, any>('/api/passenger/create', this.passengersCart).subscribe(
       response =>{
         if(response.success){
-          this._router.navigate(['/ui-components/passengers']);
+          this.toWebpay();
         }
       },
       error => {
         console.log(error);
       }
     )
-  }*/
+  }
 
   onSubmit(form: any) {
-    this.passengerModel = new PassengerInfo(this.clientInfo.clientId, this.passengerInfo.flightPlanningId, this.passengerInfo.name, this.passengerInfo.lastName, this.passengerInfo.identityDocument, this.passengerInfo.age, this.passengerInfo.address, this.passengerInfo.phoneNumber, this.passengerInfo.email, this.passengerInfo.seatNumber, true);
+    this.passengerModel = new PassengerInfo(this.clientInfo.clientId, this.passengerInfo.flightPlanningId,this.passengerInfo.paymentId, this.passengerInfo.name, this.passengerInfo.lastName, this.passengerInfo.identityDocument, this.passengerInfo.age, this.passengerInfo.address, this.passengerInfo.phoneNumber, this.passengerInfo.email, this.passengerInfo.seatNumber, true);
     this.totalPrice = this.totalPrice + 1000;
     console.log(this.passengerModel);
 
