@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PassengerInfo } from '../buy-passengers/models/passengerInfo';
 import { Invoices } from '../user-panel/models/invoices';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
@@ -17,6 +17,7 @@ export class InvoicesComponent implements OnInit {
   InvoicesModel: Invoices;
   invoicesData: any;
   clientData : any;
+  clientInfoArray: any[] = [];
   public clientInfo = {
     id: '',
     name: '',
@@ -32,11 +33,14 @@ export class InvoicesComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private dataService: DataService<any>,
-    private clientService: DataService<PassengerInfo>
+    private clientService: DataService<PassengerInfo>,
+    private router: Router
   ) {
    this.dataSource = [...this.invoices]
   }
-
+  goBack(): void {
+    this.router.navigate(['/ui-components/user-panel']);
+  }
   ngOnInit(): void {
     this.dataService.data$.subscribe(data => {
       this.clientData = data[0];
@@ -54,6 +58,9 @@ export class InvoicesComponent implements OnInit {
       phoneNumber: this.clientData.phoneNumber,
       email: this.clientData.email
   };  
+  this.clientInfoArray.push(this.clientInfo); // Push clientInfo object into an array
+  console.log(this.clientInfoArray);
+  console.log(this.clientInfo)
 }
 
 }

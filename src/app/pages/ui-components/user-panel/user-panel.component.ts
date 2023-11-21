@@ -103,7 +103,7 @@ export class UserPanelComponent implements OnInit{
   getUserInfo(id: string){
     this.ApiService.post<any, any>('/api/client/' + id, this.clientInfo.id).subscribe(
       response => {
-        this.listInvoices();
+        this.getInvoices();
         if(response.success){
           this.clientInfo.id = response.result.id;
           this.clientInfo.email = response.result.email;
@@ -143,8 +143,8 @@ export class UserPanelComponent implements OnInit{
         console.log(response)
         if (response.success) {
 
-          console.log(response)
-          this.employee = response.result
+          console.log(response);
+          this.employee = response.result;
         } else {
           console.log('Error al recibir empleado')
         }
@@ -164,21 +164,31 @@ export class UserPanelComponent implements OnInit{
     else if (this.updatedInfo) this.updateUser();
 
   }
-  viewInvoiceDetail() {
-    this.InvoicesModel = new Invoices('1', '10', '10/1/23', '12');
+  viewInvoiceDetail(invoiceDetail: Invoices) {
     this.data.push(this.clientInfo);
-    this.data.push(this.InvoicesModel);
-    console.log(this.InvoicesModel)
+    this.data.push(invoiceDetail);
+    console.log(invoiceDetail)
     this.DataService.setData(this.data);
     this._router.navigate(['/ui-components/invoices']);
 }
 
-  listInvoices(){
-    this.InvoicesModel = new Invoices('1', '10', '10/1/23', '12');
-    this.invoices.push(this.InvoicesModel);
-    console.log(this.invoices);
-    this.dataSource = [...this.invoices];
+  getInvoices(){
+    this.ApiRequestService.post<any, any>('/api/client/invoices?id=' + this.clientInfo.id, this.clientInfo.id).subscribe(
+      response =>{
+        if(response.success){
+          for (let i = 0; i < response.result.length; i++){
+            this.InvoicesModel = new Invoices(response.result[i].id, response.result[i].amount, response.result[i].date, response.result[i].buyOrder);
+            this.invoices.push(this.InvoicesModel);
+          }
+          this.dataSource = [...this.invoices];
+        }
+      },
+      error => {
+        console.error(error);
+      }
+    )
   }
+
 
   redirectToInvoices(){
     this._router.navigate(['/ui-components/invoices']);
