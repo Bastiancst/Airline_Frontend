@@ -19,6 +19,7 @@ import { EmailVerifiedComponent } from './email-verified/email-verified.componen
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ModifyPasswordComponent } from './modify-password/modify-password.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { ViewBuyComponent } from './view-buy-status/view-buy/view-buy.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
     ForgotPasswordComponent,
     ModifyPasswordComponent,
     UnauthorizedComponent,
+    ViewBuyComponent,
   ],
 })
 export class AuthenticationModule {}
