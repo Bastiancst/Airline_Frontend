@@ -37,15 +37,23 @@ export class BuyPassengersComponent implements OnInit{
   };
 
   dataSource: any;
+  data: any;
   passengersCart: PassengerInfo[] = [];
   passengerModel: PassengerInfo;
   paymentInfo: PaymentInfo;
   paymentResponse: PaymentResponse;
+  flightPrice: number;
   totalPrice: number;
 
   displayedColumns: string[] = ['Name', 'Lastname', 'IdentityDocument', 'Age', 'Address', 'PhoneNumber', 'Email', 'SeatNumber'];
 
-  constructor(private ApiService: ApiRequestService, private CookieService: CoookieService, private _router: Router, private dataService: DataService<PaymentResponse>){
+  constructor(private ApiService: ApiRequestService, private CookieService: CoookieService, private _router: Router, private dataService: DataService<any>){
+    this.dataService.data$.subscribe(
+      data => {
+        this.data = data;
+        this.flightPrice = parseInt(this.data.Price);
+      }
+    );
     this.totalPrice = 0;
   }
 
@@ -105,8 +113,10 @@ export class BuyPassengersComponent implements OnInit{
     console.log(this.passengersCart);
     this.ApiService.post<any, any>('/api/passenger/create', this.passengersCart).subscribe(
       response =>{
+        console.log(response);
         if(response.success){
           this.toWebpay();
+          
         }
       },
       error => {
@@ -117,7 +127,7 @@ export class BuyPassengersComponent implements OnInit{
 
   onSubmit(form: any) {
     this.passengerModel = new PassengerInfo(this.clientInfo.clientId, this.passengerInfo.flightPlanningId,this.passengerInfo.paymentId, this.passengerInfo.name, this.passengerInfo.lastName, this.passengerInfo.identityDocument, this.passengerInfo.age, this.passengerInfo.address, this.passengerInfo.phoneNumber, this.passengerInfo.email, this.passengerInfo.seatNumber, true);
-    this.totalPrice = this.totalPrice + 1000;
+    this.totalPrice = this.totalPrice + this.flightPrice;
     console.log(this.passengerModel);
 
     form.reset();
