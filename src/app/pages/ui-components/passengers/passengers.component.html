@@ -1,5 +1,5 @@
-<div class="cardWithShadow">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="border-radius: 20px;">
+
+    <table mat-table [dataSource]="dataSource" class="crud-container" style="border-radius: 20px;">
 
         <!-- Define the columns -->
         <ng-container matColumnDef="Name">
@@ -35,11 +35,11 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-</div>
-<button mat-flat-button color="primary" class="m-r-8" style="margin-top: 20px;" (click)="redirectToAvailable()">
+
+<button mat-flat-button color="primary" class="m-r-8" style="margin-top: 20px; background-color: #4EDAFF;" (click)="redirectToAvailable()">
     Comprar pasajes
 </button>
 
-<button mat-flat-button color="primary" class="m-r-8" style="margin-top: 20px;" (click)="listPassengers()">
+<button mat-flat-button color="primary" class="m-r-8" style="margin-top: 20px; background-color: #4EDAFF;" (click)="listPassengers()">
     Listar pasajeros
 </button>

@@ -5,6 +5,9 @@
   >
     <div class="col-lg-4 d-flex align-items-center">
       <mat-card class="cardWithShadow boxed-auth">
+
+        <mat-icon aria-hidden="false" aria-label="Back to Home" fontIcon="home" style="cursor: pointer;" (click)="redirectToHome()"></mat-icon>
+
         <mat-card-content class="p-32">
           <div class="text-center">
             <a [routerLink]="['/dashboard']">
@@ -37,7 +40,8 @@
               >Password</mat-label
             >
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput type="password" [(ngModel)]="loginData.password" name="password" required/>
+              <input matInput type="password" [(ngModel)]="loginData.password" name="password" required style="width: 90% !important;" id="passwordInput"/>
+              <mat-icon aria-hidden="false" aria-label="Back to Home" fontIcon="visibility" style="cursor: pointer; float: right;" (click)="togglePassword()" id="passwordIcon"></mat-icon>
             </mat-form-field>
 
             <div class="d-flex align-items-center m-b-12">

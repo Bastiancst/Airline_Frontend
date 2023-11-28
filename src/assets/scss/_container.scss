@@ -28,6 +28,11 @@ html .mat-drawer-container {
   min-height: calc(100vh - 70px);
   margin: 0 auto;
   max-width: $boxedWidth;
+  background-color: #D3E0E8;
+}
+
+.mat-drawer-content {
+  background-color: #D3E0E8!important;
 }
 
 .w-100 {

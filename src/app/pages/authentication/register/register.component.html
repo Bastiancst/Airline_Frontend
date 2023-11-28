@@ -2,6 +2,7 @@
   <div class="position-relative row w-100 h-100 bg-gredient justify-content-center">
     <div class="col-lg-4 d-flex align-items-center">
       <mat-card class="cardWithShadow boxed-auth">
+        <mat-icon aria-hidden="false" aria-label="Back to Home" fontIcon="home" style="cursor: pointer;" (click)="redirectToHome()"></mat-icon>
         <mat-card-content class="p-32">
           <div class="text-center">
             <a [routerLink]="['/dashboard']">
@@ -21,14 +22,15 @@
 
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Password</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input formControlName="password" matInput type="password" />
+              <input formControlName="password" matInput type="password" style="width: 90% !important;" id="passwordInput"/>
+              <mat-icon aria-hidden="false" aria-label="Back to Home" fontIcon="visibility" style="cursor: pointer; float: right;" (click)="togglePassword()" id="passwordIcon"></mat-icon>
               <mat-error *ngIf="form.get('password')?.hasError('required')">Password is required</mat-error>
               <mat-error *ngIf="form.get('password')?.hasError('pattern')">Password must contain an uppercase letter, a number, and a special character</mat-error>
             </mat-form-field>
 
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Confirm password</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input formControlName="confirmPassword" matInput type="password" />
+              <input formControlName="confirmPassword" matInput type="password" id="passwordInput2"/>
               <mat-error *ngIf="form.get('confirmPassword')?.hasError('required')">Confirmation is required</mat-error>
               <mat-error *ngIf="form.hasError('notSame')">Passwords do not match</mat-error>
             </mat-form-field>
