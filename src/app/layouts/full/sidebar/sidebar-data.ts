@@ -29,11 +29,14 @@ export const navItems: NavItem[] = [
     displayName: 'Mis vuelos',
     iconName: 'plane',
     route: '/ui-components/passengers',
+    requiresRole: ["Client","Employee","Admin"]
+    
   },
   {
     displayName: 'Assigment',
     iconName: 'rosette',
     route: '/ui-components/assigment',
+    requiresRole: ["Client","Employee","Admin"]
   },
   {
     navCap: 'Auth',

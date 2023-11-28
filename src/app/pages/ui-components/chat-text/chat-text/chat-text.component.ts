@@ -85,7 +85,7 @@ export class ChatTextComponent implements OnInit {
 
   async chat(){
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://a99e-200-27-88-4.ngrok-free.app/chatHub') // Reemplaza con la URL de tu backend
+      .withUrl('https://localhost:7292/chatHub') // Reemplaza con la URL de tu backend
       .build();
 
     try {

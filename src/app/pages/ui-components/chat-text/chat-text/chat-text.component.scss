@@ -7,6 +7,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background-color: #ccc;
 }
 
 #chat-header {
@@ -20,6 +21,7 @@
 }
 
 #chat-messages {
+  background-color: #ccc;
   position: relative;
   z-index: 1;  // Asegura que el chat-messages esté detrás del chat-header
   padding: 15px;
