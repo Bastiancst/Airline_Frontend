@@ -22,7 +22,7 @@ export class ChatTextComponent implements OnInit {
 
   async ngOnInit() {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://a99e-200-27-88-4.ngrok-free.app/chatHub') // Reemplaza con la URL de tu backend
+      .withUrl('https://localhost:7292/chatHub') // Reemplaza con la URL de tu backend
       .build();
 
     try {
@@ -46,13 +46,9 @@ export class ChatTextComponent implements OnInit {
         console.log('Connection state before sending message:', this.hubConnection.state);
         if (this.hubConnection.state === signalR.HubConnectionState.Connected) {
           try {
-            await this.hubConnection?.invoke('SendMessage', this.clientId, this.employeeId, this.message);
+            await this.hubConnection?.invoke('SendMessage', '359837c4-b2e9-4cde-9df7-a69503bd664d', 'c487a34f-083d-49b3-91dc-6763b844a49f', this.message);
 
-            // Enviar el mensaje al backend
-            this.postMessage(this.clientId, this.employeeId, this.message);
-
-            // Actualizar la interfaz de usuario inmediatamente después de enviar el mensaje
-            this.messages.push({ clientId: this.clientId, employeeId: this.employeeId, message: this.message });
+            //this.messages.push({ clientId: this.clientId, employeeId: this.employeeId, message: this.message });
             this.message = '';
             this.scrollToBottom();
             this.cdRef.detectChanges();
@@ -66,26 +62,6 @@ export class ChatTextComponent implements OnInit {
         console.warn('Hub connection is null. Unable to send message.');
       }
     }
-  }
-
-  postMessage(clientId: string, employeeId: string, message: string) {
-    const url = 'https://a99e-200-27-88-4.ngrok-free.app'; // Reemplaza con la URL de tu backend
-
-    const payload = {
-      clientId: clientId,
-      employeeId: employeeId,
-      message: message
-    };
-
-    this.httpClient.post(url, payload).subscribe(
-      (response) => {
-        console.log('Mensaje enviado con éxito:', response);
-        // Puedes realizar acciones adicionales después de enviar el mensaje, si es necesario
-      },
-      (error) => {
-        console.error('Error al enviar el mensaje:', error);
-      }
-    );
   }
 
   scrollToBottom() {
