@@ -12,6 +12,9 @@ import { FlightsAvailableComponent } from './flights-available/flights-available
 import { AssigmentCrudComponent } from './assigment-crud/assigment-crud.component';
 import { AssigmentAddComponent } from './assigment-crud/assigment-add/assigment-add/assigment-add.component';
 import { AssigmentDetailsComponent } from './assigment-crud/assigment-details/assigment-details/assigment-details.component';
+import { Invoices } from './user-panel/models/invoices';
+import { InvoicesComponent } from './invoices/invoices.component';
+import { ChatTextComponent } from './chat-text/chat-text/chat-text.component';
 import { RedirectWebpayComponent } from './redirect-webpay/redirect-webpay.component';
 
 export const UiComponentsRoutes: Routes = [
@@ -77,6 +80,16 @@ export const UiComponentsRoutes: Routes = [
         component: AssigmentDetailsComponent,
         canActivate: [RoleGuard],
         data: {roles: ['Client', 'Employee','Admin']}
+      },
+      {path: 'invoices',
+      component: InvoicesComponent,
+      canActivate: [RoleGuard],
+      data: {roles: ['Client', 'Employee','Admin']}
+      },
+      {path: 'chat-text',
+      component: ChatTextComponent,
+      canActivate: [RoleGuard],
+      data: {roles: ['Client', 'Employee','Admin']}
       },
       {
         path: 'redirect-webpay',

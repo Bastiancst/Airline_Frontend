@@ -1,15 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiRequestService } from 'src/app/services/api-request.service';
 import { CoookieService } from 'src/app/services/cookie.service';
 import { LoginResponse } from '../../authentication/models/login-response';
+import { DataService } from 'src/app/services/data.service';
+import { Invoices } from '../user-panel/models/invoices';
 import { MatSelect } from '@angular/material/select';
 
+
+interface Response {
+  success: boolean;
+  message: string;
+  errors: any;
+  result: {
+    name: string;
+    lastName: string;
+    email: string;
+  }
+}
 @Component({
   selector: 'app-user-panel',
   templateUrl: './user-panel.component.html',
   styleUrls: ['./user-panel.component.scss']
 })
 export class UserPanelComponent implements OnInit{
+  dataSource: any;
+  InvoicesModel: Invoices;
+  data: any[] = [];
 
   public clientInfo = {
     id: '',
@@ -19,14 +36,26 @@ export class UserPanelComponent implements OnInit{
     email: '',
   };
 
+
+  public invoices : Invoices[] = [];
+
+  public employee: {
+    name: string;
+    lastName: string;
+    email: string;
+  } = { name: '', lastName: '', email: '' };
+
+
+  displayedColumns: string[] = ['Id', 'Amount', 'Date', 'viewDetail'];
+
   public changeStatus = "";
   public updatedInfo: boolean = false;
   selectedCountryCode: string;
 
-  constructor(private ApiService: ApiRequestService, private CookieService: CoookieService){}
+  constructor(private ApiRequestService: ApiRequestService, private _router: Router, private DataService: DataService<any>, private ApiService: ApiRequestService, private CookieService: CoookieService){}
 
   limitLength(event: any) {
-    const maxLength = 10; // Cambia este valor al máximo que desees
+    const maxLength = 10;
     if (event.target.value.length > maxLength) {
       event.target.value = event.target.value.slice(0, maxLength);
     }
@@ -74,6 +103,7 @@ export class UserPanelComponent implements OnInit{
   getUserInfo(id: string){
     this.ApiService.post<any, any>('/api/client/' + id, this.clientInfo.id).subscribe(
       response => {
+        this.getInvoices();
         if(response.success){
           this.clientInfo.id = response.result.id;
           this.clientInfo.email = response.result.email;
@@ -106,6 +136,21 @@ export class UserPanelComponent implements OnInit{
 
   ngOnInit(): void {
     this.getUserInfoByToken();
+
+    this.ApiRequestService.post<Response, null>(`/api/client/employee?id=83811B9A-C9E6-45ED-BB0E-0EB114DDE329`, null).subscribe
+    (
+      response => {
+        console.log(response)
+        if (response.success) {
+
+          console.log(response);
+          this.employee = response.result;
+        } else {
+          console.log('Error al recibir empleado')
+        }
+      }
+
+    );
   }
 
   onSubmit(form: any){
@@ -119,6 +164,34 @@ export class UserPanelComponent implements OnInit{
     else if (this.updatedInfo) this.updateUser();
 
   }
+  viewInvoiceDetail(invoiceDetail: Invoices) {
+    this.data.push(this.clientInfo);
+    this.data.push(invoiceDetail);
+    console.log(invoiceDetail)
+    this.DataService.setData(this.data);
+    this._router.navigate(['/ui-components/invoices']);
+}
 
+  getInvoices(){
+    this.ApiRequestService.post<any, any>('/api/client/invoices?id=' + this.clientInfo.id, this.clientInfo.id).subscribe(
+      response =>{
+        if(response.success){
+          for (let i = 0; i < response.result.length; i++){
+            this.InvoicesModel = new Invoices(response.result[i].id, response.result[i].amount, response.result[i].date, response.result[i].buyOrder);
+            this.invoices.push(this.InvoicesModel);
+          }
+          this.dataSource = [...this.invoices];
+        }
+      },
+      error => {
+        console.error(error);
+      }
+    )
+  }
+
+
+  redirectToInvoices(){
+    this._router.navigate(['/ui-components/invoices']);
+  }
 
 }

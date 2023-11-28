@@ -31,6 +31,8 @@ import { AssigmentCrudComponent } from './assigment-crud/assigment-crud.componen
 import { AssigmentAddComponent } from './assigment-crud/assigment-add/assigment-add/assigment-add.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AssigmentDetailsComponent } from './assigment-crud/assigment-details/assigment-details/assigment-details.component';
+import { InvoicesComponent } from './invoices/invoices.component';
+import { ChatTextComponent } from './chat-text/chat-text/chat-text.component';
 import { RedirectWebpayComponent } from './redirect-webpay/redirect-webpay.component';
 
 @NgModule({
@@ -64,6 +66,8 @@ import { RedirectWebpayComponent } from './redirect-webpay/redirect-webpay.compo
     AssigmentCrudComponent,
     AssigmentAddComponent,
     AssigmentDetailsComponent,
+    InvoicesComponent,
+    ChatTextComponent,
     RedirectWebpayComponent,
   ],
 })

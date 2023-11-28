@@ -1,0 +1,17 @@
+<div *ngIf="showChat">
+  <div id="chat-container" #chatContainer>
+    <div id="chat-header">Chat</div>
+    <div id="chat-messages">
+      <div *ngFor="let msg of messages" class="message" [ngClass]="{'my-message': msg.clientId === clientId}">
+        <div *ngIf="msg.clientId !== clientId" class="message-sender">
+          {{ msg.clientId }} to {{ msg.employeeId }}
+        </div>
+        {{ msg.message }}
+      </div>
+    </div>
+    <div id="input-container" class="footer">
+      <input type="text" [(ngModel)]="message" placeholder="Type your message...">
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>
