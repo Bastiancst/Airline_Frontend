@@ -54,7 +54,7 @@ export class PassengersComponent implements OnInit {
         if(response.success){
           console.log(response);
           for (let i = 0; i < response.result.length; i++) {
-            this.passengerModel = new PassengerInfo(this.clientInfo.clientId, '376B4429-1CE7-4DFF-940E-04A0CD1D3FFC',response.result[i].name, response.result[i].lastName, response.result[i].identityDocument, response.result[i].age, response.result[i].address, response.result[i].phoneNumber, response.result[i].email, response.result[i].seatNumber, response.result[i].isCopyDocumentEmail);
+            this.passengerModel = new PassengerInfo(this.clientInfo.clientId, '376B4429-1CE7-4DFF-940E-04A0CD1D3FFC', response.result[i].paymentId,response.result[i].name, response.result[i].lastName, response.result[i].identityDocument, response.result[i].age, response.result[i].address, response.result[i].phoneNumber, response.result[i].email, response.result[i].seatNumber, response.result[i].isCopyDocumentEmail);
 
             this.passengersList.push(this.passengerModel);        
           }

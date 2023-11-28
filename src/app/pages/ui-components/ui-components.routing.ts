@@ -15,6 +15,7 @@ import { AssigmentDetailsComponent } from './assigment-crud/assigment-details/as
 import { Invoices } from './user-panel/models/invoices';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { ChatTextComponent } from './chat-text/chat-text/chat-text.component';
+import { RedirectWebpayComponent } from './redirect-webpay/redirect-webpay.component';
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -89,6 +90,12 @@ export const UiComponentsRoutes: Routes = [
       component: ChatTextComponent,
       canActivate: [RoleGuard],
       data: {roles: ['Client', 'Employee','Admin']}
+      },
+      {
+        path: 'redirect-webpay',
+        component: RedirectWebpayComponent,
+        canActivate: [RoleGuard],
+        data: {roles: ['Client', 'Employee','Admin']}
       },
     ],
   },

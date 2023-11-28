@@ -2,6 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-flights-available',
@@ -17,7 +18,7 @@ export class FlightsAvailableComponent implements OnInit {
     FinalAirportId: 'LIM',
     Startime: '08:45',
     Endtime: '12:30',
-    Price: '350'
+    Price: '350000'
   },
   { Id: '2', 
     OfficeId: 'Santiago',
@@ -25,7 +26,7 @@ export class FlightsAvailableComponent implements OnInit {
     FinalAirportId: 'BOG',
     Startime: '10:30',
     Endtime: '14:15',
-    Price: '275'
+    Price: '275000'
   },
   { Id: '3', 
     OfficeId: 'Lima',
@@ -33,7 +34,7 @@ export class FlightsAvailableComponent implements OnInit {
     FinalAirportId: 'MEX',
     Startime: '13:20',
     Endtime: '17:55',
-    Price: '430'
+    Price: '430000'
   },
   { Id: '4', 
     OfficeId: 'Bogotá',
@@ -41,7 +42,7 @@ export class FlightsAvailableComponent implements OnInit {
     FinalAirportId: 'CUN',
     Startime: '09:15',
     Endtime: '13:40',
-    Price: '300'
+    Price: '300000'
   },
   { Id: '5', 
     OfficeId: 'Ciudad de México',
@@ -49,7 +50,7 @@ export class FlightsAvailableComponent implements OnInit {
     FinalAirportId: 'GRU',
     Startime: '11:55',
     Endtime: '16:20',
-    Price: '520'
+    Price: '520000'
   },
   { Id: '6', 
     OfficeId: 'Sao Paulo',
@@ -57,7 +58,7 @@ export class FlightsAvailableComponent implements OnInit {
     FinalAirportId: 'SCL',
     Startime: '15:30',
     Endtime: '19:55',
-    Price: '260'
+    Price: '260000'
   },
   { Id: '7', 
     OfficeId: 'Lima',
@@ -65,14 +66,14 @@ export class FlightsAvailableComponent implements OnInit {
     FinalAirportId: 'EZE',
     Startime: '18:10',
     Endtime: '21:45',
-    Price: '340'
+    Price: '340000'
   }
   ];
   uniqueOrigins: string[] = [];
   uniqueDestinations: string[] = [];
 
 
-  constructor(private _router: Router) {
+  constructor(private _router: Router, private dataService: DataService<any>) {
     this.flightInformation = this.allFlights; // Asigna 'allFlights' a 'flightInformation' aquí en lugar de declararlo como una nueva propiedad.
   }
   // Estas son las cadenas que almacenarán los términos de búsqueda ingresados por el usuario.
@@ -90,6 +91,7 @@ export class FlightsAvailableComponent implements OnInit {
 
   seleccionarVuelo(flightSelected: Flight) {
     console.log('Vuelo seleccionado:', flightSelected);
+    this.dataService.setData(flightSelected);
     this._router.navigate(['/ui-components/buyPassenger']);
   }
 

@@ -2,6 +2,7 @@ export class PassengerInfo {
     constructor(
         public clientId: string,
         public flightPlanningId: string,
+        public paymentId: string,
         public name: string,
         public lastName: string,
         public identityDocument: string,

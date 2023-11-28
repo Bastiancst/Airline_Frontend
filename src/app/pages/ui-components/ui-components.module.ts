@@ -33,6 +33,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AssigmentDetailsComponent } from './assigment-crud/assigment-details/assigment-details/assigment-details.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { ChatTextComponent } from './chat-text/chat-text/chat-text.component';
+import { RedirectWebpayComponent } from './redirect-webpay/redirect-webpay.component';
 
 @NgModule({
   imports: [
@@ -67,6 +68,7 @@ import { ChatTextComponent } from './chat-text/chat-text/chat-text.component';
     AssigmentDetailsComponent,
     InvoicesComponent,
     ChatTextComponent,
+    RedirectWebpayComponent,
   ],
 })
 export class UicomponentsModule {}

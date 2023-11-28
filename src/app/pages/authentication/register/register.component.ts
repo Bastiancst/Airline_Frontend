@@ -19,6 +19,8 @@ export class AppSideRegisterComponent implements OnInit {
     private apiService: ApiRequestService
   ) {}
 
+  public istogglePassword = false;
+
   ngOnInit() {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -31,6 +33,24 @@ export class AppSideRegisterComponent implements OnInit {
     const pass = group.controls['password'].value;
     const confirmPass = group.controls['confirmPassword'].value;
     return pass === confirmPass ? null : { notSame: true };
+  }
+
+  togglePassword(){
+    var pwdInp = document.getElementById("passwordInput");
+    var pwdInp2 = document.getElementById("passwordInput2");
+    var pwdIco = document.getElementById("passwordIcon");
+    if(this.istogglePassword) {
+      pwdInp?.setAttribute("type", "password");
+      pwdInp2?.setAttribute("type", "password");
+      pwdIco?.setAttribute("fontIcon", "visibility");
+      this.istogglePassword = !this.istogglePassword;
+    }
+    else {
+      pwdInp?.setAttribute("type", "text");
+      pwdInp2?.setAttribute("type", "text");
+      pwdIco?.setAttribute("fontIcon", "visibility_off");
+      this.istogglePassword = !this.istogglePassword;
+    }
   }
 
   onSubmit() {
@@ -51,5 +71,9 @@ export class AppSideRegisterComponent implements OnInit {
     } else {
       console.log('Formulario inválido');
     }
+  }
+
+  redirectToHome() : void{
+    this.router.navigate(['/dashboard']);
   }
 }

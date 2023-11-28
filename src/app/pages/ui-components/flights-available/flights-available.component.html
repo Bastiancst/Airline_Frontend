@@ -1,6 +1,6 @@
 <h2>Vuelos disponibles</h2>
   <!-- Contenedor principal -->
-<div style="margin-bottom: 20px;">
+<div class="crud-container" style="margin-bottom: 20px;">
 
   <!-- Selectores fuera del div de la tabla, uno al lado del otro -->
   <div style="display: flex; justify-content: start; align-items: center; margin-bottom: -15px;">
@@ -24,9 +24,8 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div class="cardWithShadow">
   <!-- La tabla y sus columnas -->
-  <table mat-table [dataSource]="flightInformation" class="mat-elevation-z8" style="width: 100%; border-radius: 20px;">
+  <table mat-table [dataSource]="flightInformation" style="width: 100%; border-radius: 20px; background-color: #F9FAFC;">
 
     <!-- Columnas de la tabla -->
     <ng-container matColumnDef="Id">
@@ -60,7 +59,7 @@
     </ng-container>
 
     <ng-container matColumnDef="Price">
-      <th mat-header-cell *matHeaderCellDef> Precio (USD) </th>
+      <th mat-header-cell *matHeaderCellDef> Precio (CLP) </th>
       <td mat-cell *matCellDef="let element"> {{element.Price}} </td>
     </ng-container>
 
@@ -76,4 +75,3 @@
     <tr mat-header-row *matHeaderRowDef="secondDisplayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: secondDisplayedColumns;"></tr>
   </table>
-</div>

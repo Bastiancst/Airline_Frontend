@@ -1,6 +1,6 @@
 <h2>Información de Pasajero</h2>
-<div class="cardWithShadow">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="border-radius: 20px;">
+
+    <table mat-table [dataSource]="dataSource" class="crud-container" style="border-radius: 20px;">
 
         <!-- Define the columns -->
         <ng-container matColumnDef="Name">
@@ -37,11 +37,10 @@
         <tr mat-header-row *matHeaderRowDef="firstDisplayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: firstDisplayedColumns;"></tr>
     </table>
-</div>
+
 
 <h2>Información de Vuelo</h2>
-<div class="cardWithShadow">
-    <table mat-table [dataSource]="flightInformation" class="mat-elevation-z8" style="border-radius: 20px;">
+    <table mat-table [dataSource]="flightInformation" class="crud-container" style="border-radius: 20px;">
 
         <!-- Define the columns -->
         <ng-container matColumnDef="Id">
@@ -83,4 +82,3 @@
         <tr mat-header-row *matHeaderRowDef="secondDisplayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: secondDisplayedColumns;"></tr>
     </table>
-</div>

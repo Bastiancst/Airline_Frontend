@@ -17,31 +17,20 @@
     mat-icon-button
     [matMenuTriggerFor]="profilemenu"
     aria-label="Notifications"
+    class="myProfile"
+    *ngIf="isLogged"
   >
     <img
-      src="/assets/images/profile/user-1.jpg"
-      class="rounded-circle object-cover"
-      width="35"
+        src="/assets/images/profile/user-1.jpg"
+        class="rounded-circle object-cover myProfileImg"
     />
   </button>
   <mat-menu #profilemenu="matMenu" class="topbar-dd cardWithShadow">
-    <button mat-menu-item>
-      <mat-icon class="d-flex align-items-center"
-        ><i-tabler name="user" class="icon-18 d-flex"></i-tabler></mat-icon
-      >My Profile
-    </button>
-    <button mat-menu-item>
-      <mat-icon class="d-flex align-items-center"
-        ><i-tabler name="mail" class="icon-18 d-flex"></i-tabler></mat-icon
-      >My Account
-    </button>
-    <button mat-menu-item>
-      <mat-icon class="d-flex align-items-center"
-        ><i-tabler
-          name="list-check"
-          class="icon-18 d-flex"
-        ></i-tabler></mat-icon
-      >My Task
+    <button mat-menu-item [routerLink]="['/ui-components/user-panel']">
+      <mat-icon class="d-flex align-items-center">
+        <i-tabler name="user" class="icon-18 d-flex"></i-tabler>
+      </mat-icon>
+      User Panel
     </button>
 
     <div class="p-x-12 m-t-12">
@@ -50,6 +39,7 @@
         mat-stroked-button
         color="primary"
         class="w-100"
+        (click)="logOut()"
         >Logout</a
       >
     </div>

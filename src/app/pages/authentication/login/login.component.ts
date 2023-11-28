@@ -4,6 +4,7 @@ import { ApiRequestService } from 'src/app/services/api-request.service';
 import { LoginResponse } from '../models/login-response';
 import { Router } from '@angular/router';
 import { CoookieService } from 'src/app/services/cookie.service';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
@@ -14,9 +15,25 @@ export class AppSideLoginComponent {
 
   loginData: LoginRequest = { email: '', password: '' };
   public loginStatus = "";
+  public istogglePassword = false;
 
   constructor(private apiService: ApiRequestService, private router: Router,
     private CookieService: CoookieService) {}
+
+    togglePassword(){
+      var pwdInp = document.getElementById("passwordInput");
+      var pwdIco = document.getElementById("passwordIcon");
+      if(this.istogglePassword) {
+        pwdInp?.setAttribute("type", "password");
+        pwdIco?.setAttribute("fontIcon", "visibility");
+        this.istogglePassword = !this.istogglePassword;
+      }
+      else {
+        pwdInp?.setAttribute("type", "text");
+        pwdIco?.setAttribute("fontIcon", "visibility_off");
+        this.istogglePassword = !this.istogglePassword;
+      }
+    }
 
   onSubmit() 
   {
@@ -41,5 +58,9 @@ export class AppSideLoginComponent {
                 console.error('Error al autenticar:', error);
             }
         );
+  }
+
+  redirectToHome() : void{
+    this.router.navigate(['/dashboard']);
   }
 }
