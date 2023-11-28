@@ -11,11 +11,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // icons
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
-
 import { AuthenticationRoutes } from './authentication.routing';
-
 import { AppSideLoginComponent } from './login/login.component';
 import { AppSideRegisterComponent } from './register/register.component';
+import { VerifyCodeComponent } from './verify-code/verify-code.component';
+import { EmailVerifiedComponent } from './email-verified/email-verified.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ModifyPasswordComponent } from './modify-password/modify-password.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { ViewBuyComponent } from './view-buy-status/view-buy/view-buy.component';
+
 
 @NgModule({
   imports: [
@@ -33,6 +38,12 @@ import { AppSideRegisterComponent } from './register/register.component';
   declarations: [
     AppSideLoginComponent,
     AppSideRegisterComponent,
+    VerifyCodeComponent,
+    EmailVerifiedComponent,
+    ForgotPasswordComponent,
+    ModifyPasswordComponent,
+    UnauthorizedComponent,
+    ViewBuyComponent,
   ],
 })
 export class AuthenticationModule {}

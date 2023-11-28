@@ -11,36 +11,29 @@ export const navItems: NavItem[] = [
   },
   {
     navCap: 'Ui Components',
+    requiresRole: ["Client","Employee","Admin"]
   },
   {
-    displayName: 'Badge',
-    iconName: 'rosette',
-    route: '/ui-components/badge',
+    displayName: 'User Panel',
+    iconName: 'user-circle',
+    route: '/ui-components/user-panel',
+    requiresRole: ["Client","Employee","Admin"]
   },
   {
     displayName: 'Employee',
     iconName: 'rosette',
     route: '/ui-components/employee',
+    requiresRole: ["Admin"]
   },
   {
-    displayName: 'Chips',
-    iconName: 'poker-chip',
-    route: '/ui-components/chips',
+    displayName: 'Mis vuelos',
+    iconName: 'plane',
+    route: '/ui-components/passengers',
   },
   {
-    displayName: 'Lists',
-    iconName: 'list',
-    route: '/ui-components/lists',
-  },
-  {
-    displayName: 'Menu',
-    iconName: 'layout-navbar-expand',
-    route: '/ui-components/menu',
-  },
-  {
-    displayName: 'Tooltips',
-    iconName: 'tooltip',
-    route: '/ui-components/tooltips',
+    displayName: 'Assigment',
+    iconName: 'rosette',
+    route: '/ui-components/assigment',
   },
   {
     navCap: 'Auth',
@@ -54,18 +47,5 @@ export const navItems: NavItem[] = [
     displayName: 'Register',
     iconName: 'user-plus',
     route: '/authentication/register',
-  },
-  {
-    navCap: 'Extra',
-  },
-  {
-    displayName: 'Icons',
-    iconName: 'mood-smile',
-    route: '/extra/icons',
-  },
-  {
-    displayName: 'Sample Page',
-    iconName: 'aperture',
-    route: '/extra/sample-page',
   },
 ];

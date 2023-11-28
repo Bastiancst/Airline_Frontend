@@ -1,351 +1,59 @@
-<div class="row">
-  <!-- --------------------------------------------------------------------------- -->
-  <!-- Sales Overview -->
-  <!-- --------------------------------------------------------------------------- -->
-  <div class="col-lg-8">
-    <mat-card class="cardWithShadow">
-      <mat-card-content class="p-24">
-        <div class="d-flex w-100">
-          <mat-card-title>Sales Overview</mat-card-title>
-          <div class="m-l-auto">
-            <mat-form-field class="theme-select" appearance="outline">
-              <mat-select value="mar">
-                <mat-option *ngFor="let month of months" [value]="month.value">
-                  {{ month.viewValue }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-        <apx-chart
-          [series]="salesOverviewChart.series"
-          [dataLabels]="salesOverviewChart.dataLabels"
-          [chart]="salesOverviewChart.chart"
-          [legend]="salesOverviewChart.legend"
-          [xaxis]="salesOverviewChart.xaxis"
-          [yaxis]="salesOverviewChart.yaxis"
-          [grid]="salesOverviewChart.grid"
-          [stroke]="salesOverviewChart.stroke"
-          [tooltip]="salesOverviewChart.tooltip"
-          [plotOptions]="salesOverviewChart.plotOptions"
-        ></apx-chart>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <!-- --------------------------------------------------------------------------- -->
-  <!-- end Sales overview -->
-  <!-- --------------------------------------------------------------------------- -->
-  <div class="col-lg-4">
-    <div class="row">
-      <!-- --------------------------------------------------------------------------- -->
-      <!-- Yearly Breakup -->
-      <!-- --------------------------------------------------------------------------- -->
-      <div class="col-lg-12 col-sm-6">
-        <mat-card class="cardWithShadow">
-          <mat-card-content class="p-24">
-            <mat-card-title>Yearly Breakup</mat-card-title>
-            <div class="row m-t-24">
-              <div class="col-7">
-                <h4 class="mat-headline-5">$36,358</h4>
-                <div class="d-flex align-items-center m-t-16">
-                  <button
-                    mat-mini-fab
-                    class="bg-light-success text-success shadow-none icon-27"
-                  >
-                    <i-tabler name="arrow-up-right" class="icon-20"></i-tabler>
-                  </button>
-                  <div class="mat-body-1 f-w-600 m-l-12">+9%</div>
-                  <div class="mat-body-1 m-l-4">last year</div>
-                </div>
-
-                <div class="d-flex align-items-center m-t-32">
-                  <div class="d-flex align-items-center">
-                    <i-tabler
-                      name="circle-filled"
-                      class="text-primary icon-12 d-flex"
-                    ></i-tabler>
-                    <div class="mat-body-1 m-l-12">2023</div>
-                  </div>
-                  <div class="d-flex align-items-center m-l-16">
-                    <i-tabler
-                      name="circle-filled"
-                      class="text-light-primary icon-12 d-flex"
-                    ></i-tabler>
-                    <div class="mat-body-1 m-l-12">2022</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-5 d-flex align-items-start">
-                <apx-chart
-                  [series]="yearlyChart.series"
-                  [dataLabels]="yearlyChart.dataLabels"
-                  [chart]="yearlyChart.chart"
-                  [legend]="yearlyChart.legend"
-                  [colors]="yearlyChart.colors"
-                  [stroke]="yearlyChart.stroke"
-                  [tooltip]="yearlyChart.tooltip"
-                  [plotOptions]="yearlyChart.plotOptions"
-                  [responsive]="yearlyChart.responsive"
-                ></apx-chart>
-              </div>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <!-- --------------------------------------------------------------------------- -->
-      <!-- Monthly Earnings -->
-      <!-- --------------------------------------------------------------------------- -->
-      <div class="col-lg-12 col-sm-6">
-        <mat-card class="cardWithShadow">
-          <mat-card-header class="d-flex align-items-center p-x-24">
-            <mat-card-title>Monthly Earnings</mat-card-title>
-            <div class="m-l-auto">
-              <button mat-fab color="accent" class="shadow-none icon-48">
-                <i-tabler
-                  name="currency-dollar"
-                  class="text-white d-flex"
-                ></i-tabler>
-              </button>
-            </div>
-          </mat-card-header>
-          <mat-card-content class="m-b-32 p-x-24">
-            <h4 class="mat-headline-5">$6,820</h4>
-            <div class="d-flex align-items-center m-t-16">
-              <button
-                mat-mini-fab
-                class="bg-light-error text-error shadow-none icon-27"
-              >
-                <i-tabler name="arrow-down-right" class="icon-20"></i-tabler>
-              </button>
-              <div class="mat-body-1 f-w-600 m-l-12">+9%</div>
-              <div class="mat-body-1 m-l-4">last year</div>
-            </div>
-          </mat-card-content>
-          <apx-chart
-            [series]="monthlyChart.series"
-            [dataLabels]="monthlyChart.dataLabels"
-            [chart]="monthlyChart.chart"
-            [legend]="monthlyChart.legend"
-            [colors]="monthlyChart.colors"
-            [stroke]="monthlyChart.stroke"
-            [tooltip]="monthlyChart.tooltip"
-            [plotOptions]="monthlyChart.plotOptions"
-            [responsive]="monthlyChart.responsive"
-          ></apx-chart>
-        </mat-card>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-4">
-    <mat-card class="cardWithShadow">
-      <mat-card-content class="p-24">
-        <mat-card-title>Recent Transactions</mat-card-title>
-
-        <div class="timeline m-t-24">
-          <div
-            class="timeline-item d-flex overflow-hidden"
-            *ngFor="let stat of stats"
-          >
-            <div class="time text-right mat-subtitle-1 f-s-14">
-              {{ stat.time }}
-            </div>
-            <div class="point d-flex align-items-center">
-              <span class="timeline-badge border-{{ stat.color }} m-y-8"></span>
-              <span class="timline-border d-block"></span>
-            </div>
-            <div class="desc">
-              <ng-template [ngIf]="stat.subtext">
-                <span class="mat-subtitle-1 f-s-14 lh-20">{{
-                  stat.subtext
-                }}</span>
-              </ng-template>
-              <ng-template [ngIf]="stat.title">
-                <span class="mat-subtitle-1 f-s-14 lh-20 f-w-600 d-block">{{
-                  stat.title
-                }}</span>
-              </ng-template>
-              <ng-template [ngIf]="stat.link">
-                <a href="#" class="text-primary text-decoration-none mat-body-1"
-                  >#ML-3467</a
-                >
-              </ng-template>
-            </div>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-
-  <div class="col-lg-8">
-    <mat-card class="cardWithShadow">
-      <mat-card-content class="p-24">
-        <mat-card-title>Top Projects</mat-card-title>
-        <div class="table-responsive m-t-16">
-          <table mat-table [dataSource]="dataSource" class="w-100">
-            <!-- Position Column -->
-            <ng-container matColumnDef="assigned">
-              <th
-                mat-header-cell
-                *matHeaderCellDef
-                class="f-w-600 mat-subtitle-1 f-s-14"
-              >
-                Assigned
-              </th>
-              <td mat-cell *matCellDef="let element">
-                <div class="d-flex align-items-center">
-                  <img
-                    [src]="element.imagePath"
-                    alt="users"
-                    width="40"
-                    class="rounded-circle"
-                  />
-                  <div class="m-l-16">
-                    <h6 class="mat-subtitle-1 f-s-14 f-w-600">
-                      {{ element.uname }}
-                    </h6>
-                    <span class="mat-body-1 f-s-12">
-                      {{ element.position }}
-                    </span>
-                  </div>
-                </div>
-              </td>
-            </ng-container>
-
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th
-                mat-header-cell
-                *matHeaderCellDef
-                class="f-w-600 mat-subtitle-1 f-s-14"
-              >
-                Name
-              </th>
-              <td mat-cell *matCellDef="let element" class="mat-body-1">
-                {{ element.productName }}
-              </td>
-            </ng-container>
-
-            <!-- Weight Column -->
-            <ng-container matColumnDef="priority">
-              <th
-                mat-header-cell
-                *matHeaderCellDef
-                class="f-w-600 mat-subtitle-1 f-s-14"
-              >
-                Priority
-              </th>
-              <td mat-cell *matCellDef="let element">
-                <ng-template [ngIf]="element.priority == 'low'">
-                  <span
-                    class="bg-light-accent text-accent rounded f-w-600 p-6 p-y-4 f-s-12"
-                  >
-                    {{ element.priority | titlecase }}
-                  </span>
-                </ng-template>
-                <ng-template [ngIf]="element.priority == 'medium'">
-                  <span
-                    class="bg-light-primary text-primary rounded f-w-600 p-6 p-y-4 f-s-12"
-                  >
-                    {{ element.priority | titlecase }}
-                  </span>
-                </ng-template>
-                <ng-template [ngIf]="element.priority == 'high'">
-                  <span
-                    class="bg-light-warning text-warning rounded f-w-600 p-6 p-y-4 f-s-12"
-                  >
-                    {{ element.priority | titlecase }}
-                  </span>
-                </ng-template>
-                <ng-template [ngIf]="element.priority == 'critical'">
-                  <span
-                    class="bg-light-error text-error rounded f-w-600 p-6 p-y-4 f-s-12"
-                  >
-                    {{ element.priority | titlecase }}
-                  </span>
-                </ng-template>
-                <ng-template [ngIf]="element.priority == 'moderate'">
-                  <span
-                    class="bg-light-success text-success rounded f-w-600 p-6 p-y-4 f-s-12"
-                  >
-                    {{ element.priority | titlecase }}
-                  </span>
-                </ng-template>
-              </td>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="budget">
-              <th
-                mat-header-cell
-                *matHeaderCellDef
-                class="f-w-600 mat-subtitle-1 f-s-14"
-              >
-                Budget
-              </th>
-              <td mat-cell *matCellDef="let element" class="mat-body-1">
-                ${{ element.budget }}k
-              </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-          </table>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
+<div id="stars-container">
+  <div id='stars'></div>
+  <div id='stars2'></div>
+  <div id='stars3'></div>
 </div>
 
-<div class="row">
-  <div class="col-sm-6 col-lg-3" *ngFor="let productcard of productcards">
-    <mat-card class="cardWithShadow productcard overflow-hidden">
-      <a routerLink="/widgets/cards">
-        <img
-          src="{{ productcard.imgSrc }}"
-          alt="imgSrc"
-          class="w-100"
-          mat-card-image
-        />
-      </a>
-      <mat-card-content class="p-b-24 p-t-12 position-relative">
-        <button
-          mat-mini-fab
-          color="primary"
-          class="icon-30 cart-btn"
-          matTooltip="Add to Cart"
-        >
-          <i-tabler name="basket" class="icon-16"></i-tabler>
-        </button>
-        <mat-card-title class="mat-headline-2 f-s-16 m-b-4">{{
-          productcard.title
-        }}</mat-card-title>
-        <div class="d-flex align-items-center justify-content-between">
-          <div class="d-flex align-items-center">
-            <h6 class="mat-body-2 f-w-600">${{ productcard.price }}</h6>
-            <span class="f-s-14 m-l-4 text-decoration-line-through"
-              >${{ productcard.rprice }}</span
-            >
-          </div>
-          <div class="m-l-auto d-flex gap-4">
-            <span
-              ><i-tabler name="star" class="fill-warning icon-18"></i-tabler
-            ></span>
-            <span
-              ><i-tabler name="star" class="fill-warning icon-18"></i-tabler
-            ></span>
-            <span
-              ><i-tabler name="star" class="fill-warning icon-18"></i-tabler
-            ></span>
-            <span
-              ><i-tabler name="star" class="fill-warning icon-18"></i-tabler
-            ></span>
-            <span
-              ><i-tabler name="star" class="fill-warning icon-18"></i-tabler
-            ></span>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
+<style>
+  body{
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+  }
+</style>
+
+<div class="content"> 
+   <!-- Insertar ruta de textbox 1 -->
+   <div class="textbox"[routerLink]="['']">
+    <h2>Tracking</h2>
+    <br>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-airplane" viewBox="0 0 16 16">
+    <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Zm.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1c-.213 0-.458.158-.678.599Z"/>
+    </svg>
+    <p class=" f-w-500 text-center m-t-24">Espacio para descripción</p>
 </div>
+
+   <!-- Insertar ruta de textbox 2 -->
+  <div class="textbox"[routerLink]="['']">
+    <h2>Flight</h2>
+    <br>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+      <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+      <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+    </svg>
+    <p class="d-block f-w-500 text-center m-t-24">Espacio para descripción</p>
+</div>
+
+   <!-- Insertar ruta de textbox 3 -->
+   <div class="textbox"[routerLink]="['']">
+    <h2>Cargo tracking</h2>
+    <br>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+      <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+    </svg>
+    <p class="d-block f-w-500 text-center m-t-24">Espacio para descripción</p>
+  </div>
+  
+   <!-- Insertar ruta de textbox 4 -->
+   <div class="textbox" [routerLink]="['']">
+    <h2>Awage</h2>
+    <br>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cash" viewBox="0 0 16 16">
+      <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+      <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z"/>
+    </svg>
+    <p class="d-block f-w-500 text-center m-t-24">Espacio para descripción</p>
+  </div>
+
+  

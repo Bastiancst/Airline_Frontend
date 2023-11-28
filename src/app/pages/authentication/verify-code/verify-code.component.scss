@@ -1,0 +1,20 @@
+.input-container {
+    display: flex;
+    justify-content: space-between;  
+    flex-wrap: nowrap;  
+  
+    mat-form-field {
+      margin: 0 5px;  
+      flex: 1;  
+    }
+  }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+  text-align: center;
+  font-weight: bold;
+}
