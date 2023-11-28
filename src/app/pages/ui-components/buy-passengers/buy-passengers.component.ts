@@ -17,6 +17,7 @@ export class BuyPassengersComponent implements OnInit{
   public passengerInfo = {
     clientId: '',
     flightPlanningId: '376B4429-1CE7-4DFF-940E-04A0CD1D3FFC',
+    paymentId: '', 
     name: '',
     lastName: '',
     identityDocument: '',
@@ -36,15 +37,23 @@ export class BuyPassengersComponent implements OnInit{
   };
 
   dataSource: any;
+  data: any;
   passengersCart: PassengerInfo[] = [];
   passengerModel: PassengerInfo;
   paymentInfo: PaymentInfo;
   paymentResponse: PaymentResponse;
+  flightPrice: number;
   totalPrice: number;
 
   displayedColumns: string[] = ['Name', 'Lastname', 'IdentityDocument', 'Age', 'Address', 'PhoneNumber', 'Email', 'SeatNumber'];
 
-  constructor(private ApiService: ApiRequestService, private CookieService: CoookieService, private _router: Router, private dataService: DataService<PaymentResponse>){
+  constructor(private ApiService: ApiRequestService, private CookieService: CoookieService, private _router: Router, private dataService: DataService<any>){
+    this.dataService.data$.subscribe(
+      data => {
+        this.data = data;
+        this.flightPrice = parseInt(this.data.Price);
+      }
+    );
     this.totalPrice = 0;
   }
 
@@ -100,23 +109,25 @@ export class BuyPassengersComponent implements OnInit{
     )
   }
 
-  /*buyPassengers(){
+  buyPassengers(){
     console.log(this.passengersCart);
     this.ApiService.post<any, any>('/api/passenger/create', this.passengersCart).subscribe(
       response =>{
+        console.log(response);
         if(response.success){
-          this._router.navigate(['/ui-components/passengers']);
+          this.toWebpay();
+          
         }
       },
       error => {
         console.log(error);
       }
     )
-  }*/
+  }
 
   onSubmit(form: any) {
-    this.passengerModel = new PassengerInfo(this.clientInfo.clientId, this.passengerInfo.flightPlanningId, this.passengerInfo.name, this.passengerInfo.lastName, this.passengerInfo.identityDocument, this.passengerInfo.age, this.passengerInfo.address, this.passengerInfo.phoneNumber, this.passengerInfo.email, this.passengerInfo.seatNumber, true);
-    this.totalPrice = this.totalPrice + 1000;
+    this.passengerModel = new PassengerInfo(this.clientInfo.clientId, this.passengerInfo.flightPlanningId,this.passengerInfo.paymentId, this.passengerInfo.name, this.passengerInfo.lastName, this.passengerInfo.identityDocument, this.passengerInfo.age, this.passengerInfo.address, this.passengerInfo.phoneNumber, this.passengerInfo.email, this.passengerInfo.seatNumber, true);
+    this.totalPrice = this.totalPrice + this.flightPrice;
     console.log(this.passengerModel);
 
     form.reset();

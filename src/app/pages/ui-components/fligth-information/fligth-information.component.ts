@@ -44,7 +44,7 @@ export class FligthInformationComponent implements OnInit{
 
   ngOnInit(): void {
     this.dataService.data$.subscribe(data => {
-      this.passengerModel = new PassengerInfo(data?.clientId!, data?.flightPlanningId!, data?.name!, data?.lastName!, data?.identityDocument!, data?.age!, data?.address!, data?.phoneNumber!, data?.email!, data?.seatNumber!, data?.isCopyDocumentEmail!);
+      this.passengerModel = new PassengerInfo(data?.clientId!, data?.flightPlanningId!, data?.paymentId!, data?.name!, data?.lastName!, data?.identityDocument!, data?.age!, data?.address!, data?.phoneNumber!, data?.email!, data?.seatNumber!, data?.isCopyDocumentEmail!);
 
       console.log(this.passengerModel);
 
