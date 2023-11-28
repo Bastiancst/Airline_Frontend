@@ -5,8 +5,7 @@
     <mat-icon>arrow_back</mat-icon>
   </button>
 </div>
-<div class="cardWithShadow">
-  <table mat-table [dataSource]="clientInfoArray" class="mat-elevation-z8" style="border-radius: 20px;">
+  <table mat-table [dataSource]="clientInfoArray" class="crud-container" style="border-radius: 20px;">
 
     <!-- Define the columns with corrected spelling -->
     <ng-container matColumnDef="name">
@@ -33,12 +32,10 @@
     <tr mat-header-row *matHeaderRowDef="firstDisplayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: firstDisplayedColumns;"></tr>
   </table>
-</div>
 
 <!-- Información de Facturación -->
 <h2>Información de Facturación</h2>
-<div class="cardWithShadow">
-  <table mat-table [dataSource]="invoices" class="mat-elevation-z8" style="border-radius: 20px;">
+  <table mat-table [dataSource]="invoices" class="crud-container" style="border-radius: 20px;">
 
     <!-- Define the columns with corrected spelling -->
     <ng-container matColumnDef="Id">
@@ -65,4 +62,4 @@
     <tr mat-header-row *matHeaderRowDef="secondDisplayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: secondDisplayedColumns;"></tr>
   </table>
-</div>
+
