@@ -32,6 +32,7 @@ import { AssigmentAddComponent } from './assigment-crud/assigment-add/assigment-
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AssigmentDetailsComponent } from './assigment-crud/assigment-details/assigment-details/assigment-details.component';
 import { InvoicesComponent } from './invoices/invoices.component';
+import { ChatTextComponent } from './chat-text/chat-text/chat-text.component';
 
 @NgModule({
   imports: [
@@ -65,6 +66,7 @@ import { InvoicesComponent } from './invoices/invoices.component';
     AssigmentAddComponent,
     AssigmentDetailsComponent,
     InvoicesComponent,
+    ChatTextComponent,
   ],
 })
 export class UicomponentsModule {}

@@ -14,6 +14,7 @@ import { AssigmentAddComponent } from './assigment-crud/assigment-add/assigment-
 import { AssigmentDetailsComponent } from './assigment-crud/assigment-details/assigment-details/assigment-details.component';
 import { Invoices } from './user-panel/models/invoices';
 import { InvoicesComponent } from './invoices/invoices.component';
+import { ChatTextComponent } from './chat-text/chat-text/chat-text.component';
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -81,6 +82,11 @@ export const UiComponentsRoutes: Routes = [
       },
       {path: 'invoices',
       component: InvoicesComponent,
+      canActivate: [RoleGuard],
+      data: {roles: ['Client', 'Employee','Admin']}
+      },
+      {path: 'chat-text',
+      component: ChatTextComponent,
       canActivate: [RoleGuard],
       data: {roles: ['Client', 'Employee','Admin']}
       },
