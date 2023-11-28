@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { HttpClient } from '@angular/common/http';  // Agregamos la importación de HttpClient
+import { CoookieService } from 'src/app/services/cookie.service';
+import { LoginResponse } from 'src/app/pages/authentication/models/login-response';
+import { ApiRequestService } from 'src/app/services/api-request.service';
 
 @Component({
   selector: 'app-chat-text',
@@ -18,26 +21,42 @@ export class ChatTextComponent implements OnInit {
 
   @ViewChild('chatContainer') chatContainer: ElementRef | undefined;
 
-  constructor(private cdRef: ChangeDetectorRef, private httpClient: HttpClient) {}  // Inyectamos HttpClient en el constructor
+  constructor(private cdRef: ChangeDetectorRef, private httpClient: HttpClient, private CookieService: CoookieService, private ApiService: ApiRequestService) {
+  }  // Inyectamos HttpClient en el constructor
 
-  async ngOnInit() {
-    this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://localhost:7292/chatHub') // Reemplaza con la URL de tu backend
-      .build();
+  getUserInfoByToken(){
+    this.ApiService.getUserByToken<LoginResponse>('/api/account/user', this.CookieService.getToken()).subscribe(
+      response => {
+        console.log(response);
+        if(response.success){
+          this.clientId= response.result.id;
+          this.getUserInfo();
+          console.log(this.clientId);
+        }  
+      },
+      error => {
+        console.error('Error al obtener información del usuario:', error);
+      }
+    );
+  }
 
-    try {
-      await this.hubConnection.start();
-      console.log('Connection started');
-      console.log('Connection state:', this.hubConnection.state);
-    } catch (err) {
-      console.log('Error while starting connection: ' + err);
-    }
+  getUserInfo(){
+    this.ApiService.post<any, any>('/api/client/' + this.clientId, this.clientId).subscribe(
+      response => {
+        if(response.success){
+          this.employeeId= response.result.employeeId;
+          console.log(this.employeeId);
+          this.chat();
+        }
+      },
+      error => { 
+        console.error("error getUserInfo: ", error);
+      }
+    )
+  }
 
-    this.hubConnection.on('ReceiveMessage', (clientId: string, employeeId: string, message: string) => {
-      this.messages.push({ clientId, employeeId, message });
-      this.scrollToBottom();
-      this.cdRef.detectChanges();
-    });
+  ngOnInit() {
+    this.getUserInfoByToken();
   }
 
   async sendMessage() {
@@ -46,7 +65,7 @@ export class ChatTextComponent implements OnInit {
         console.log('Connection state before sending message:', this.hubConnection.state);
         if (this.hubConnection.state === signalR.HubConnectionState.Connected) {
           try {
-            await this.hubConnection?.invoke('SendMessage', '359837c4-b2e9-4cde-9df7-a69503bd664d', 'c487a34f-083d-49b3-91dc-6763b844a49f', this.message);
+            await this.hubConnection?.invoke('SendMessage', this.clientId, this.employeeId, this.message);
 
             //this.messages.push({ clientId: this.clientId, employeeId: this.employeeId, message: this.message });
             this.message = '';
@@ -62,6 +81,26 @@ export class ChatTextComponent implements OnInit {
         console.warn('Hub connection is null. Unable to send message.');
       }
     }
+  }
+
+  async chat(){
+    this.hubConnection = new signalR.HubConnectionBuilder()
+      .withUrl('https://a99e-200-27-88-4.ngrok-free.app/chatHub') // Reemplaza con la URL de tu backend
+      .build();
+
+    try {
+      await this.hubConnection.start();
+      console.log('Connection started');
+      console.log('Connection state:', this.hubConnection.state);
+    } catch (err) {
+      console.log('Error while starting connection: ' + err);
+    }
+
+    this.hubConnection.on('ReceiveMessage', (clientId: string, employeeId: string, message: string) => {
+      this.messages.push({ clientId, employeeId, message });
+      this.scrollToBottom();
+      this.cdRef.detectChanges();
+    });
   }
 
   scrollToBottom() {
