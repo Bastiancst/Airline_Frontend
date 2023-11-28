@@ -12,6 +12,7 @@ import { FlightsAvailableComponent } from './flights-available/flights-available
 import { AssigmentCrudComponent } from './assigment-crud/assigment-crud.component';
 import { AssigmentAddComponent } from './assigment-crud/assigment-add/assigment-add/assigment-add.component';
 import { AssigmentDetailsComponent } from './assigment-crud/assigment-details/assigment-details/assigment-details.component';
+import { RedirectWebpayComponent } from './redirect-webpay/redirect-webpay.component';
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -74,6 +75,12 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'assigment-details/:id',
         component: AssigmentDetailsComponent,
+        canActivate: [RoleGuard],
+        data: {roles: ['Client', 'Employee','Admin']}
+      },
+      {
+        path: 'redirect-webpay',
+        component: RedirectWebpayComponent,
         canActivate: [RoleGuard],
         data: {roles: ['Client', 'Employee','Admin']}
       },

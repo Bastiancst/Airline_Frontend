@@ -160,7 +160,7 @@
 </div>
 
 <h2>Pasajeros en el Carrito</h2>
-<h2>Total: {{ totalPrice }}  USD</h2>
+<h2>Total: ${{ totalPrice }}  CLP</h2>
 
 <div class="cardWithShadow">
 
@@ -212,6 +212,6 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
-<button mat-flat-button color="primary" class="m-r-8" style="margin-top: 20px;" (click)="buyPassengers()">
+<button mat-flat-button color="primary" class="m-r-8" style="margin-top: 20px;" (click)="toWebpay()">
   Comprar pasajes
 </button>
